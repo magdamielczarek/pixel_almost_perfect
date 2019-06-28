@@ -1,0 +1,47 @@
+@import '../../global-styles/variables';
+
+header {
+  align-items: center;
+  background: $primary-color;
+  display: inline-flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  h1 {
+    font-family: $secondary-font;
+    font-size: 2rem;
+    margin: 0;
+  }
+}
+
+.mainNavigation {
+  ul {
+    display: inline-flex;
+    list-style-type: none;
+  }
+}
+
+.mainNavigation__link {
+  font-family: $secondary-font;
+  margin-left: 1.5rem;
+  a {
+    position: relative;
+    text-decoration: none;
+    z-index: 1;
+    &:active,
+    &:hover {
+      color: $strong-accent-color;
+      &:after {
+        border-color: transparent transparent $light-font-color transparent;
+        border-style: solid;
+        border-width: 0 0 30px 50px;
+        bottom: 2%;
+        content: '';
+        height: 0;
+        position: absolute;
+        right: 0;
+        width: 0;
+        z-index: -1;
+      }
+    }
+  }
+}

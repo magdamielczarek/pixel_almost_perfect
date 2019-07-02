@@ -1,0 +1,9 @@
+@import '../../global-styles/_variables';
+
+.pageContainer {
+  display: grid;
+  grid-template-areas: 'header' 'mainContent' 'footer';
+  grid-auto-rows: 5vh auto 3vh;
+  height: 100%;
+  overflow: hidden;
+}

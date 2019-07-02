@@ -1,0 +1,36 @@
+@import '../../../global-styles/_variables';
+
+.mainFooter {
+  align-items: center;
+  background: #000;
+  color: $light-font-color;
+  display: flex;
+  flex-flow: row nowrap;
+  font-family: $primary-font;
+  font-size: .8rem;
+  grid-area: footer;
+  justify-content: space-between;
+  max-height: 100px;
+  padding: 0.5rem 2rem;
+}
+
+.socialMediaIcons {
+  align-items: center;
+  display: inline-flex;
+  position: relative;
+}
+
+.socialMediaIcons__item {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  margin-left: 1rem;
+  width: 1.5rem;
+  img {
+    height: auto;
+    max-width: 100%
+  }
+  &:hover {
+    color: #00FFBB;
+  }
+}

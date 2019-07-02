@@ -1,0 +1,44 @@
+header {
+  align-items: center;
+  background: #00FFBB;
+  display: inline-flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+header h1 {
+  font-family: "Anton", sans-serif;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.mainNavigation ul {
+  display: inline-flex;
+  list-style-type: none;
+}
+
+.mainNavigation__link {
+  font-family: "Anton", sans-serif;
+  margin-left: 1.5rem;
+}
+.mainNavigation__link a {
+  position: relative;
+  text-decoration: none;
+  z-index: 1;
+}
+.mainNavigation__link a:active, .mainNavigation__link a:hover {
+  color: #C44272;
+}
+.mainNavigation__link a:active:after, .mainNavigation__link a:hover:after {
+  border-color: transparent transparent #fff transparent;
+  border-style: solid;
+  border-width: 0 0 30px 50px;
+  bottom: 2%;
+  content: "";
+  height: 0;
+  position: absolute;
+  right: 0;
+  width: 0;
+  z-index: -1;
+}
+
+/*# sourceMappingURL=MainNavigation.css.map */

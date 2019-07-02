@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import { Route, Switch } from "react-router-dom";
-import './App.scss';
-import GameBoard from "../GameBoard/GameBoard";
-import Layout from "../Layout/Layout";
-import ScoresPage from "../ScoresPage/ScoresPage";
-import IntroPage from '../IntroPage/IntroPage';
-import RulesPage from "../RulesPage/RulesPage";
-import SettingsPage from "../SettingsPage/SettingsPage";
+import classes from './App.module.scss';
+import GameBoard from "../components/Pages/GameBoard/GameBoard";
+import Layout from "../components/Layout/Layout";
+import ScoresPage from "../components/Pages/ScoresPage/ScoresPage";
+import IntroPage from '../components/Pages/IntroPage/IntroPage';
+import RulesPage from "../components/Pages/RulesPage/RulesPage";
+import SettingsPage from "../components/Pages/SettingsPage/SettingsPage";
 
 class App extends Component{
     constructor(props){
@@ -16,7 +16,7 @@ class App extends Component{
 
     render(){
         return (
-            <div className="app">
+            <div className={classes.app}>
                 <Layout>
                     <Switch>
                         <Route path="/ustawienia" component={SettingsPage}/>

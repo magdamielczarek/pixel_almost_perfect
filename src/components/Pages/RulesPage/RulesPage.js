@@ -1,8 +1,11 @@
 import React from 'react';
+import './RulesPage.scss';
 
 const RulesPage = () => {
     return (
-        <p>rules page</p>
+        <div className="rulesContainer">
+            rules
+        </div>
     );
 };
 

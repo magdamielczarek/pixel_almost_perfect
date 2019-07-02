@@ -4,16 +4,16 @@
 // po zapisie wyników albo po anuluj jest powrót na stronę główną
 
 import React from 'react';
+import './GameBoard.scss';
 
 const GameBoard = (props) => {
     return (
-        <>
-            <p>nowa gra</p>
-            <div id="boardContainer">
+        <div className="boardContainer">
+            <div id="canvasWrapper">
                 <canvas id="board"></canvas>
             </div>
-            <h2 className="image__description"></h2>
-        </>
+            <h2 className="imageDescription">opis obrazu</h2>
+        </div>
     );
 };
 

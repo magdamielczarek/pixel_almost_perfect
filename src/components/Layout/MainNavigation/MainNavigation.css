@@ -6,6 +6,7 @@ header {
   padding: 0 2rem;
 }
 header h1 {
+  color: #070D14;
   font-family: "Anton", sans-serif;
   font-size: 2rem;
   margin: 0;
@@ -29,15 +30,13 @@ header h1 {
   color: #C44272;
 }
 .mainNavigation__link a:active:after, .mainNavigation__link a:hover:after {
-  border-color: transparent transparent #fff transparent;
-  border-style: solid;
-  border-width: 0 0 30px 50px;
-  bottom: 2%;
+  background-color: #fff;
+  bottom: 0;
   content: "";
-  height: 0;
+  height: 20%;
   position: absolute;
   right: 0;
-  width: 0;
+  width: 100%;
   z-index: -1;
 }
 

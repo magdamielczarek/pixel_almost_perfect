@@ -1,5 +1,3 @@
-// zawiera animację z zachętą do gry i przycisk nowa gra
-
 import React from 'react';
 import classes from './IntroPage.module.scss';
 
@@ -12,9 +10,12 @@ const IntroPage = () => {
             <div className={[classes.batPixel,classes.batPixel__4].join(' ')}> </div>
             <div className={[classes.batPixel,classes.batPixel__5].join(' ')}> </div>
             <div className={classes.header}>
-                <div>Pixel <span className={classes.comment}>almost</span> Perfect</div>
+                <span className={classes.comment}>find </span>
+                Pixels
+                <span className={classes.comment}> almost </span>
+                Perfect
             </div>
-            <button className={classes.ctaButton}>PLAY</button>
+            <button className={classes.ctaButton}>START</button>
         </div>
     );
 };

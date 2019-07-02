@@ -3,7 +3,7 @@
 .pageContainer {
   display: grid;
   grid-template-areas: 'header' 'mainContent' 'footer';
-  grid-auto-rows: 5vh auto 3vh;
+  grid-auto-rows: 7vh auto 5vh;
   height: 100%;
   overflow: hidden;
 }

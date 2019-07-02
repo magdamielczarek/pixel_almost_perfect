@@ -1,9 +1,81 @@
 .introWrapper {
   background-image: url("../../../assets/images/Vincent_van_Gogh_-_Wheatfield_with_crows.jpg");
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
+  transition: all 1s;
   width: 100%;
+}
+
+.header {
+  font-family: "Anton", sans-serif;
+  font-size: 3rem;
+  position: absolute;
+  top: 40%;
+  left: 0;
+}
+.header div {
+  background-color: #fff;
+  max-width: max-content;
+  padding: 1rem 2rem;
+}
+
+.comment {
+  color: #3c6fab;
+}
+
+.batPixel {
+  height: 6rem;
+  position: absolute;
+  width: 5rem;
+}
+.batPixel.batPixel__1 {
+  background-color: #3c77c0;
+  left: 5%;
+  top: 10%;
+}
+.batPixel.batPixel__2 {
+  background-color: #4078bd;
+  left: 40%;
+  top: 20%;
+}
+.batPixel.batPixel__3 {
+  background-color: #9F8559;
+  left: 3%;
+  bottom: 15%;
+}
+.batPixel.batPixel__4 {
+  background-color: #A28113;
+  left: 25%;
+  bottom: 20%;
+}
+.batPixel.batPixel__5 {
+  background-color: #305F99;
+  right: 30%;
+  top: 10%;
+}
+
+.ctaButton {
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 5%;
+  bottom: 35%;
+  box-shadow: 2px 2px 2px #333;
+  color: #C44272;
+  cursor: pointer;
+  font-family: "Anton", sans-serif;
+  font-size: 3rem;
+  left: calc(50% - 5rem);
+  outline: none;
+  position: absolute;
+  width: 10rem;
+}
+.ctaButton:hover {
+  background-color: #C44272;
+  color: #fff;
+  transform: scale(1.5);
+  transition: transform 1s;
 }
 
 /*# sourceMappingURL=IntroPage.module.css.map */

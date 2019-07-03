@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './GameBoard.module.scss';
 import GameNavigation from "./GameNavigation/GameNavigation";
 import ImageDescription from './ImageDescription/ImageDescription';
-import img1 from '../../../assets/images/wieczerza.jpg';
+import img1 from '../../../assets/images/Gioconda.jpg';
 
 class GameBoard extends React.Component {
 
@@ -17,6 +17,13 @@ class GameBoard extends React.Component {
         };
     };
 
+    importAllImages = (r) => {
+        let images = {};
+        r.keys().map((item, index) => { images[item.replace('./assets/images', '')] = r(item); });
+        console.log(images);
+        return images;
+    };
+
     gameConfig = {
         xNumber: 20,
         yNumber: 20,
@@ -26,7 +33,8 @@ class GameBoard extends React.Component {
         timer: 180000, // 3 minuty
         difficulty: 'medium',
         pixelsToCheckCords: [],
-        activeCords: []
+        activeCords: [],
+        images: this.importAllImages(require.context('../../../assets/images', false, /\.(png|jpe?g|svg)$/))
     };
 
     componentDidMount = () => {
@@ -50,7 +58,6 @@ class GameBoard extends React.Component {
     };
 
     markPixel = (e) => {
-        // console.log(this.gameConfig.activeCords);
         const canvas = this.refs.canvas;
         const ctx = canvas.getContext("2d");
         this.gameConfig.activeCords.forEach(
@@ -58,14 +65,15 @@ class GameBoard extends React.Component {
             if((e.pageX >= config.positionLeft + this.refs.canvas.offsetLeft && e.pageX <= config.positionLeft + config.width + this.refs.canvas.offsetLeft)
                 && (e.pageY >= config.positionTop + this.refs.canvas.offsetTop && e.pageY <= config.positionTop + config.width + this.refs.canvas.offsetTop)) {
 
-                console.log('trafiony');
                 ctx.rect(config.positionLeft,config.positionTop,config.width,config.height);
                 ctx.fillStyle = '#00FFBB';
                 ctx.fill();
                 this.gameConfig.activeCords.splice(index,1);
             }
         });
-        console.log(this.gameConfig.activeCords);
+        if(!this.gameConfig.activeCords.length){
+
+        }
     };
 
     updateImage = (image,canvas) => {
@@ -96,15 +104,17 @@ class GameBoard extends React.Component {
         ctx.stroke();
     };
 
-    findCustomInDimension = (unitsNumber) => {
-        return Math.round(Math.random()*unitsNumber);
+    returnCustomNumber = (unitsNumber) => {
+        let num =  Math.round(Math.random()*unitsNumber);
+        if (num === 0) num++;
+        return num;
     };
 
     collectRandomRects = (canvas,context,pixelsToCheckNumber,xCounter,yCounter) => {
         for(let i=0;i<pixelsToCheckNumber;i++){
             this.gameConfig.pixelsToCheckCords.push({
-                x: this.findCustomInDimension(xCounter),
-                y: this.findCustomInDimension(yCounter)
+                x: this.returnCustomNumber(xCounter),
+                y: this.returnCustomNumber(yCounter)
             });
         }
 
@@ -158,13 +168,22 @@ class GameBoard extends React.Component {
         );
     };
 
+    handleGetHint = () => {
+        const ctx = this.refs.canvas.getContext('2d');
+        const pixel = this.gameConfig.activeCords[0];
+        ctx.rect(pixel.positionLeft,pixel.positionTop,pixel.width,pixel.height);
+        ctx.fill();
+        // ctx.clearRect(pixel.positionLeft,pixel.positionTop,pixel.width,pixel.height);
+        // odejmij jeden punkt albo odejmij 5 sekund czasu
+    };
+
     render(){
         return (
             <>
-                <GameNavigation />
+                <GameNavigation showHint={this.handleGetHint}/>
                 <div className={classes.boardContainer}>
                     <div id="canvasWrapper" ref="canvasWrapper" className={classes.canvasWrapper}>
-                        <img className={[classes.img,classes.hidden].join(' ')} ref="image" src={img1} />
+                        <img className={[classes.img,classes.hidden].join(' ')} ref="image" src={this.gameConfig.images['./Vincent_van_Gogh_-_Wheatfield_with_crows.jpg']} />
                         <canvas ref="canvas"
                                 id="board"
                                 className={classes.img} onClick={this.markPixel}> </canvas>

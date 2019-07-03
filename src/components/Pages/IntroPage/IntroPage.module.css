@@ -26,6 +26,7 @@
 }
 
 .batPixel {
+  border: 1px solid #fff;
   height: 4rem;
   position: absolute;
   width: 3rem;
@@ -69,6 +70,7 @@
 }
 .ctaButton:hover {
   background-color: #C44272;
+  border: 1px solid #fff;
   color: #fff;
   transform: scale(1.1);
   transition: transform 1s;

@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 import classes from './GameNavigation.module.scss';
 import Counter from "./Counter/Counter";
 
-const GameNavigation = () => {
+const GameNavigation = (props) => {
     return (
         <nav className={classes.gameNavigation}>
             <ul>
@@ -21,7 +21,7 @@ const GameNavigation = () => {
                     <button className={classes.gameNavigation__button}>NEXT IMG</button>
                 </li>
                 <li className={classes.gameNavigation__item}>
-                    <button className={classes.gameNavigation__button}>hint</button>
+                    <button className={classes.gameNavigation__button} onClick={props.showHint}>HINT</button>
                 </li>
                 <li className={classes.gameNavigation__item}>
                     <NavLink to='/'>Close</NavLink>

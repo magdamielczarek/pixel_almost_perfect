@@ -1,0 +1,12 @@
+.counter {
+  height: 2rem;
+  margin: 5px;
+  padding: 0.3rem;
+  width: 2rem;
+}
+.counter text {
+  color: #FFDE43;
+  font-size: 1rem;
+}
+
+/*# sourceMappingURL=Counter.module.css.map */

@@ -1,24 +1,21 @@
 @import '../../../global-styles/_variables';
 
-header {
+.mainNavigation {
   align-items: center;
   background: $primary-color;
   display: inline-flex;
   justify-content: space-between;
   padding: 0 2rem;
-  h1 {
-    color: $dark-font-color;
-    font-family: $secondary-font;
-    font-size: 2rem;
-    margin: 0;
-  }
-}
-
-.mainNavigation {
   ul {
     display: inline-flex;
     list-style-type: none;
   }
+}
+
+.logo {
+  color: $dark-font-color;
+  font-family: $secondary-font;
+  font-size: 1.5rem;
 }
 
 .mainNavigation__link {
@@ -27,7 +24,7 @@ header {
   a {
     position: relative;
     text-decoration: none;
-    z-index: 1;
+    z-index: 0;
     &:active,
     &:hover {
       color: $strong-accent-color;

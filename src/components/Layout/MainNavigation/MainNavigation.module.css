@@ -1,20 +1,19 @@
-header {
+.mainNavigation {
   align-items: center;
   background: #00FFBB;
   display: inline-flex;
   justify-content: space-between;
   padding: 0 2rem;
 }
-header h1 {
-  color: #070D14;
-  font-family: "Anton", sans-serif;
-  font-size: 2rem;
-  margin: 0;
-}
-
 .mainNavigation ul {
   display: inline-flex;
   list-style-type: none;
+}
+
+.logo {
+  color: #070D14;
+  font-family: "Anton", sans-serif;
+  font-size: 1.5rem;
 }
 
 .mainNavigation__link {
@@ -24,7 +23,7 @@ header h1 {
 .mainNavigation__link a {
   position: relative;
   text-decoration: none;
-  z-index: 1;
+  z-index: 0;
 }
 .mainNavigation__link a:active, .mainNavigation__link a:hover {
   color: #C44272;
@@ -40,4 +39,4 @@ header h1 {
   z-index: -1;
 }
 
-/*# sourceMappingURL=MainNavigation.css.map */
+/*# sourceMappingURL=MainNavigation.module.css.map */

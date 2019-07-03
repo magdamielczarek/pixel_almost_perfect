@@ -1,0 +1,30 @@
+@import '../../../global-styles/_variables';
+
+.boardContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  justify-content: flex-end;
+  //padding: 0 2rem;
+  text-align: center;
+}
+
+canvas {
+  //width: auto;
+  //height: 70vh;
+}
+
+.canvasWrapper {
+  //width: 100%;
+  //height: 70vh;
+  text-align: center;
+}
+
+.img {
+  height: 100%;
+  width: auto;
+}
+
+.hidden {
+  display: none;
+}

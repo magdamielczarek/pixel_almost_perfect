@@ -1,0 +1,15 @@
+.imageDescription {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  margin: 1rem 0;
+}
+.imageDescription .imageDescription__title,
+.imageDescription .imageDescription__author {
+  margin: 0.3rem 0;
+}
+.imageDescription .imageDescription__title strong,
+.imageDescription .imageDescription__author strong {
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=ImageDescription.module.css.map */

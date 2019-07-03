@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import classes from './GameBoard.module.scss';
 import GameNavigation from "./GameNavigation/GameNavigation";
 import ImageDescription from './ImageDescription/ImageDescription';
@@ -10,24 +9,12 @@ class GameBoard extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            gameConfiguration: {
-                xNumber: 20,
-                yNumber: 20,
-                theme: 'art',
-                timer: '2 minuty',
-                difficulty: 'medium'
-            },
             timer: 0,
             scores: 0,
-            imagesToShow: [],
             allImages: [],
             currentImage: '',
-            imgHeight: 0,
-            imgWidth: 0
+            activePixels: []
         };
-        this.img = this.refs.image;
-        this.canvas = this.refs.canvas;
-        this.canvasWrapper = this.refs.canvasWrapper;
     };
 
     gameConfig = {
@@ -35,7 +22,11 @@ class GameBoard extends React.Component {
         yNumber: 20,
         rectWidth: 0,
         rectHeight: 0,
-        pixelsToCheckNumber: 5
+        pixelsToCheckNumber: 5,
+        timer: 180000, // 3 minuty
+        difficulty: 'medium',
+        pixelsToCheckCords: [],
+        activeCords: []
     };
 
     componentDidMount = () => {
@@ -44,33 +35,60 @@ class GameBoard extends React.Component {
         const imageObj = this.refs.image;
 
         imageObj.onload = () => {
-            const newHeight = (window.innerHeight * 0.70).toFixed(2);
-            const oldHeight = imageObj.height;
-            const oldWidth = imageObj.width;
-            const newWidth = ((oldWidth/oldHeight)*newHeight).toFixed(2);
 
-            imageObj.setAttribute('width',`${newWidth}px`);
-            imageObj.setAttribute('height',`${newHeight}px`);
-            canvas.setAttribute('width',`${imageObj.width}px`);
-            canvas.setAttribute('height',`${imageObj.height}px`);
-
-            this.gameConfig.rectHeight = imageObj.height / this.gameConfig.yNumber;
-            this.gameConfig.rectWidth = imageObj.width / this.gameConfig.xNumber;
-
+            this.updateImage(imageObj,canvas);
             ctx = canvas.getContext("2d");
-
             ctx.drawImage(imageObj,0,0,imageObj.width,imageObj.height);
-            this.collectRandomRects(canvas,ctx,this.gameConfig.pixelsToCheckNumber,this.gameConfig.xNumber,this.gameConfig.yNumber);
+            this.collectRandomRects(
+                canvas,
+                ctx,
+                this.gameConfig.pixelsToCheckNumber,
+                this.gameConfig.xNumber,
+                this.gameConfig.yNumber);
             this.drawGrid(imageObj,ctx);
         }
     };
 
+    markPixel = (e) => {
+        // console.log(this.gameConfig.activeCords);
+        const canvas = this.refs.canvas;
+        const ctx = canvas.getContext("2d");
+        this.gameConfig.activeCords.forEach(
+            (config,index) => {
+            if((e.pageX >= config.positionLeft + this.refs.canvas.offsetLeft && e.pageX <= config.positionLeft + config.width + this.refs.canvas.offsetLeft)
+                && (e.pageY >= config.positionTop + this.refs.canvas.offsetTop && e.pageY <= config.positionTop + config.width + this.refs.canvas.offsetTop)) {
+
+                console.log('trafiony');
+                ctx.rect(config.positionLeft,config.positionTop,config.width,config.height);
+                ctx.fillStyle = '#00FFBB';
+                ctx.fill();
+                this.gameConfig.activeCords.splice(index,1);
+            }
+        });
+        console.log(this.gameConfig.activeCords);
+    };
+
+    updateImage = (image,canvas) => {
+        const newHeight = (window.innerHeight * 0.70).toFixed(2);
+        const oldHeight = image.height;
+        const oldWidth = image.width;
+        const newWidth = ((oldWidth/oldHeight)*newHeight).toFixed(2);
+
+        image.setAttribute('width',`${newWidth}px`);
+        image.setAttribute('height',`${newHeight}px`);
+        canvas.setAttribute('width',`${image.width}px`);
+        canvas.setAttribute('height',`${image.height}px`);
+
+        this.gameConfig.rectHeight = image.height / this.gameConfig.yNumber;
+        this.gameConfig.rectWidth = image.width / this.gameConfig.xNumber;
+    };
+
     drawGrid = (imageObj,ctx) => {
-        for (var x = 0; x < imageObj.width; x += this.gameConfig.rectWidth) {
+        for (let x = 0; x < imageObj.width; x += this.gameConfig.rectWidth) {
             ctx.moveTo(x, 0);
             ctx.lineTo(x, imageObj.height);
         }
-        for (var y = 0; y < imageObj.height; y += this.gameConfig.rectHeight) {
+        for (let y = 0; y < imageObj.height; y += this.gameConfig.rectHeight) {
             ctx.moveTo(0, y);
             ctx.lineTo(imageObj.width, y);
         }
@@ -83,34 +101,37 @@ class GameBoard extends React.Component {
     };
 
     collectRandomRects = (canvas,context,pixelsToCheckNumber,xCounter,yCounter) => {
-        // choose random "pixels"
-        let pixelsToCheckCords = [];
-        const canvasPosition = ReactDOM.findDOMNode(canvas).getBoundingClientRect();
-
         for(let i=0;i<pixelsToCheckNumber;i++){
-            pixelsToCheckCords.push({
+            this.gameConfig.pixelsToCheckCords.push({
                 x: this.findCustomInDimension(xCounter),
                 y: this.findCustomInDimension(yCounter)
             });
         }
 
-
-        // get avarage for each "pixel" and implement new value
-        pixelsToCheckCords.forEach(
+        this.gameConfig.pixelsToCheckCords.forEach(
             (rect) => {
-                let imageData = context.getImageData(
-                    this.gameConfig.rectWidth * (rect.x - 1),
-                    this.gameConfig.rectHeight * (rect.y - 1),
-                    this.gameConfig.rectWidth,
-                    this.gameConfig.rectHeight);
+                const positionLeft = this.gameConfig.rectWidth * (rect.x - 1);
+                const positionTop = this.gameConfig.rectHeight * (rect.y - 1);
+                const width = this.gameConfig.rectWidth;
+                const height = this.gameConfig.rectHeight;
 
-                let sumRed = 0;
-                let sumGreen = 0;
-                let sumBlue = 0;
-                let length = imageData.data.length;
-                let avRed = 0;
-                let avGreen = 0;
-                let avBlue = 0;
+                let imageData = context.getImageData(
+                    positionLeft, positionTop, width, height);
+
+                let sumRed = 0,
+                    sumGreen = 0,
+                    sumBlue = 0,
+                    length = imageData.data.length,
+                    avRed = 0,
+                    avGreen = 0,
+                    avBlue = 0;
+
+                this.gameConfig.activeCords.push({
+                    positionLeft,
+                    positionTop,
+                    width,
+                    height
+                });
 
                 for(let i = 0; i < length;i=i+4){
                     sumRed += imageData.data[i];
@@ -131,8 +152,8 @@ class GameBoard extends React.Component {
 
                 context.putImageData(
                     imageData,
-                    this.gameConfig.rectWidth * (rect.x - 1),
-                    this.gameConfig.rectHeight * (rect.y - 1));
+                    this.gameConfig.rectWidth * (rect.x - 1) + 1,
+                    this.gameConfig.rectHeight * (rect.y - 1) + 1);
             }
         );
     };
@@ -142,9 +163,11 @@ class GameBoard extends React.Component {
             <>
                 <GameNavigation />
                 <div className={classes.boardContainer}>
-                    <div ref="canvasWrapper" className={classes.canvasWrapper}>
+                    <div id="canvasWrapper" ref="canvasWrapper" className={classes.canvasWrapper}>
                         <img className={[classes.img,classes.hidden].join(' ')} ref="image" src={img1} />
-                        <canvas ref="canvas" id="board" className={classes.img}> </canvas>
+                        <canvas ref="canvas"
+                                id="board"
+                                className={classes.img} onClick={this.markPixel}> </canvas>
                     </div>
                     <ImageDescription />
                 </div>

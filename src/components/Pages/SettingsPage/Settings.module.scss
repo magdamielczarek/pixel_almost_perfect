@@ -1,0 +1,38 @@
+@import '../../../global-styles/_variables';
+
+.settingsContainer {
+  display: flex;
+  padding: 2rem;
+}
+
+.settingsForm {
+  color: $dark-font-color;
+  font-family: $primary-font;
+  margin: auto;
+  width: 100%;
+}
+
+.sections {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.btnsRow {
+  text-align: center;
+  width: 100%;
+}
+
+.settingsSection {
+  border: 2px solid lighten($dark-font-color,40%);
+  border-radius: $bradius;
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 1rem;
+  min-width: 30%;
+  padding: 2rem;
+}
+
+.settingsSection__heading {
+  font-family: $secondary-font;
+}

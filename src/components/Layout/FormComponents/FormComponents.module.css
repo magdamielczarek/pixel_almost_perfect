@@ -1,0 +1,19 @@
+.fieldContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+.fieldContainer label {
+  margin-right: 1rem;
+  text-align: right;
+  width: 30%;
+}
+.fieldContainer input, .fieldContainer select, .fieldContainer textarea {
+  border-radius: 4px;
+  border: 1px solid #3c6fab;
+  padding: 0.3rem;
+  width: 60%;
+}
+
+/*# sourceMappingURL=FormComponents.module.css.map */

@@ -1,0 +1,19 @@
+@import '../../../global-styles/_variables';
+
+.fieldContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  label {
+    margin-right: 1rem;
+    text-align: right;
+    width: 30%;
+  }
+  input, select, textarea {
+    border-radius: $bradius;
+    border: 1px solid lighten($dark-font-color,40%);
+    padding: .3rem;
+    width: 60%;
+  }
+}

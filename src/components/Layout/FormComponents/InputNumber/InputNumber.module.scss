@@ -1,0 +1,58 @@
+@import '../../../../global-styles/_variables';
+
+.inputContainer {
+  display: inline-flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 60%;
+  input {
+    width: 75%;
+  }
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
+.btnCounterContainer {
+  height: 2rem;
+  margin-left: .5rem;
+  position: relative;
+  width: 2rem;
+  text {
+    color: #fff;
+  }
+}
+
+.btnCounter {
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: transform 1s;
+  width: 100%;
+}
+
+.btnCounterIncrement {
+  border-radius: 0 0 0 5px;
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+  &:hover {
+    transform: translateX(-0.2rem) translateY(0.2rem);
+    transition: transform .5s;
+  }
+}
+
+.btnCounterDecrement {
+  border-radius: 0 5px 0 0;
+  &:hover {
+    transform: translateX(0.2rem) translateY(-0.2rem);
+    transition: transform .5s;
+  }
+}

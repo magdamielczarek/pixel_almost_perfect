@@ -1,0 +1,38 @@
+.settingsContainer {
+  display: flex;
+  padding: 2rem;
+}
+
+.settingsForm {
+  color: #070D14;
+  font-family: "Lato", sans-serif;
+  margin: auto;
+  width: 100%;
+}
+
+.sections {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.btnsRow {
+  text-align: center;
+  width: 100%;
+}
+
+.settingsSection {
+  border: 2px solid #3c6fab;
+  border-radius: 4px;
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 1rem;
+  min-width: 30%;
+  padding: 2rem;
+}
+
+.settingsSection__heading {
+  font-family: "Oswald", sans-serif;
+}
+
+/*# sourceMappingURL=Settings.module.css.map */

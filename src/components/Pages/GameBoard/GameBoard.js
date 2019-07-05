@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './GameBoard.module.scss';
 import GameNavigation from "./GameNavigation/GameNavigation";
 import ImageDescription from './ImageDescription/ImageDescription';
-import img1 from '../../../assets/images/Gioconda.jpg';
 
 class GameBoard extends React.Component {
 
@@ -17,13 +16,6 @@ class GameBoard extends React.Component {
         };
     };
 
-    importAllImages = (r) => {
-        let images = {};
-        r.keys().map((item, index) => { images[item.replace('./assets/images', '')] = r(item); });
-        console.log(images);
-        return images;
-    };
-
     gameConfig = {
         xNumber: 20,
         yNumber: 20,
@@ -34,7 +26,15 @@ class GameBoard extends React.Component {
         difficulty: 'medium',
         pixelsToCheckCords: [],
         activeCords: [],
-        images: this.importAllImages(require.context('../../../assets/images', false, /\.(png|jpe?g|svg)$/))
+        images: []
+    };
+
+    componentWillMount() {
+        this.gameConfig.images = this.importAllImages(require.context('../../../assets/images', false, /\.(png|jpe?g|svg)$/));
+    };
+
+    componentWillUpdate(nextProps, nextState, nextContext) {
+        // this.setRandomImage();
     };
 
     componentDidMount = () => {
@@ -43,7 +43,6 @@ class GameBoard extends React.Component {
         const imageObj = this.refs.image;
 
         imageObj.onload = () => {
-
             this.updateImage(imageObj,canvas);
             ctx = canvas.getContext("2d");
             ctx.drawImage(imageObj,0,0,imageObj.width,imageObj.height);
@@ -55,6 +54,20 @@ class GameBoard extends React.Component {
                 this.gameConfig.yNumber);
             this.drawGrid(imageObj,ctx);
         }
+    };
+
+    importAllImages = (r) => {
+        let images = {};
+        r.keys().map((item, index) => { images[item.replace('./assets/images', '')] = r(item); });
+        return images;
+    };
+
+    setRandomImage = () => {
+        let selectedImage = this.returnCustomNumber();
+        // jeśli obraz był już wylosowany, to nie powinien losować się kolejny raz
+        this.setState({
+            currentImage: ''
+        });
     };
 
     markPixel = (e) => {
@@ -72,7 +85,8 @@ class GameBoard extends React.Component {
             }
         });
         if(!this.gameConfig.activeCords.length){
-
+            // double scores with animation
+            // go to the next image
         }
     };
 
@@ -82,6 +96,7 @@ class GameBoard extends React.Component {
         const oldWidth = image.width;
         const newWidth = ((oldWidth/oldHeight)*newHeight).toFixed(2);
 
+        // ustawiać wysokość i szerokość za pomocą zmiennych
         image.setAttribute('width',`${newWidth}px`);
         image.setAttribute('height',`${newHeight}px`);
         canvas.setAttribute('width',`${image.width}px`);
@@ -92,6 +107,7 @@ class GameBoard extends React.Component {
     };
 
     drawGrid = (imageObj,ctx) => {
+        // animować
         for (let x = 0; x < imageObj.width; x += this.gameConfig.rectWidth) {
             ctx.moveTo(x, 0);
             ctx.lineTo(x, imageObj.height);
@@ -182,10 +198,11 @@ class GameBoard extends React.Component {
             <>
                 <GameNavigation showHint={this.handleGetHint}/>
                 <div className={classes.boardContainer}>
-                    <div id="canvasWrapper" ref="canvasWrapper" className={classes.canvasWrapper}>
-                        <img className={[classes.img,classes.hidden].join(' ')} ref="image" src={this.gameConfig.images['./Vincent_van_Gogh_-_Wheatfield_with_crows.jpg']} />
+                    <div ref="canvasWrapper" className={classes.canvasWrapper}>
+                        <img className={[classes.img,classes.hidden].join(' ')}
+                             ref="image"
+                             src={this.gameConfig.images['./Bernardo_Bellotto_il_Canaletto_-_New_Market_Square_in_Dresden_from_the_Judenhof.jpg']} />
                         <canvas ref="canvas"
-                                id="board"
                                 className={classes.img} onClick={this.markPixel}> </canvas>
                     </div>
                     <ImageDescription />

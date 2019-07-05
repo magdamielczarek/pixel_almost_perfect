@@ -16,12 +16,16 @@
   color: $dark-font-color;
   font-family: $secondary-font;
   font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .mainNavigation__link {
   font-family: $secondary-font;
+  font-weight: bold;
   margin-left: 1.5rem;
-  a {
+  a,
+  a:visited {
+    color: $dark-font-color;
     position: relative;
     text-decoration: none;
     z-index: 0;

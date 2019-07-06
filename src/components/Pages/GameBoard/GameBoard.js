@@ -11,13 +11,15 @@ class GameBoard extends React.Component {
             loading: false,
             timer: 0,
             scores: 0,
-            allImages: [],
+            allImagesData: [],
+            imagesPassed: [],
             currentImage: '',
-            activePixels: []
+            markedPixels: 0
         };
     };
 
     gameConfig = {
+        punctationUnit: 1,
         xNumber: 20,
         yNumber: 20,
         rectWidth: 0,
@@ -34,41 +36,77 @@ class GameBoard extends React.Component {
         this.gameConfig.images = this.importAllImages(require.context('../../../assets/images', false, /\.(png|jpe?g|svg)$/));
     };
 
-    componentWillUpdate(nextProps, nextState, nextContext) {
-        // this.setRandomImage();
+    componentDidMount = () => {
+        // const imageObj = this.refs.image;
+        // const imageObj = new Image();
+        // imageObj.className = 'img hidden';
+        // imageObj.src = this.gameConfig.images['./Tamara_Lempicka_Autoportret_w_zielonym_bugatti.png'];
+        // imageObj.onload = () => {
+        //     // fetch data and then :
+        //     this.prepareCanvas(imageObj);
+        // }
+        this.createNewImage(this.gameConfig.images['./Hokusai 1760-1849 Ocean waves - Hokusai.jpg']);
     };
 
-    componentDidMount = () => {
+    prepareCanvas = (image) => {
         const canvas = this.refs.canvas;
         let ctx;
-        const imageObj = this.refs.image;
-
-        imageObj.onload = () => {
-            this.updateImage(imageObj,canvas);
-            ctx = canvas.getContext("2d");
-            ctx.drawImage(imageObj,0,0,imageObj.width,imageObj.height);
-            this.collectRandomRects(
-                canvas,
-                ctx,
-                this.gameConfig.pixelsToCheckNumber,
-                this.gameConfig.xNumber,
-                this.gameConfig.yNumber);
-            this.drawGrid(imageObj,ctx);
-        }
+        this.updateImage(image,canvas);
+        ctx = canvas.getContext("2d");
+        ctx.drawImage(image,0,0,image.width,image.height);
+        this.collectRandomRects(
+            canvas,
+            ctx,
+            this.gameConfig.pixelsToCheckNumber,
+            this.gameConfig.xNumber,
+            this.gameConfig.yNumber);
+        this.drawGrid(image,ctx);
     };
 
     importAllImages = (r) => {
         let images = {};
-        r.keys().map((item, index) => { images[item.replace('./assets/images', '')] = r(item); });
+        r.keys().map((item) => { images[item.replace('./assets/images', '')] = r(item); });
         return images;
     };
 
     setRandomImage = () => {
-        let selectedImage = this.returnCustomNumber();
-        // jeśli obraz był już wylosowany, to nie powinien losować się kolejny raz
-        this.setState({
-            currentImage: ''
-        });
+        let selectedImage = this.returnCustomNumber(this.state.allImagesData.length);
+        if(this.state.imagesPassed.contains(selectedImage)){
+            this.setRandomImage();
+        } else {
+            this.setState({
+                currentImage: ''
+            });
+        }
+    };
+
+    changeScores = (operation,number) => {
+        switch (operation) {
+            case 'addition' :
+                this.setState((prevState)=>{
+                    return {scores: prevState.scores + number}
+                });
+                break;
+
+            case 'deletion' :
+                this.setState((prevState)=>{
+                    if(prevState.scores > number){
+                        return {scores: prevState.scores - number}
+                    } else {
+                        return {scores: 0}
+                    }
+                });
+                break;
+
+            case 'multiplication' :
+                this.setState((prevState)=>{
+                    return {scores: prevState.scores * number}
+                });
+                break;
+
+            default:
+                break;
+        }
     };
 
     markPixel = (e) => {
@@ -83,12 +121,34 @@ class GameBoard extends React.Component {
                 ctx.fillStyle = '#00FFBB';
                 ctx.fill();
                 this.gameConfig.activeCords.splice(index,1);
+                this.changeScores('addition',this.gameConfig.punctationUnit);
             }
         });
         if(!this.gameConfig.activeCords.length){
-            // double scores with animation
-            // go to the next image
+            this.changeScores('multiplication',2);
+            alert('zgadles wszystko');
+            this.resetCanvas();
+            this.createNewImage(this.gameConfig.images['./Vincent_van_Gogh_-_Wheatfield_Under_Thunderclouds.jpg']);
         }
+    };
+
+    createNewImage = (src) => {
+        const imageObj = new Image();
+        imageObj.className = 'img';
+        imageObj.src = src;
+        console.log(imageObj);
+        imageObj.onload = () => {
+            this.prepareCanvas(imageObj);
+        };
+    };
+
+    resetCanvas = () => {
+        const canvas = this.refs.canvas;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0,  canvas.width, canvas.height);
+        this.gameConfig.pixelsToCheckCords = [];
+        this.gameConfig.activeCords = [];
+        console.log(this.gameConfig);
     };
 
     updateImage = (image,canvas) => {
@@ -96,6 +156,7 @@ class GameBoard extends React.Component {
         const oldHeight = image.height;
         const oldWidth = image.width;
         const newWidth = ((oldWidth/oldHeight)*newHeight).toFixed(2);
+        console.log(oldWidth,oldHeight,newWidth);
 
         // ustawiać wysokość i szerokość za pomocą zmiennych
         image.setAttribute('width',`${newWidth}px`);
@@ -190,19 +251,19 @@ class GameBoard extends React.Component {
         const pixel = this.gameConfig.activeCords[0];
         ctx.rect(pixel.positionLeft,pixel.positionTop,pixel.width,pixel.height);
         ctx.fill();
+        this.changeScores('deletion',5);
         // ctx.clearRect(pixel.positionLeft,pixel.positionTop,pixel.width,pixel.height);
-        // odejmij jeden punkt albo odejmij 5 sekund czasu
     };
 
     render(){
         return (
             <>
-                <GameNavigation showHint={this.handleGetHint}/>
+                <GameNavigation scores={this.state.scores} showHint={this.handleGetHint}/>
                 <div className={classes.boardContainer}>
                     <div ref="canvasWrapper" className={classes.canvasWrapper}>
-                        <img className={[classes.img,classes.hidden].join(' ')}
-                             ref="image"
-                             src={this.gameConfig.images['./Bernardo_Bellotto_il_Canaletto_-_New_Market_Square_in_Dresden_from_the_Judenhof.jpg']} />
+                        {/*<img className={[classes.img,classes.hidden].join(' ')}*/}
+                        {/*     ref="image"*/}
+                        {/*     src={this.gameConfig.images['./Tamara_Lempicka_Autoportret_w_zielonym_bugatti.png']} />*/}
                         <canvas ref="canvas"
                                 className={classes.img} onClick={this.markPixel}> </canvas>
                     </div>

@@ -6,7 +6,7 @@ const MainNavigation = () => {
     return (
         <Switch>
             <header className={classes.mainNavigation}>
-                <span className={classes.logo}>PixelPerfect</span>
+                <NavLink to="/" exact><span className={classes.logo}>PixelPerfect</span></NavLink>
                 <nav>
                     <ul>
                         <li className={classes.mainNavigation__link}><NavLink to="/gra">New game</NavLink></li>

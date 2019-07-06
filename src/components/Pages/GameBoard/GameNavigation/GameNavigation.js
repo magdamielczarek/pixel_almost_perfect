@@ -9,7 +9,7 @@ const GameNavigation = (props) => {
             <ul>
                 <li className={classes.gameNavigation__item}>TIME: <Counter/></li>
                 <li className={classes.gameNavigation__item}>SCORES:
-                    <span className={classes.scores}>20</span>
+                    <span className={classes.scores}>{props.scores}</span>
                 </li>
                 <li className={classes.gameNavigation__item}>
                     <button className={classes.gameNavigation__button}>NEXT IMG</button>

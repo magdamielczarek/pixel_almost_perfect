@@ -1,7 +1,8 @@
 import React from 'react';
 import classes from './GameBoard.module.scss';
-import GameNavigation from "./GameNavigation/GameNavigation";
+import GameNavigation from './GameNavigation/GameNavigation';
 import ImageDescription from './ImageDescription/ImageDescription';
+import axios from '../../../axiosPreset';
 
 class GameBoard extends React.Component {
 
@@ -37,30 +38,12 @@ class GameBoard extends React.Component {
     };
 
     componentDidMount = () => {
-        // const imageObj = this.refs.image;
-        // const imageObj = new Image();
-        // imageObj.className = 'img hidden';
-        // imageObj.src = this.gameConfig.images['./Tamara_Lempicka_Autoportret_w_zielonym_bugatti.png'];
-        // imageObj.onload = () => {
-        //     // fetch data and then :
-        //     this.prepareCanvas(imageObj);
-        // }
-        this.createNewImage(this.gameConfig.images['./Hokusai 1760-1849 Ocean waves - Hokusai.jpg']);
-    };
-
-    prepareCanvas = (image) => {
-        const canvas = this.refs.canvas;
-        let ctx;
-        this.updateImage(image,canvas);
-        ctx = canvas.getContext("2d");
-        ctx.drawImage(image,0,0,image.width,image.height);
-        this.collectRandomRects(
-            canvas,
-            ctx,
-            this.gameConfig.pixelsToCheckNumber,
-            this.gameConfig.xNumber,
-            this.gameConfig.yNumber);
-        this.drawGrid(image,ctx);
+        axios.get('/images.json')
+            .then(data => this.setState({
+                allImagesData: data
+            }))
+            .then(this.setRandomImage)
+            .catch((err)=>console.log(err));
     };
 
     importAllImages = (r) => {
@@ -69,14 +52,76 @@ class GameBoard extends React.Component {
         return images;
     };
 
+    createNewImage = (src) => {
+        const imageObj = new Image();
+        imageObj.className = 'img';
+        imageObj.src = src;
+        imageObj.onload = () => {
+            this.prepareCanvas(imageObj);
+        };
+    };
+
+    // adjust image and canvas size
+    updateImage = (image,canvas) => {
+        const newHeight = (window.innerHeight * 0.70).toFixed(2);
+        const oldHeight = image.height;
+        const oldWidth = image.width;
+        const newWidth = ((oldWidth/oldHeight)*newHeight).toFixed(2);
+
+        image.setAttribute('width',`${newWidth}px`);
+        image.setAttribute('height',`${newHeight}px`);
+        canvas.setAttribute('width',`${image.width}px`);
+        canvas.setAttribute('height',`${image.height}px`);
+
+        this.gameConfig.rectHeight = image.height / this.gameConfig.yNumber;
+        this.gameConfig.rectWidth = image.width / this.gameConfig.xNumber;
+    };
+
+    drawGrid = (imageObj,ctx) => {
+        for (let x = 0; x < imageObj.width; x += this.gameConfig.rectWidth) {
+            // setTimeout(()=>{
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, imageObj.height);
+                ctx.strokeStyle = "#fff";
+                ctx.stroke();
+            // },x*3);
+        }
+        for (let y = 0; y < imageObj.height; y += this.gameConfig.rectHeight) {
+            // setTimeout(()=>{
+                ctx.moveTo(0, y);
+                ctx.lineTo(imageObj.width, y);
+                ctx.strokeStyle = "#fff";
+                ctx.stroke();
+            // },y*3);
+        }
+    };
+
+    prepareCanvas = (image) => {
+        const canvas = this.refs.canvas;
+        let ctx;
+        this.updateImage(image,canvas);
+        ctx = canvas.getContext("2d");
+        ctx.drawImage(image,0,0,image.width,image.height);
+        // setTimeout(()=>{
+            this.collectRandomRects(
+                canvas,
+                ctx,
+                this.gameConfig.pixelsToCheckNumber,
+                this.gameConfig.xNumber,
+                this.gameConfig.yNumber);
+        // },500);
+        this.drawGrid(image,ctx);
+    };
+
     setRandomImage = () => {
-        let selectedImage = this.returnCustomNumber(this.state.allImagesData.length);
-        if(this.state.imagesPassed.contains(selectedImage)){
+        let selectedImage = this.returnCustomNumber(Object.keys(this.gameConfig.images).length);
+        if(this.state.imagesPassed.includes(selectedImage)){
             this.setRandomImage();
         } else {
-            this.setState({
-                currentImage: ''
-            });
+            const randomImage = this.gameConfig.images[Object.keys(this.gameConfig.images)[selectedImage]];
+            this.setState(()=>{
+                return {currentImage: randomImage}
+            }, () => this.createNewImage(this.state.currentImage));
         }
     };
 
@@ -125,21 +170,10 @@ class GameBoard extends React.Component {
             }
         });
         if(!this.gameConfig.activeCords.length){
-            this.changeScores('multiplication',2);
-            alert('zgadles wszystko');
+            this.changeScores('addition',this.gameConfig.pixelsToCheckNumber * 2);
             this.resetCanvas();
-            this.createNewImage(this.gameConfig.images['./Vincent_van_Gogh_-_Wheatfield_Under_Thunderclouds.jpg']);
+            this.setRandomImage();
         }
-    };
-
-    createNewImage = (src) => {
-        const imageObj = new Image();
-        imageObj.className = 'img';
-        imageObj.src = src;
-        console.log(imageObj);
-        imageObj.onload = () => {
-            this.prepareCanvas(imageObj);
-        };
     };
 
     resetCanvas = () => {
@@ -149,37 +183,6 @@ class GameBoard extends React.Component {
         this.gameConfig.pixelsToCheckCords = [];
         this.gameConfig.activeCords = [];
         console.log(this.gameConfig);
-    };
-
-    updateImage = (image,canvas) => {
-        const newHeight = (window.innerHeight * 0.70).toFixed(2);
-        const oldHeight = image.height;
-        const oldWidth = image.width;
-        const newWidth = ((oldWidth/oldHeight)*newHeight).toFixed(2);
-        console.log(oldWidth,oldHeight,newWidth);
-
-        // ustawiać wysokość i szerokość za pomocą zmiennych
-        image.setAttribute('width',`${newWidth}px`);
-        image.setAttribute('height',`${newHeight}px`);
-        canvas.setAttribute('width',`${image.width}px`);
-        canvas.setAttribute('height',`${image.height}px`);
-
-        this.gameConfig.rectHeight = image.height / this.gameConfig.yNumber;
-        this.gameConfig.rectWidth = image.width / this.gameConfig.xNumber;
-    };
-
-    drawGrid = (imageObj,ctx) => {
-        // animować
-        for (let x = 0; x < imageObj.width; x += this.gameConfig.rectWidth) {
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, imageObj.height);
-        }
-        for (let y = 0; y < imageObj.height; y += this.gameConfig.rectHeight) {
-            ctx.moveTo(0, y);
-            ctx.lineTo(imageObj.width, y);
-        }
-        ctx.strokeStyle = "#fff";
-        ctx.stroke();
     };
 
     returnCustomNumber = (unitsNumber) => {

@@ -8,6 +8,7 @@ class GameBoard extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            loading: false,
             timer: 0,
             scores: 0,
             allImages: [],

@@ -1,0 +1,11 @@
+.button {
+  background-color: #fff;
+  border: 1px solid #070D14;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  padding: 1rem;
+  text-transform: uppercase;
+}
+
+/*# sourceMappingURL=Button.module.css.map */

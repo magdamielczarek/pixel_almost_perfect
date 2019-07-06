@@ -28,7 +28,7 @@ const InputNumber = (props) => {
                          role='button'
                          aria-roledescription='button'>
                         <polygon points="0 0, 0 100, 100 100, 0 0"
-                                 style={{fill:'#C44272',stroke:'#fff',strokeWidth:1,fillRule:'nonzero'}} />
+                                 style={{fill:'#C44272',stroke:'#fff', strokeWidth:1,fillRule:'nonzero'}} />
                         <text x="20" y="80" style={{fill: '#fff',fontSize: '3rem',fontFamily: 'Montserrat'}}>-</text>
                     </svg>
                 </div>

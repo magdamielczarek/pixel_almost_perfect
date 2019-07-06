@@ -1,0 +1,14 @@
+@import '../../../global-styles/_variables';
+
+.button {
+  background-color: $neutral-background-color;
+  border: 1px solid $dark-font-color;
+  border-radius: $bradius;
+  cursor: pointer;
+  outline: none;
+  padding: 1rem;
+  text-transform: uppercase;
+  &--accept {}
+  &--warning {}
+}
+

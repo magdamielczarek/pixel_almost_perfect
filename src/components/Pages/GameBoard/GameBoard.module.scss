@@ -3,34 +3,28 @@
 .boardContainer {
   align-items: center;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   height: 90%;
   justify-content: center;
-  padding: 2rem 4rem;
+  padding: 2rem 4rem .5rem;
+  postition: relative;
   text-align: center;
 }
 
 canvas {
-  //width: auto;
-  //height: 70vh;
   &:hover {
     cursor: pointer;
   }
 }
 
 .canvasWrapper {
-  max-width: 70%;
-  //height: 70vh;
+  height: 70vh;
   text-align: center;
 }
 
 .img {
   height: 100%;
   width: auto;
-}
-
-.hidden {
-  display: none;
 }
 
 .activePixel {

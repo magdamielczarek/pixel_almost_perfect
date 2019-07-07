@@ -12,7 +12,7 @@ const GameNavigation = (props) => {
                     <span className={classes.scores}>{props.scores}</span>
                 </li>
                 <li className={classes.gameNavigation__item}>
-                    <button className={classes.gameNavigation__button}>NEXT IMG</button>
+                    <button className={classes.gameNavigation__button} onClick={props.next}>NEXT IMG</button>
                 </li>
                 <li className={classes.gameNavigation__item}>
                     <button className={classes.gameNavigation__button} onClick={props.showHint}>HINT</button>

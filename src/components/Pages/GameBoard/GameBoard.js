@@ -3,6 +3,7 @@ import classes from './GameBoard.module.scss';
 import GameNavigation from './GameNavigation/GameNavigation';
 import ImageDescription from './ImageDescription/ImageDescription';
 import axios from '../../../axiosPreset';
+import Spinner from "../../Layout/Spinner/Spinner";
 
 class GameBoard extends React.Component {
 
@@ -159,11 +160,18 @@ class GameBoard extends React.Component {
         }
     };
 
+    showNextImage = () => {
+        this.resetCanvas();
+        this.setRandomImage();
+    };
+
     markPixel = (e) => {
         const canvas = this.refs.canvas;
         const ctx = canvas.getContext("2d");
+
         this.gameConfig.activeCords.forEach(
             (config,index) => {
+                console.log(this.refs.canvas.offsetLeft);
             if((e.pageX >= config.positionLeft + this.refs.canvas.offsetLeft && e.pageX <= config.positionLeft + config.width + this.refs.canvas.offsetLeft)
                 && (e.pageY >= config.positionTop + this.refs.canvas.offsetTop && e.pageY <= config.positionTop + config.width + this.refs.canvas.offsetTop)) {
 
@@ -187,7 +195,6 @@ class GameBoard extends React.Component {
         ctx.clearRect(0, 0,  canvas.width, canvas.height);
         this.gameConfig.pixelsToCheckCords = [];
         this.gameConfig.activeCords = [];
-        console.log(this.gameConfig);
     };
 
     returnCustomNumber = (unitsNumber) => {
@@ -264,16 +271,21 @@ class GameBoard extends React.Component {
     };
 
     render(){
+        const gameBoardContent = (
+            <>
+            <div ref="canvasWrapper" className={classes.canvasWrapper}>
+                <canvas ref="canvas"
+                        className={classes.img}
+                        onClick={this.markPixel}> </canvas>
+            </div>
+            {this.state.currentImageDescription ? <ImageDescription description={this.state.currentImageDescription}/> : null}
+        </>
+    );
         return (
             <>
-                <GameNavigation scores={this.state.scores} showHint={this.handleGetHint}/>
+                <GameNavigation scores={this.state.scores} next={this.showNextImage} showHint={this.handleGetHint}/>
                 <div className={classes.boardContainer}>
-                    <div ref="canvasWrapper" className={classes.canvasWrapper}>
-                        <canvas ref="canvas"
-                                className={classes.img}
-                                onClick={this.markPixel}> </canvas>
-                    </div>
-                    <ImageDescription description={this.state.currentImageDescription}/>
+                    {this.state.currentImagePath ? gameBoardContent : <Spinner />}
                 </div>
             </>
         );

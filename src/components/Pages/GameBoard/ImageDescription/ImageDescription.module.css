@@ -1,19 +1,14 @@
 .imageDescription {
-  background-color: #FFDE43;
+  color: #6C1BAD;
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  margin-left: 1rem;
-  max-width: 25%;
+  margin-top: 0.8rem;
   padding: 1rem;
   text-align: left;
+  width: 100%;
 }
-.imageDescription .imageDescription__title,
-.imageDescription .imageDescription__author {
+.imageDescription p {
   margin: 0.3rem 0;
-}
-.imageDescription .imageDescription__title strong,
-.imageDescription .imageDescription__author strong {
-  font-weight: bold;
 }
 
 /*# sourceMappingURL=ImageDescription.module.css.map */

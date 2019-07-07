@@ -2,12 +2,12 @@ import React from 'react';
 import classes from './ImageDescription.module.scss';
 
 const ImageDescription = (props) => {
-    const {description} = props;
+    const {author,title,titleOriginal,date,country} = props.description;
     return (
-        description ? (<div className={classes.imageDescription}>
-            <p className={classes.imageDescription__title}>Title: <strong><em>{description.title}</em></strong></p>
-            <p className={classes.imageDescription__author}>Author: <strong>{description.author}</strong></p>
-        </div>) : null
+        <div className={classes.imageDescription}>
+            <p>Title: <strong>{title}</strong>{titleOriginal ? <span> ({titleOriginal})</span> : null}</p>
+            <p><strong>{author}</strong>{date ? <span>, {date}</span> : null}{country ? <span>, {country}</span> : null}</p>
+        </div>
     );
 };
 

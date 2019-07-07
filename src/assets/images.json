@@ -5,7 +5,7 @@
       "author": "Tamara Łempicka",
       "title": "Autoportrait (Tamara in a Green Bugatti)",
       "titleOriginal":"Autoportret w zielonym Bugatti",
-      "path": "./Tamara_Łempicka_Autoportret_w_zielonym_bugatti.jpg",
+      "path": "./id1_Tamara_Lempicka_Autoportret_w_zielonym_bugatti.jpg",
       "difficulty": "hard",
       "date":"1929",
       "country": "Poland"
@@ -14,7 +14,7 @@
       "author": "Vincent van Gogh",
       "title": "Wheatfield with crows",
       "titleOriginal":"",
-      "path": "./Vincent_van_Gogh_-_Wheatfield_with_crows.jpg",
+      "path": "./id2_Vincent_van_Gogh_-_Wheatfield_with_crows.jpg",
       "difficulty": "medium",
       "date":"1890",
       "country": "Dennmark"
@@ -23,7 +23,7 @@
       "author": "Bernardo Bellotto il Canaletto",
       "title": "New Market Square in Dresden from the Judenhof",
       "titleOriginal":"",
-      "path": "./Bernardo_Bellotto_il_Canaletto_-_New_Market_Square_in_Dresden_from_the_Judenhof",
+      "path": "./id3_Bernardo_Bellotto_il_Canaletto_-_New_Market_Square_in_Dresden_from_the_Judenhof",
       "difficulty": "hard",
       "date":"1749-51",
       "country": "Italy"
@@ -32,7 +32,7 @@
       "author": "Vermeer Johannes",
       "title": "Woman Reading a Letter",
       "titleOriginal": "Brieflezend Meisje bij het Venster.jpg",
-      "path": "./Vermeer Johannes_Woman reading list",
+      "path": "./id4_Vermeer Johannes_Woman reading list",
       "difficulty": "",
       "date":"1657-59",
       "country": "Denmark"
@@ -41,25 +41,25 @@
       "author": "Vincent van Gogh",
       "title": "Wheatfield Under Thunderclouds",
       "titleOriginal": "",
-      "path": "./Vincent_van_Gogh_-_Wheatfield_Under_Thunderclouds.jpg",
+      "path": "./id5_Vincent_van_Gogh_-_Wheatfield_Under_Thunderclouds.jpg",
       "difficulty": "",
       "date":"1890",
       "country": "Denmark"
     },{
       "id": 6,
-      "author": "Vincent van Gogh",
-      "title": "Wheatfield Under Thunderclouds",
-      "titleOriginal": "",
-      "path": "./Vermeer Johannes_Woman reading list.jpg",
-      "difficulty": "",
-      "date":"1890",
-      "country": "Denmark"
+      "author": "Henri Matisse",
+      "title": "Joy of life",
+      "titleOriginal": "Bonheur de vivre",
+      "path": "id6_Henri_Matisse,_1904,_Luxe,_Calme_et_Volupté",
+      "difficulty": "medium",
+      "date":"1905",
+      "country": "France"
     },{
       "id": 7,
       "author": "Leonardo da Vinci",
       "title": "",
       "titleOriginal": "L'Ultima Cena",
-      "path": "./Leonardo da Vinci_L'Ultima Cena.jpg",
+      "path": "./id7_Leonardo da Vinci_L'Ultima Cena.jpg",
       "difficulty": "medium",
       "date":"",
       "country": "Italy"
@@ -68,7 +68,7 @@
       "author": "Morbeli Angelo",
       "title": "Valley of Usseglio",
       "titleOriginal": "",
-      "path": "./Morbeli AngeloThe valley of Usseglio (1918).jpg",
+      "path": ".id8_Morbeli AngeloThe valley of Usseglio (1918).jpg",
       "difficulty": "hard",
       "date":"1918",
       "country": "Italy"
@@ -77,7 +77,7 @@
       "author": "Morbelli Angelo",
       "title": "Valley of Usseglio",
       "titleOriginal": "",
-      "path": "./Angelo Morbelli_Eighty cents 1895.jpg",
+      "path": "./id9_Angelo Morbelli_Eighty cents 1895.jpg",
       "difficulty": "hard",
       "date":"1918",
       "country": "Italy"
@@ -86,7 +86,7 @@
       "author": "Sandro Botticelli",
       "title": "The Birth of Venus",
       "titleOriginal": "Nascita di Venere",
-      "path": "./Boticelli_Venus.jpg",
+      "path": "./id10_Boticelli_Venus.jpg",
       "difficulty": "hard",
       "date": "1480",
       "country": "Italy"
@@ -95,7 +95,7 @@
       "author": "Gustav Klimt",
       "title": "Water seprents I",
       "titleOriginal": "",
-      "path": "./gustav-klimt-serpents-deau-i-1904-1907.jpg",
+      "path": "./id11_gustav-klimt-serpents.jpg",
       "difficulty": "hard",
       "date": "1904",
       "country": "Austria"

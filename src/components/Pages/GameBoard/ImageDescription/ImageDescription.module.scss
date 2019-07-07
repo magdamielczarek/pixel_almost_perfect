@@ -1,9 +1,13 @@
 @import '../../../../global-styles/_variables';
 
 .imageDescription {
+  background-color: $soft-accent-color;
   font-family: $primary-font;
   font-weight: 400;
-  //margin: 1rem 0;
+  margin-left: 1rem;
+  max-width: 25%;
+  padding: 1rem;
+  text-align: left;
   .imageDescription__title,
   .imageDescription__author {
     margin: .3rem 0;

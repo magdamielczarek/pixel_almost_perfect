@@ -14,7 +14,8 @@ class GameBoard extends React.Component {
             scores: 0,
             allImagesData: [],
             imagesPassed: [],
-            currentImage: '',
+            currentImageDescription: null,
+            currentImagePath: '',
             markedPixels: 0
         };
     };
@@ -119,9 +120,13 @@ class GameBoard extends React.Component {
             this.setRandomImage();
         } else {
             const randomImage = this.gameConfig.images[Object.keys(this.gameConfig.images)[selectedImage]];
+            const imageDescription = this.state.allImagesData.data.filter((image) => {
+                return  randomImage.indexOf(`id${image.id}`) !== -1;
+            });
+
             this.setState(()=>{
-                return {currentImage: randomImage}
-            }, () => this.createNewImage(this.state.currentImage));
+                return {currentImagePath: randomImage,currentImageDescription: imageDescription[0]}
+            }, () => this.createNewImage(this.state.currentImagePath));
         }
     };
 
@@ -264,13 +269,11 @@ class GameBoard extends React.Component {
                 <GameNavigation scores={this.state.scores} showHint={this.handleGetHint}/>
                 <div className={classes.boardContainer}>
                     <div ref="canvasWrapper" className={classes.canvasWrapper}>
-                        {/*<img className={[classes.img,classes.hidden].join(' ')}*/}
-                        {/*     ref="image"*/}
-                        {/*     src={this.gameConfig.images['./Tamara_Lempicka_Autoportret_w_zielonym_bugatti.png']} />*/}
                         <canvas ref="canvas"
-                                className={classes.img} onClick={this.markPixel}> </canvas>
+                                className={classes.img}
+                                onClick={this.markPixel}> </canvas>
                     </div>
-                    <ImageDescription />
+                    <ImageDescription description={this.state.currentImageDescription}/>
                 </div>
             </>
         );

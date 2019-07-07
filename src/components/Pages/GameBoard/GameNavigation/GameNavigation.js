@@ -7,9 +7,12 @@ const GameNavigation = (props) => {
     return (
         <nav className={classes.gameNavigation}>
             <ul>
-                <li className={classes.gameNavigation__item}>TIME: <Counter/></li>
-                <li className={classes.gameNavigation__item}>SCORES:
-                    <span className={classes.scores}>{props.scores}</span>
+                <li className={classes.gameNavigation__item}>
+                    <span>TIME:</span>
+                    <Counter time={props.time} gameIsOn={props.gameIsOn}/>
+                </li>
+                <li className={classes.gameNavigation__item}>
+                    SCORES: <span className={classes.scores}>{props.scores}</span>
                 </li>
                 <li className={classes.gameNavigation__item}>
                     <button className={classes.gameNavigation__button} onClick={props.next}>NEXT IMG</button>

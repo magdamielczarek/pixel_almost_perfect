@@ -1,12 +1,11 @@
 @import '../../../../../global-styles/_variables';
 
 .counter {
+  align-items: center;
+  display: flex;
+  font-size: 1.75rem;
   height: 2rem;
-  margin: 5px;
-  padding: .3rem;
-  width: 2rem;
-  text {
-    color: $soft-accent-color;
-    font-size: 1rem;
-  }
+  margin-left: 5px;
+  //padding: .3rem;
+  //width: 2rem;
 }

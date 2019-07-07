@@ -1,12 +1,9 @@
 .counter {
+  align-items: center;
+  display: flex;
+  font-size: 1.75rem;
   height: 2rem;
-  margin: 5px;
-  padding: 0.3rem;
-  width: 2rem;
-}
-.counter text {
-  color: #FFDE43;
-  font-size: 1rem;
+  margin-left: 5px;
 }
 
 /*# sourceMappingURL=Counter.module.css.map */

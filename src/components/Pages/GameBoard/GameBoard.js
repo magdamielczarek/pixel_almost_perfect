@@ -10,8 +10,8 @@ class GameBoard extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            loading: false,
-            timer: 0,
+            gameIsOn: false,
+            timer: 180000,
             scores: 0,
             allImagesData: [],
             imagesPassed: [],
@@ -28,7 +28,6 @@ class GameBoard extends React.Component {
         rectWidth: 0,
         rectHeight: 0,
         pixelsToCheckNumber: 5,
-        timer: 180000, // 3 minuty
         difficulty: 'medium',
         pixelsToCheckCords: [],
         activeCords: [],
@@ -45,6 +44,9 @@ class GameBoard extends React.Component {
                 allImagesData: data
             }))
             .then(this.setRandomImage)
+            .then(this.setState({
+                gameIsOn: true
+            }))
             .catch((err)=>console.log(err));
     };
 
@@ -81,20 +83,20 @@ class GameBoard extends React.Component {
 
     drawGrid = (imageObj,ctx) => {
         for (let x = 0; x < imageObj.width; x += this.gameConfig.rectWidth) {
-            // setTimeout(()=>{
+            setTimeout(()=>{
                 ctx.moveTo(x, 0);
                 ctx.lineTo(x, imageObj.height);
                 ctx.strokeStyle = "#fff";
                 ctx.stroke();
-            // },x*3);
+            },x*0.2);
         }
         for (let y = 0; y < imageObj.height; y += this.gameConfig.rectHeight) {
-            // setTimeout(()=>{
+            setTimeout(()=>{
                 ctx.moveTo(0, y);
                 ctx.lineTo(imageObj.width, y);
                 ctx.strokeStyle = "#fff";
                 ctx.stroke();
-            // },y*3);
+            },y*0.2);
         }
     };
 
@@ -171,7 +173,6 @@ class GameBoard extends React.Component {
 
         this.gameConfig.activeCords.forEach(
             (config,index) => {
-                console.log(this.refs.canvas.offsetLeft);
             if((e.pageX >= config.positionLeft + this.refs.canvas.offsetLeft && e.pageX <= config.positionLeft + config.width + this.refs.canvas.offsetLeft)
                 && (e.pageY >= config.positionTop + this.refs.canvas.offsetTop && e.pageY <= config.positionTop + config.width + this.refs.canvas.offsetTop)) {
 
@@ -283,7 +284,11 @@ class GameBoard extends React.Component {
     );
         return (
             <>
-                <GameNavigation scores={this.state.scores} next={this.showNextImage} showHint={this.handleGetHint}/>
+                <GameNavigation scores={this.state.scores}
+                                next={this.showNextImage}
+                                showHint={this.handleGetHint}
+                                time={this.state.timer}
+                                gameIsOn={this.state.gameIsOn}/>
                 <div className={classes.boardContainer}>
                     {this.state.currentImagePath ? gameBoardContent : <Spinner />}
                 </div>

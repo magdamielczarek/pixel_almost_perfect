@@ -7,9 +7,9 @@ const GameNavigation = (props) => {
     return (
         <nav className={classes.gameNavigation}>
             <ul>
-                <li className={classes.gameNavigation__item}>
+                <li className={[classes.gameNavigation__item,classes.timer].join(' ')}>
                     <span>TIME:</span>
-                    <Counter time={props.time} gameIsOn={props.gameIsOn}/>
+                    <Counter time={props.time} gameIsOn={props.gameIsOn} endGame={props.endGame}/>
                 </li>
                 <li className={classes.gameNavigation__item}>
                     SCORES: <span className={classes.scores}>{props.scores}</span>

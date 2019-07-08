@@ -4,6 +4,8 @@ import GameNavigation from './GameNavigation/GameNavigation';
 import ImageDescription from './ImageDescription/ImageDescription';
 import axios from '../../../axiosPreset';
 import Spinner from "../../Layout/Spinner/Spinner";
+import Backdrop from "../../Layout/Backdrop/Backdrop";
+import Communication from "./Communication/Communication";
 
 class GameBoard extends React.Component {
 
@@ -11,13 +13,13 @@ class GameBoard extends React.Component {
         super(props);
         this.state = {
             gameIsOn: false,
-            timer: 180000,
+            gameIsFinished: false,
+            timer: 5000,
             scores: 0,
             allImagesData: [],
             imagesPassed: [],
             currentImageDescription: null,
-            currentImagePath: '',
-            markedPixels: 0
+            currentImagePath: ''
         };
     };
 
@@ -271,24 +273,43 @@ class GameBoard extends React.Component {
         // ctx.clearRect(pixel.positionLeft,pixel.positionTop,pixel.width,pixel.height);
     };
 
+    endGame = () => {
+        this.setState({gameIsFinished: true});
+    };
+
+    continueGame = () => {
+        this.setState({gameIsFinished: false});
+    };
+
+    confirmEndGame = () => {
+        console.log('zakończ grę');
+    };
+
     render(){
         const gameBoardContent = (
             <>
-            <div ref="canvasWrapper" className={classes.canvasWrapper}>
+                <div ref="canvasWrapper" className={classes.canvasWrapper}>
                 <canvas ref="canvas"
                         className={classes.img}
                         onClick={this.markPixel}> </canvas>
-            </div>
-            {this.state.currentImageDescription ? <ImageDescription description={this.state.currentImageDescription}/> : null}
-        </>
-    );
+                </div>
+                {this.state.currentImageDescription ? <ImageDescription description={this.state.currentImageDescription}/> : null}
+            </>
+        );
         return (
             <>
+                <Backdrop visible={this.state.gameIsFinished}>
+                    <Communication gameIsFinished={this.state.gameIsFinished}
+                                   scores={this.state.scores}
+                                   continueGame={this.continueGame}
+                                   endGame={this.confirmEndGame}/>
+                </Backdrop>
                 <GameNavigation scores={this.state.scores}
                                 next={this.showNextImage}
                                 showHint={this.handleGetHint}
                                 time={this.state.timer}
-                                gameIsOn={this.state.gameIsOn}/>
+                                gameIsOn={this.state.gameIsOn}
+                                endGame={this.endGame}/>
                 <div className={classes.boardContainer}>
                     {this.state.currentImagePath ? gameBoardContent : <Spinner />}
                 </div>

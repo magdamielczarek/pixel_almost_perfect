@@ -5,18 +5,25 @@ import { useState } from 'react';
 const Counter = (props) => {
     let time = props.time;
     let start = props.gameIsOn;
+    let interval;
     const [timer, setTime] = useState({
         minutes: Math.floor(time / 60000),
         seconds: ((time % 60000) / 1000).toFixed(0)
     });
 
-    if(start){
-        setInterval(()=>{
-            console.log('ffff');
+    if(!start){
+        interval = setInterval(()=>{
+            time -= 1000;
+            setTime({
+                minutes: Math.floor(time / 60000),
+                seconds: ((time % 60000) / 1000).toFixed(0)
+            });
+            if(time == 0){
+                clearInterval(interval);
+                props.endGame();
+            }
         },1000);
     }
-
-    console.log('test');
 
     return (
         <span className={classes.counter}>

@@ -1,1 +1,32 @@
 @import '../../../../global-styles/_variables';
+
+.modal {
+  align-items: center;
+  background-color: $neutral-background-color;
+  border-radius: $bradius;
+  display: flex;
+  flex-flow: column nowrap;
+  font-family: $primary-font;
+  font-size: 1.5rem;
+  height: 30%;
+  justify-content: center;
+  margin: auto;
+  max-width: 600px;
+  padding: 1rem;
+  width: 40%;
+}
+
+.scores {
+  border-radius: $bradius;
+  background-color: $strong-accent-color;
+  color: $light-font-color;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.registerResultForm {
+  width: 100%;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import MainNavigation from "./MainNavigation/MainNavigation";
 import Footer from "./Footer/Footer";
+import Backdrop from './Backdrop/Backdrop';
 import classes from './Layout.module.scss';
 
 class Layout extends React.Component {

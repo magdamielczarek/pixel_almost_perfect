@@ -5,10 +5,31 @@
   border: 1px solid $dark-font-color;
   border-radius: $bradius;
   cursor: pointer;
+  margin: 0 .5rem;
+  min-width: 5rem;
   outline: none;
   padding: 1rem;
+  position: relative;
   text-transform: uppercase;
-  &--accept {}
+  transform-style: preserve-3d;
+  //&::after {
+  //  background-color: rgba(0,0,0,0.5);
+  //  border-radius: $bradius;
+  //  content: '';
+  //  height: 100%;
+  //  left: 0;
+  //  position: absolute;
+  //  top: 0;
+  //  transform: translateX(3px) translateY(3px);
+  //  width: 100%;
+  //  z-index: -1;
+  //}
+  &:hover {
+    transform: translateX(2px) translateY(2px);
+  }
+  &--accept {
+    background-color: $primary-color;
+  }
   &--warning {}
 }
 

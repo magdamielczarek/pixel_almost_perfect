@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"Communication.module.css"}
+{"version":3,"sourceRoot":"","sources":["communication.module.scss","../../../../global-styles/__variables.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EACA,eCMQ;EDLR;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE,eCRQ;EDSR,kBClBoB;EDmBpB,OCfiB;EDgBjB;EACA;EACA;EACA;EACA;;;AAGF;EACE","file":"Communication.module.css"}

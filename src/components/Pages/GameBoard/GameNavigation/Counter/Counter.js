@@ -18,7 +18,7 @@ const Counter = (props) => {
                 minutes: Math.floor(time / 60000),
                 seconds: ((time % 60000) / 1000).toFixed(0)
             });
-            if(time == 0){
+            if(time === 0){
                 clearInterval(interval);
                 props.endGame();
             }

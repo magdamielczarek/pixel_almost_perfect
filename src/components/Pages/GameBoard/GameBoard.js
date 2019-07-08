@@ -14,10 +14,9 @@ class GameBoard extends React.Component {
         this.state = {
             gameIsOn: false,
             gameIsFinished: false,
-            timer: 5000,
+            timer: 180000,
             scores: 0,
             allImagesData: [],
-            imagesPassed: [],
             currentImageDescription: null,
             currentImagePath: ''
         };
@@ -33,7 +32,8 @@ class GameBoard extends React.Component {
         difficulty: 'medium',
         pixelsToCheckCords: [],
         activeCords: [],
-        images: []
+        images: [],
+        imagesPassed: []
     };
 
     componentWillMount() {
@@ -54,7 +54,9 @@ class GameBoard extends React.Component {
 
     importAllImages = (r) => {
         let images = {};
-        r.keys().map((item) => { images[item.replace('./assets/images', '')] = r(item); });
+        r.keys().map((item) => {
+            return images[item.replace('./assets/images', '')] = r(item);
+        });
         return images;
     };
 
@@ -121,16 +123,21 @@ class GameBoard extends React.Component {
 
     setRandomImage = () => {
         let selectedImage = this.returnCustomNumber(Object.keys(this.gameConfig.images).length);
-        if(this.state.imagesPassed.includes(selectedImage)){
+        if(this.gameConfig.imagesPassed.includes(selectedImage)){
             this.setRandomImage();
         } else {
-            const randomImage = this.gameConfig.images[Object.keys(this.gameConfig.images)[selectedImage]];
+            const randomImage = this.gameConfig.images[Object.keys(this.gameConfig.images)[selectedImage-1]];
             const imageDescription = this.state.allImagesData.data.filter((image) => {
-                return  randomImage.indexOf(`id${image.id}`) !== -1;
+                console.log(randomImage,`id${image.id}_`);
+                return randomImage.includes(`id${image.id}_`);
             });
 
+            this.gameConfig.imagesPassed.push(selectedImage);
             this.setState(()=>{
-                return {currentImagePath: randomImage,currentImageDescription: imageDescription[0]}
+                return {
+                    currentImagePath: randomImage,
+                    currentImageDescription: imageDescription[0]
+                }
             }, () => this.createNewImage(this.state.currentImagePath));
         }
     };

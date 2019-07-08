@@ -99,6 +99,195 @@
       "difficulty": "hard",
       "date": "1904",
       "country": "Austria"
+    },{
+      "id": 12,
+      "author": "Heroymus Bosch",
+      "title": "The Garden of Earthly Delights",
+      "titleOriginal": "",
+      "path": "./id12_Hieronymus Bosch_The Garden of Earthly Delights.jpg",
+      "difficulty": "hard",
+      "date": "",
+      "country": "Holland"
+    },{
+      "id": 13,
+      "author": "Pieter Brueghel the Elder",
+      "title": "The Dutch Proverbs",
+      "titleOriginal": "Nederlandse Spreekwoorden",
+      "path": "./id13_Pieter Brueghel the Elder-The Dutch Proverbs.jpg",
+      "difficulty": "hard",
+      "date": "1559",
+      "country": "Denmark"
+    },{
+      "id": 14,
+      "author": "Pieter Brueghel The Younger",
+      "title": "Winter Landscape with a Bird Trap",
+      "titleOriginal": "",
+      "path": "./id14_Winter Landscape with a Bird Trap - Pieter Brueghel The Younger.jpg",
+      "difficulty": "hard",
+      "date": "1620",
+      "country": "Denmark"
+    },{
+      "id": 15,
+      "author": "Pieter Brueghel the Elder",
+      "title": "Landscape with the Fall of Icarus",
+      "titleOriginal": "De val van Icarus",
+      "path": "./id15_Pieter_Bruegel_de_Oude_-_De_val_van_Icarus.jpg",
+      "difficulty": "hard",
+      "date": "1560",
+      "country": "Denmar"
+    },{
+      "id": 16,
+      "author": "John Constable",
+      "title": "Hampstead Heath with Bathers",
+      "titleOriginal": "",
+      "path": "./id16_Constable_Hampstead Heath with Bathers.jpg",
+      "difficulty": "hard",
+      "date": "1821",
+      "country": "England"
+    },{
+      "id": 17,
+      "author": "Caspar David Friedrich",
+      "title": "Moonrise over the Sea",
+      "titleOriginal": "Mondaufgang am Meer",
+      "path": "./id17_Caspar_David_Friedrich_-_Mondaufgang_am_Meer_-_Google_Art_Project.jpg",
+      "difficulty": "hard",
+      "date": "1822",
+      "country": "Germany"
+    },{
+      "id": 18,
+      "author": "Georges Seurat",
+      "title": "Sunday Afternoon on the Island of la Grande Jatte",
+      "titleOriginal": "Un dimanche après-midi à l'Île de la Grande Jatte",
+      "path": "./id18_Georges_Seurat_-_A_Sunday_on_La_Grande_Jatte.jpg",
+      "difficulty": "hard",
+      "date": "1884",
+      "country": "France"
+    },{
+      "id": 19,
+      "author": "Georges Seurat",
+      "title": "Bathers at Asnières",
+      "titleOriginal": "Une Baignade, Asnières",
+      "path": "./id19_Georges Seurat_Baigneurs_a_Asnieres.jpg",
+      "difficulty": "hard",
+      "date": "1884",
+      "country": "France"
+    },{
+      "id": 20,
+      "author": "Pierre Auguste Renoir",
+      "title": "Luncheon of the Boating Party",
+      "titleOriginal": "Le déjeuner des canotiers",
+      "path": "./id20_Pierre-Auguste_Renoir_-_Luncheon_of_the_Boating_Party.jpg",
+      "difficulty": "hard",
+      "date": "1880",
+      "country": "France"
+    },{
+      "id": 21,
+      "author": "Pierre Auguste Renoir",
+      "title": "Dance at Le Moulin de la Galette",
+      "titleOriginal": "Bal du moulin de la Galette",
+      "path": "./.jpg",
+      "difficulty": "hard",
+      "date": "1876",
+      "country": "France"
+    },{
+      "id": 22,
+      "author": "Rembrandt van Rijn",
+      "title": "The stone bridge",
+      "titleOriginal": "",
+      "path": "./id22_Rembrandt_The stone bridge.png",
+      "difficulty": "hard",
+      "date": "1638",
+      "country": "Holland"
+    },{
+      "id": 23,
+      "author": "Stuart Davis",
+      "title": "The Mellow Pad",
+      "titleOriginal": "",
+      "path": "./id23_Stuart Davis_The Mallow Pad.png",
+      "difficulty": "hard",
+      "date": " 1945-51",
+      "country": "USA"
+    },{
+      "id": 24,
+      "author": "Wolfgang Lettl ",
+      "title": "The Outcry",
+      "titleOriginal": "",
+      "path": "./id24_The Outcry - Wolfgang Lettl.jpg",
+      "difficulty": "hard",
+      "date": "1989",
+      "country": "Germany"
+    },{
+      "id": 25,
+      "author": "Andy Warhol",
+      "title": "Self portrait",
+      "titleOriginal": "",
+      "path": "./id25_Andy Warhol_Self portrait.png",
+      "difficulty": "hard",
+      "date": "1967",
+      "country": "USA"
+    },{
+      "id": 26,
+      "author": "Edward Munch",
+      "title": "Madonna",
+      "titleOriginal": "",
+      "path": "./id26_Edward Munch_Madonna.jpg",
+      "difficulty": "hard",
+      "date": "1894-95",
+      "country": ""
+    },{
+      "id": 27,
+      "author": "Edward Munch",
+      "title": "The Dance of Life",
+      "titleOriginal": "",
+      "path": "./id27_the-dance-of-life-by-edvard-munch.jpg",
+      "difficulty": "hard",
+      "date": "1899",
+      "country": "Norway"
+    },{
+      "id": 28,
+      "author": "Pablo Picasso",
+      "title": "Femme au béret et à la robe quadrillée",
+      "titleOriginal": "",
+      "path": "./id28_Pablo Picaso_Femme au béret et à la robe quadrillée.jpg",
+      "difficulty": "hard",
+      "date": "1937",
+      "country": "France"
+    },{
+      "id": 29,
+      "author": "Pablo Picasso",
+      "title": "Guernica",
+      "titleOriginal": "",
+      "path": "./id29_pablo-picasso-guernica.jpg",
+      "difficulty": "hard",
+      "date": "1937",
+      "country": "France"
+    },{
+      "id": 30,
+      "author": "Edgar Degas",
+      "title": "The Rehearsal of the Ballet Onstage",
+      "titleOriginal": "",
+      "path": "./id30_Edgar Degas, The Rehearsal of the Ballet Onstage.jpg",
+      "difficulty": "hard",
+      "date": "1874",
+      "country": "France"
+    },{
+      "id": 31,
+      "author": "Jacek Malczewski",
+      "title": "Hamlet Polski",
+      "titleOriginal": "",
+      "path": "./id31_malczewski-hamlet-polski.jpg",
+      "difficulty": "hard",
+      "date": "1903",
+      "country": "Poland"
+    },{
+      "id": 32,
+      "author": "Jan Matejko",
+      "title": "Bitwa pod Grunwaldem",
+      "titleOriginal": "",
+      "path": "./id32_Jan_Matejko,_Bitwa_pod_Grunwaldem.jpg",
+      "difficulty": "hard",
+      "date": "1872–78",
+      "country": "Poland"
     }
   ]
 }

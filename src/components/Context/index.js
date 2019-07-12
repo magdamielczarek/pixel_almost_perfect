@@ -1,5 +1,6 @@
 import React from 'react';
 
-const gameContext = React.createContext();
-export const Provider = gameContext.Provider;
-export const Consumer = gameContext.Consumer;
+const GameContext = React.createContext();
+export default GameContext;
+export const Provider = GameContext.Provider;
+export const Consumer = GameContext.Consumer;

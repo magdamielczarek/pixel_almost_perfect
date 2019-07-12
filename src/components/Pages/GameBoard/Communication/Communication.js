@@ -14,7 +14,7 @@ const Communication = (props) => {
         </div>
     );
 
-    const messageEndOftime = (
+    const messageEndOfTime = (
         <div className={classes.modal}>
             <p>Congratulations, your result:</p>
             <div className={classes.scores}>{props.scores}</div>
@@ -23,7 +23,7 @@ const Communication = (props) => {
             </form>
             <div style={{padding: '1rem'}}>
                 <Button text='register' accent click={props.endGame}/>
-                <Button text='exit' click={props.continueGame}/>
+                <Button text='exit' redirection='/'/>
             </div>
         </div>
     );
@@ -39,10 +39,9 @@ const Communication = (props) => {
         </div>
     );
 
-    if(props)
     return (
         <>
-            {props.gameIsFinished ? (props.scores > 0 ? messageEndOftime : messageNoScores) : messageQuit}
+            {props.gameIsFinished ? (props.scores > 0 ? messageEndOfTime : messageNoScores) : messageQuit}
         </>
     );
 };

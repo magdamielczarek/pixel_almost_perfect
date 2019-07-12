@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavLink, Switch } from "react-router-dom";
+import { Consumer } from '../../Context';
 import classes from './MainNavigation.module.scss';
 import GameNavigation from "../../Pages/GameBoard/GameNavigation/GameNavigation";
 
-const primary = (
+const globalNav = (
     <Switch>
         <nav className={classes.mainNavigation}>
             <span className={classes.logo}><NavLink to="/" exact>PixelPerfect</NavLink></span>
@@ -17,10 +18,16 @@ const primary = (
     </Switch>
 );
 
-const game = <GameNavigation/>;
-
-const MainNavigation = (props) => {
-    return (props.gameMode ? game : primary);
+const MainNavigation = () => {
+    return (
+        <Consumer>
+            {
+                (context) => {
+                    return (context.gameMode ? <div style={{ gridArea: 'header'}}> </div> : globalNav);
+                }
+            }
+        </Consumer>
+    );
 };
 
 export default MainNavigation;

@@ -6,7 +6,7 @@ import axios from '../../../axiosPreset';
 import Spinner from "../../Layout/Spinner/Spinner";
 import Backdrop from "../../Layout/Backdrop/Backdrop";
 import Communication from "./Communication/Communication";
-import { Consumer } from '../../Context/index';
+import GameContext, { Consumer } from '../../Context/index';
 
 class GameBoard extends React.Component {
 
@@ -16,7 +16,7 @@ class GameBoard extends React.Component {
             gameIsOn: false,
             gameIsFinished: false,
             openModal: false,
-            timer: 5000,
+            timer: 180000,
             scores: 0,
             allImagesData: [],
             currentImageDescription: null,
@@ -38,12 +38,15 @@ class GameBoard extends React.Component {
         imagesPassed: []
     };
 
+    static contextType = GameContext;
+
     componentWillMount() {
         this.gameConfig.images = this.importAllImages(require.context('../../../assets/images', false, /\.(png|jpe?g|svg)$/));
     };
 
     componentDidMount = () => {
-        // this.props.turnGame;
+        this.context.switchGameMode();
+
         axios.get('/images.json')
             .then(data => this.setState({
                 allImagesData: data
@@ -72,7 +75,6 @@ class GameBoard extends React.Component {
         };
     };
 
-    // adjust image and canvas size
     updateImage = (image,canvas) => {
         const newHeight = (window.innerHeight * 0.70).toFixed(2);
         const oldHeight = image.height;
@@ -122,6 +124,7 @@ class GameBoard extends React.Component {
                 this.gameConfig.yNumber);
         // },500);
         this.drawGrid(image,ctx);
+        // this.context.setCanvasRef(this.refs.canvas);
     };
 
     setRandomImage = () => {
@@ -144,35 +147,6 @@ class GameBoard extends React.Component {
         }
     };
 
-    changeScores = (operation,number) => {
-        switch (operation) {
-            case 'addition' :
-                this.setState((prevState)=>{
-                    return {scores: prevState.scores + number}
-                });
-                break;
-
-            case 'deletion' :
-                this.setState((prevState)=>{
-                    if(prevState.scores > number){
-                        return {scores: prevState.scores - number}
-                    } else {
-                        return {scores: 0}
-                    }
-                });
-                break;
-
-            case 'multiplication' :
-                this.setState((prevState)=>{
-                    return {scores: prevState.scores * number}
-                });
-                break;
-
-            default:
-                break;
-        }
-    };
-
     showNextImage = () => {
         this.resetCanvas();
         this.setRandomImage();
@@ -191,11 +165,11 @@ class GameBoard extends React.Component {
                 ctx.fillStyle = '#FF5252';
                 ctx.fill();
                 this.gameConfig.activeCords.splice(index,1);
-                this.changeScores('addition',this.gameConfig.punctationUnit);
+                this.context.changeScore('addition',this.gameConfig.punctationUnit);
             }
         });
         if(!this.gameConfig.activeCords.length){
-            this.changeScores('addition',this.gameConfig.pixelsToCheckNumber * 2);
+            this.context.changeScore('addition',this.gameConfig.pixelsToCheckNumber * 2);
             this.resetCanvas();
             this.setRandomImage();
         }
@@ -273,23 +247,17 @@ class GameBoard extends React.Component {
         );
     };
 
-    handleGetHint = () => {
+    showHint = () => {
         const ctx = this.refs.canvas.getContext('2d');
         const pixel = this.gameConfig.activeCords[0];
         ctx.rect(pixel.positionLeft,pixel.positionTop,pixel.width,pixel.height);
         ctx.fill();
-        this.changeScores('deletion',5);
+        this.context.changeScore('deletion',5);
         // ctx.clearRect(pixel.positionLeft,pixel.positionTop,pixel.width,pixel.height);
     };
 
     endGame = () => {
         this.setState({gameIsFinished: true});
-    };
-
-    openModal = () => {
-        this.setState({
-            openModal: true
-        });
     };
 
     restartGame = () => {
@@ -314,22 +282,18 @@ class GameBoard extends React.Component {
         return (
             <Consumer>
                 {(context) => {
-                    console.log(context);
                     return (
                         <>
                             <Backdrop visible={this.state.gameIsFinished}>
                                 <Communication gameIsFinished={this.state.gameIsFinished}
-                                               modalState={this.state.openModal}
-                                               scores={this.state.scores}
+                                               scores={context.score}
                                 />
                             </Backdrop>
-                            {/*<GameNavigation scores={this.state.scores}*/}
-                            {/*                next={this.showNextImage}*/}
-                            {/*                showHint={this.handleGetHint}*/}
-                            {/*                time={this.state.timer}*/}
-                            {/*                gameIsOn={this.state.gameIsOn}*/}
-                            {/*                changeModalState={this.openModal}*/}
-                            {/*                endGame={this.endGame}/>*/}
+                            <GameNavigation scores={context.score}
+                                            next={this.showNextImage}
+                                            showHint={this.showHint}
+                                            time={context.time}
+                                            changeModalState={this.openModal} />
                             <div className={classes.boardContainer}>
                                 {this.state.currentImagePath ? gameBoardContent : <Spinner />}
                             </div>

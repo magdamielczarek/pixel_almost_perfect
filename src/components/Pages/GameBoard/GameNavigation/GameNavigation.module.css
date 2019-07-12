@@ -45,38 +45,4 @@
   min-width: 12%;
 }
 
-.gameNavigation__button {
-  border: 1px solid #fff;
-  border-radius: 7px;
-  background-color: #FF5252;
-  color: #F5F5F5;
-  cursor: pointer;
-  font-size: 1.2rem;
-  outline: none;
-  overflow: hidden;
-  padding: 0.5rem;
-  position: relative;
-  text-transform: uppercase;
-  transition: all 0.6s;
-}
-.gameNavigation__button::before {
-  background-image: linear-gradient(-45deg, transparent 0%, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%, transparent 100%);
-  border-radius: 7px;
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: -100%;
-  transition: transform 1s;
-  z-index: 0;
-}
-.gameNavigation__button a {
-  color: #F5F5F5;
-  z-index: 3;
-}
-.gameNavigation__button:hover::before {
-  transform: translateX(200%);
-}
-
 /*# sourceMappingURL=GameNavigation.module.css.map */

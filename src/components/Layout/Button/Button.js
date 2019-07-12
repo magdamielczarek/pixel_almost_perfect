@@ -5,7 +5,7 @@ import { withRouter } from 'react-router';
 const Button = (props) => {
     let { text, click, type, redirection,accent } = props;
 
-    if(redirection){
+    if(redirection && !click){
         click = () => {
             props.history.push(redirection);
         };

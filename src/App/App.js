@@ -14,9 +14,58 @@ class App extends Component{
         super(props);
         this.state = {
             gameMode: false,
-            score: 0
+            score: 0,
+            time: 180000,
+            triggerHint: this.triggerHint,
+            switchGameMode: this.switchGameMode,
+            changeScore: this.changeScore,
+            // canvasRef: '',
+            // setCanvasRef: this.setCanvasRef,
         };
     }
+
+    // setCanvasRef = (ref) => {
+    //     this.setState({
+    //         canvasRef: ref
+    //     });
+    // };
+
+    switchGameMode = () => {
+        this.setState((prevState)=> {
+            return {
+                gameMode: !prevState.gameMode
+            }
+        });
+    };
+
+    changeScore = (operation,number) => {
+        switch (operation) {
+            case 'addition' :
+                this.setState((prevState)=>{
+                    return {score: prevState.score + number}
+                });
+                break;
+
+            case 'deletion' :
+                this.setState((prevState)=>{
+                    if(prevState.score > number){
+                        return {score: prevState.score - number}
+                    } else {
+                        return {score: 0}
+                    }
+                });
+                break;
+
+            case 'multiplication' :
+                this.setState((prevState)=>{
+                    return {score: prevState.score * number}
+                });
+                break;
+
+            default:
+                break;
+        }
+    };
 
     render(){
         return (
@@ -26,7 +75,7 @@ class App extends Component{
                         <Switch>
                             <Route path="/ustawienia" component={SettingsPage}/>
                             <Route path="/zasady" component={RulesPage}/>
-                            <Route path="/gra" component={GameBoard} gameMode={this.state.gameMode}/>
+                            <Route path="/gra" component={GameBoard} />
                             <Route path="/rangking" component={ScoresPage}/>
                             <Route path="/" exact component={IntroPage}/>
                         </Switch>

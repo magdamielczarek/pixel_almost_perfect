@@ -1,7 +1,7 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
 import classes from './GameNavigation.module.scss';
 import Counter from "./Counter/Counter";
+import Button from "../../../Layout/Button/Button";
 
 const GameNavigation = (props) => {
     return (
@@ -9,10 +9,12 @@ const GameNavigation = (props) => {
             <ul>
                 <li className={[classes.gameNavigation__item,classes.timer].join(' ')}>
                     <span>TIME:</span>
-                    <Counter time={props.time} gameIsOn={props.gameIsOn} endGame={props.endGame}/>
+                    <Counter
+                        time={props.time}
+                        gameIsOn={props.gameIsOn} endGame={props.endGame}/>
                 </li>
                 <li className={classes.gameNavigation__item}>
-                    SCORES: <span className={classes.scores}>{props.scores}</span>
+                    SCORE: <span className={classes.score}>{props.scores}</span>
                 </li>
                 <li className={classes.gameNavigation__item}>
                     <button className={classes.gameNavigation__button} onClick={props.next}>NEXT IMG</button>
@@ -21,7 +23,7 @@ const GameNavigation = (props) => {
                     <button className={classes.gameNavigation__button} onClick={props.showHint}>HINT</button>
                 </li>
                 <li className={classes.gameNavigation__item}>
-                    <NavLink to='/'>Close</NavLink>
+                    <Button text='close' accent redirection='/' />
                 </li>
             </ul>
         </nav>

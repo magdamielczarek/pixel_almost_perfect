@@ -7,26 +7,32 @@ import ScoresPage from "../components/Pages/ScoresPage/ScoresPage";
 import IntroPage from '../components/Pages/IntroPage/IntroPage';
 import RulesPage from "../components/Pages/RulesPage/RulesPage";
 import SettingsPage from "../components/Pages/SettingsPage/SettingsPage";
+import { Provider } from '../components/Context/index';
 
 class App extends Component{
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {
+            gameMode: false,
+            score: 0
+        };
     }
 
     render(){
         return (
-            <div className={classes.app}>
-                <Layout>
-                    <Switch>
-                        <Route path="/ustawienia" component={SettingsPage}/>
-                        <Route path="/zasady" component={RulesPage}/>
-                        <Route path="/gra" component={GameBoard}/>
-                        <Route path="/rangking" component={ScoresPage}/>
-                        <Route path="/" exact component={IntroPage}/>
-                    </Switch>
-                </Layout>
-            </div>
+            <Provider value={this.state}>
+                <div className={classes.app}>
+                    <Layout gameMode={this.state.gameMode}>
+                        <Switch>
+                            <Route path="/ustawienia" component={SettingsPage}/>
+                            <Route path="/zasady" component={RulesPage}/>
+                            <Route path="/gra" component={GameBoard} gameMode={this.state.gameMode}/>
+                            <Route path="/rangking" component={ScoresPage}/>
+                            <Route path="/" exact component={IntroPage}/>
+                        </Switch>
+                    </Layout>
+                </div>
+            </Provider>
         );
     }
 }

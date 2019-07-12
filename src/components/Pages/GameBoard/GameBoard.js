@@ -6,6 +6,7 @@ import axios from '../../../axiosPreset';
 import Spinner from "../../Layout/Spinner/Spinner";
 import Backdrop from "../../Layout/Backdrop/Backdrop";
 import Communication from "./Communication/Communication";
+import { Consumer } from '../../Context/index';
 
 class GameBoard extends React.Component {
 
@@ -14,7 +15,8 @@ class GameBoard extends React.Component {
         this.state = {
             gameIsOn: false,
             gameIsFinished: false,
-            timer: 180000,
+            openModal: false,
+            timer: 5000,
             scores: 0,
             allImagesData: [],
             currentImageDescription: null,
@@ -41,6 +43,7 @@ class GameBoard extends React.Component {
     };
 
     componentDidMount = () => {
+        // this.props.turnGame;
         axios.get('/images.json')
             .then(data => this.setState({
                 allImagesData: data
@@ -128,7 +131,6 @@ class GameBoard extends React.Component {
         } else {
             const randomImage = this.gameConfig.images[Object.keys(this.gameConfig.images)[selectedImage-1]];
             const imageDescription = this.state.allImagesData.data.filter((image) => {
-                console.log(randomImage,`id${image.id}_`);
                 return randomImage.includes(`id${image.id}_`);
             });
 
@@ -186,7 +188,7 @@ class GameBoard extends React.Component {
                 && (e.pageY >= config.positionTop + this.refs.canvas.offsetTop && e.pageY <= config.positionTop + config.width + this.refs.canvas.offsetTop)) {
 
                 ctx.rect(config.positionLeft,config.positionTop,config.width,config.height);
-                ctx.fillStyle = '#00FFBB';
+                ctx.fillStyle = '#FF5252';
                 ctx.fill();
                 this.gameConfig.activeCords.splice(index,1);
                 this.changeScores('addition',this.gameConfig.punctationUnit);
@@ -284,13 +286,18 @@ class GameBoard extends React.Component {
         this.setState({gameIsFinished: true});
     };
 
-    continueGame = () => {
-        this.setState({gameIsFinished: false});
+    openModal = () => {
+        this.setState({
+            openModal: true
+        });
     };
 
-    confirmEndGame = () => {
-        console.log('zakończ grę');
+    restartGame = () => {
+        this.setState({
+            gameIsOn: true
+        });
     };
+
 
     render(){
         const gameBoardContent = (
@@ -303,24 +310,33 @@ class GameBoard extends React.Component {
                 {this.state.currentImageDescription ? <ImageDescription description={this.state.currentImageDescription}/> : null}
             </>
         );
+
         return (
-            <>
-                <Backdrop visible={this.state.gameIsFinished}>
-                    <Communication gameIsFinished={this.state.gameIsFinished}
-                                   scores={this.state.scores}
-                                   continueGame={this.continueGame}
-                                   endGame={this.confirmEndGame}/>
-                </Backdrop>
-                <GameNavigation scores={this.state.scores}
-                                next={this.showNextImage}
-                                showHint={this.handleGetHint}
-                                time={this.state.timer}
-                                gameIsOn={this.state.gameIsOn}
-                                endGame={this.endGame}/>
-                <div className={classes.boardContainer}>
-                    {this.state.currentImagePath ? gameBoardContent : <Spinner />}
-                </div>
-            </>
+            <Consumer>
+                {(context) => {
+                    console.log(context);
+                    return (
+                        <>
+                            <Backdrop visible={this.state.gameIsFinished}>
+                                <Communication gameIsFinished={this.state.gameIsFinished}
+                                               modalState={this.state.openModal}
+                                               scores={this.state.scores}
+                                />
+                            </Backdrop>
+                            {/*<GameNavigation scores={this.state.scores}*/}
+                            {/*                next={this.showNextImage}*/}
+                            {/*                showHint={this.handleGetHint}*/}
+                            {/*                time={this.state.timer}*/}
+                            {/*                gameIsOn={this.state.gameIsOn}*/}
+                            {/*                changeModalState={this.openModal}*/}
+                            {/*                endGame={this.endGame}/>*/}
+                            <div className={classes.boardContainer}>
+                                {this.state.currentImagePath ? gameBoardContent : <Spinner />}
+                            </div>
+                        </>);
+                    }
+                }
+            </Consumer>
         );
     }
 }

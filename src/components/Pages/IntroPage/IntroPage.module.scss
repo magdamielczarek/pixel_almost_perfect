@@ -1,5 +1,15 @@
 @import '../../../global-styles/_variables';
 
+@keyframes pixelAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: scale(1.75);
+    opacity: 1;
+  }
+}
+
 .introWrapper {
   align-items: center;
   background-image: url('../../../assets/images/id2_Vincent_van_Gogh_-_Wheatfield_with_crows.jpg');
@@ -15,65 +25,64 @@
 }
 
 .header {
-  background-color: $neutral-background-color;
+  background-color: #DBC249;
+  color: $primary-color-light;
   font-family: $secondary-font;
   font-size: 2rem;
+  opacity: 0;
   padding: .5rem 1rem;
   text-align: center;
   width: 30%;
+  animation: pixelAppear .75s 4s;
+  animation-fill-mode: forwards;
 }
 
 .comment {
-  color: lighten($dark-font-color,40%);
+  color: #212121;
 }
 
 .batPixel {
-  border: 1px solid #fff;
+  border: 1px solid $primary-color-light;
   height: 4rem;
   position: absolute;
   width: 3rem;
   &.batPixel__1 {
     background-color: lighten(#305F99,10%);
     left: 5%;
-    top: 10%;
+    top: 12%;
+    animation: pixelAppear 1s;
+    animation-fill-mode: forwards;
   }
   &.batPixel__2 {
     background-color: lighten(#336097,10%);
     left: 40%;
+    opacity: 0;
     top: 20%;
+    animation: pixelAppear 1s 1s;
+    animation-fill-mode: forwards;
   }
   &.batPixel__3 {
     background-color: #9F8559;
     left: 3%;
     bottom: 15%;
+    opacity: 0;
+    animation: pixelAppear 1s 2s;
+    animation-fill-mode: forwards;
   }
   &.batPixel__4 {
     background-color: #A28113;
     left: 25%;
     bottom: 20%;
+    opacity: 0;
+    animation: pixelAppear 1s 3s;
+    animation-fill-mode: forwards;
   }
   &.batPixel__5 {
     background-color: #305F99;
+    opacity: 0;
     right: 30%;
-    top: 10%;
-  }
-}
-
-.ctaButton {
-  background-color: $neutral-background-color;
-  border: 1px solid transparent;
-  color: $strong-accent-color;
-  cursor: pointer;
-  font-family: $secondary-font;
-  font-size: 2.5rem;
-  margin-top: .5rem;
-  outline: none;
-  width: 10rem;
-  &:hover {
-    background-color: $strong-accent-color;
-    border: 1px solid #fff;
-    color: $light-font-color;
-    transform: scale(1.1);
-    transition: transform 1s;
+    top: 14%;
+    animation: pixelAppear 1s 4s;
+    animation-fill-mode: forwards;
   }
 }

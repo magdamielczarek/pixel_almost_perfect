@@ -1,3 +1,12 @@
+@keyframes pixelAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: scale(1.75);
+    opacity: 1;
+  }
+}
 .introWrapper {
   align-items: center;
   background-image: url("../../../assets/images/id2_Vincent_van_Gogh_-_Wheatfield_with_crows.jpg");
@@ -13,20 +22,24 @@
 }
 
 .header {
-  background-color: #fff;
+  background-color: #DBC249;
+  color: #F5F5F5;
   font-family: "Oswald", sans-serif;
   font-size: 2rem;
+  opacity: 0;
   padding: 0.5rem 1rem;
   text-align: center;
   width: 30%;
+  animation: pixelAppear 0.75s 4s;
+  animation-fill-mode: forwards;
 }
 
 .comment {
-  color: #3c6fab;
+  color: #212121;
 }
 
 .batPixel {
-  border: 1px solid #fff;
+  border: 1px solid #F5F5F5;
   height: 4rem;
   position: absolute;
   width: 3rem;
@@ -34,46 +47,41 @@
 .batPixel.batPixel__1 {
   background-color: #3c77c0;
   left: 5%;
-  top: 10%;
+  top: 12%;
+  animation: pixelAppear 1s;
+  animation-fill-mode: forwards;
 }
 .batPixel.batPixel__2 {
   background-color: #4078bd;
   left: 40%;
+  opacity: 0;
   top: 20%;
+  animation: pixelAppear 1s 1s;
+  animation-fill-mode: forwards;
 }
 .batPixel.batPixel__3 {
   background-color: #9F8559;
   left: 3%;
   bottom: 15%;
+  opacity: 0;
+  animation: pixelAppear 1s 2s;
+  animation-fill-mode: forwards;
 }
 .batPixel.batPixel__4 {
   background-color: #A28113;
   left: 25%;
   bottom: 20%;
+  opacity: 0;
+  animation: pixelAppear 1s 3s;
+  animation-fill-mode: forwards;
 }
 .batPixel.batPixel__5 {
   background-color: #305F99;
+  opacity: 0;
   right: 30%;
-  top: 10%;
-}
-
-.ctaButton {
-  background-color: #fff;
-  border: 1px solid transparent;
-  color: #C44272;
-  cursor: pointer;
-  font-family: "Oswald", sans-serif;
-  font-size: 2.5rem;
-  margin-top: 0.5rem;
-  outline: none;
-  width: 10rem;
-}
-.ctaButton:hover {
-  background-color: #C44272;
-  border: 1px solid #fff;
-  color: #fff;
-  transform: scale(1.1);
-  transition: transform 1s;
+  top: 14%;
+  animation: pixelAppear 1s 4s;
+  animation-fill-mode: forwards;
 }
 
 /*# sourceMappingURL=IntroPage.module.css.map */

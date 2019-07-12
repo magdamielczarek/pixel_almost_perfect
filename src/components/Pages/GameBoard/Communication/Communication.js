@@ -8,7 +8,7 @@ const Communication = (props) => {
         <div className={classes.modal}>
             <p>Are you sure you want to end this game?</p>
             <div style={{padding: '1rem'}}>
-                <Button text='yes' category='button--accept' click={props.endGame}/>
+                <Button text='yes' accent click={props.endGame}/>
                 <Button text='no' click={props.continueGame}/>
             </div>
         </div>
@@ -22,7 +22,7 @@ const Communication = (props) => {
                 <StandardInput placeholder='Type your name or nickname here' />
             </form>
             <div style={{padding: '1rem'}}>
-                <Button text='register' category='button--accept' click={props.endGame}/>
+                <Button text='register' accent click={props.endGame}/>
                 <Button text='exit' click={props.continueGame}/>
             </div>
         </div>
@@ -33,8 +33,8 @@ const Communication = (props) => {
             <p>Unfortunately, our score is:</p>
             <div className={classes.scores}>{props.scores}</div>
             <div style={{padding: '1rem'}}>
-                <Button text='try again' category='button--accept' click={props.endGame}/>
-                <Button text='exit' click={props.continueGame}/>
+                <Button text='try again' accent click={props.restartGame}/>
+                <Button text='close' redirection='/' />
             </div>
         </div>
     );

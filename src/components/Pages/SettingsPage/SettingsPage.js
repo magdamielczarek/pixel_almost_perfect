@@ -33,10 +33,10 @@ class SettingsPage extends React.Component {
         {'id': 4, 'value': 'high'}
     ];
 
-    imagesDifficulty = ['','easy','moderate','hard'];
+    // imagesDifficulty = ['','easy','moderate','hard'];
 
     handleFieldChange = (event) => {
-        const settings = {...this.state.userSettings};
+        // const settings = {...this.state.userSettings};
         this.setState({
             [event.target.name]: event.target.value
         });
@@ -100,7 +100,8 @@ class SettingsPage extends React.Component {
                         </section>
                     </div>
                     <div className={classes.btnsRow}>
-                        <Button text='ZAPISZ' />
+                        <Button text='save' accent />
+                        <Button text='cancel' />
                     </div>
                 </form>
             </div>

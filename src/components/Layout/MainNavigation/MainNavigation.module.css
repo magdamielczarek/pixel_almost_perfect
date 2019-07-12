@@ -1,50 +1,57 @@
 .mainNavigation {
   align-items: center;
-  background: #00FFBB;
-  display: inline-flex;
+  background: #616161;
+  display: flex;
   justify-content: space-between;
   padding: 0 2rem;
 }
 .mainNavigation ul {
   display: inline-flex;
+  height: 100%;
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-.logo {
-  color: #070D14;
+.logo > a, .logo a:active, .logo a:visited {
+  color: #F5F5F5;
   font-family: "Oswald", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .mainNavigation__link {
   font-family: "Oswald", sans-serif;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-left: 1.5rem;
-}
-.mainNavigation__link a,
-.mainNavigation__link a:visited {
-  color: #070D14;
+  height: 100%;
+  overflow: hidden;
   position: relative;
-  text-decoration: none;
+}
+.mainNavigation__link::before {
+  background-color: #FF5252;
+  bottom: -100%;
+  content: "";
+  height: 100%;
+  position: absolute;
+  transition: transform 0.7s;
+  width: 100%;
   z-index: 0;
 }
-.mainNavigation__link a:active, .mainNavigation__link a:hover,
-.mainNavigation__link a:visited:active,
-.mainNavigation__link a:visited:hover {
-  color: #C44272;
+.mainNavigation__link:hover::before {
+  transform: translateY(-100%);
 }
-.mainNavigation__link a:active:after, .mainNavigation__link a:hover:after,
-.mainNavigation__link a:visited:active:after,
-.mainNavigation__link a:visited:hover:after {
-  background-color: #fff;
-  bottom: 0;
-  content: "";
-  height: 20%;
-  position: absolute;
-  right: 0;
+.mainNavigation__link a, .mainNavigation__link a:visited {
+  color: #F5F5F5;
+  display: block;
+  height: 100%;
+  left: 0;
+  padding: 0 1.5rem;
+  position: relative;
+  text-decoration: none;
   width: 100%;
-  z-index: -1;
+  z-index: 1;
 }
 
 /*# sourceMappingURL=MainNavigation.module.css.map */

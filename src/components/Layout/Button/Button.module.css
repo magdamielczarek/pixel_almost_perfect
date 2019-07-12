@@ -1,21 +1,38 @@
 .button {
-  background-color: #fff;
-  border: 1px solid #070D14;
+  border: 2px solid #F5F5F5;
   border-radius: 4px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  color: #F5F5F5;
   cursor: pointer;
   margin: 0 0.5rem;
-  min-width: 5rem;
+  min-width: 7rem;
   outline: none;
+  overflow: hidden;
   padding: 1rem;
   position: relative;
   text-transform: uppercase;
-  transform-style: preserve-3d;
+  z-index: 1;
 }
-.button:hover {
-  transform: translateX(2px) translateY(2px);
+.button::before {
+  background-image: linear-gradient(-45deg, transparent 0%, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%, transparent 100%);
+  border-radius: 4px;
+  bottom: 0;
+  content: "";
+  height: 100%;
+  left: 100%;
+  position: absolute;
+  transition: transform 0.7s;
+  width: 100%;
+  z-index: -1;
 }
-.button--accept {
-  background-color: #00FFBB;
+.button:hover::before {
+  transform: translateX(-200%);
+}
+.button--accent {
+  background-color: #FF5252;
+}
+.button:disabled {
+  background-color: #9E9E9E;
 }
 
 /*# sourceMappingURL=Button.module.css.map */

@@ -1,15 +1,25 @@
 import React from 'react';
 import classes from './Button.module.scss';
+import { withRouter } from 'react-router';
 
 const Button = (props) => {
-    const { text, click, type, category } = props;
+    let { text, click, type, redirection,accent } = props;
+
+    if(redirection){
+        click = () => {
+            props.history.push(redirection);
+        };
+    }
+
+    const style = accent ? {backgroundColor: '#FF5252'} : {backgroundColor: '#9E9E9E'};
+
     return (
         <button onClick={click}
-                type={type}
-                className={category ? [classes.button,classes[category]].join(' ') : classes.button}>
+                type={type} style={style}
+                className={classes.button}>
             {text}
         </button>
     );
 };
 
-export default Button;
+export default withRouter(Button);

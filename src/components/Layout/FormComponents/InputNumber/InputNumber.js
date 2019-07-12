@@ -11,7 +11,8 @@ const InputNumber = (props) => {
                 <input type='number'
                        name={name}
                        value={value}
-                       onChange={change}/>
+                       onChange={change}
+                       className={formClasses.input}/>
                 <div className={classes.btnCounterContainer}>
                     <svg className={[classes.btnCounter,classes.btnCounterDecrement].join(' ')}
                          viewBox="0 0 100 100"
@@ -19,8 +20,8 @@ const InputNumber = (props) => {
                          role='button'
                          aria-roledescription='button'>
                         <polygon points="0 0, 100 0, 100 100, 0 0"
-                                 style={{fill:'#00FFBB',stroke:'#fff',strokeWidth:1,fillRule:'nonzero'}} />
-                        <text x="60" y="45" style={{fill: '#fff',fontSize: '3rem',fontFamily: 'Montserrat'}}>+</text>
+                                 style={{fill:'#FF5252',stroke:'#fff',strokeWidth:1,fillRule:'nonzero'}} />
+                        <text x="60" y="45" style={{fill: '#212121',fontSize: '3rem',fontFamily: 'Montserrat'}}>+</text>
                     </svg>
                     <svg className={[classes.btnCounter,classes.btnCounterIncrement].join(' ')}
                          viewBox="0 0 100 100"
@@ -28,8 +29,8 @@ const InputNumber = (props) => {
                          role='button'
                          aria-roledescription='button'>
                         <polygon points="0 0, 0 100, 100 100, 0 0"
-                                 style={{fill:'#C44272',stroke:'#fff', strokeWidth:1,fillRule:'nonzero'}} />
-                        <text x="20" y="80" style={{fill: '#fff',fontSize: '3rem',fontFamily: 'Montserrat'}}>-</text>
+                                 style={{fill:'#F5F5F5',stroke:'#fff', strokeWidth:1,fillRule:'nonzero'}} />
+                        <text x="20" y="80" style={{fill: '#212121',fontSize: '3rem',fontFamily: 'Montserrat'}}>-</text>
                     </svg>
                 </div>
             </div>

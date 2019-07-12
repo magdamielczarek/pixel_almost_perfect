@@ -1,13 +1,14 @@
 @import '../../../global-styles/_variables';
 
 .settingsContainer {
+  background-color: $primary-color-light;
   display: flex;
   height: 100%;
   padding: 2rem;
 }
 
 .settingsForm {
-  color: $dark-font-color;
+  color: $primary-color-text;
   font-family: $primary-font;
   margin: auto;
   width: 100%;
@@ -25,13 +26,18 @@
 }
 
 .settingsSection {
-  border: 2px solid lighten($dark-font-color,40%);
+  background-color: $primary-color-dark;
+  border: 2px solid $primary-color-light;
   border-radius: $bradius;
+  box-shadow: 2px 2px 2px rgba(0,0,0,.5);
   display: flex;
   flex-flow: column nowrap;
-  margin: 1rem;
+  margin: 2rem;
   min-width: 30%;
   padding: 2rem;
+  * {
+    color: $primary-color-light;
+  }
 }
 
 .settingsSection__heading {

@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './IntroPage.module.scss';
+import {NavLink} from "react-router-dom";
 
 const IntroPage = () => {
     return (
@@ -15,7 +16,7 @@ const IntroPage = () => {
                 <span className={classes.comment}> almost </span>
                 Perfect
             </h1>
-            <button className={classes.ctaButton}>START</button>
+            {/*<button className={classes.ctaButton}><NavLink to="/gra">START</NavLink></button>*/}
         </header>
     );
 };

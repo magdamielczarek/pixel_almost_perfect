@@ -1,35 +1,40 @@
 @import '../../../global-styles/_variables';
 
 .button {
-  background-color: $neutral-background-color;
-  border: 1px solid $dark-font-color;
+  //background-color: $accent-color;
+  border: 2px solid $primary-color-light;
   border-radius: $bradius;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+  color: $primary-color-light;
   cursor: pointer;
   margin: 0 .5rem;
-  min-width: 5rem;
+  min-width: 7rem;
   outline: none;
+  overflow: hidden;
   padding: 1rem;
   position: relative;
   text-transform: uppercase;
-  transform-style: preserve-3d;
-  //&::after {
-  //  background-color: rgba(0,0,0,0.5);
-  //  border-radius: $bradius;
-  //  content: '';
-  //  height: 100%;
-  //  left: 0;
-  //  position: absolute;
-  //  top: 0;
-  //  transform: translateX(3px) translateY(3px);
-  //  width: 100%;
-  //  z-index: -1;
-  //}
-  &:hover {
-    transform: translateX(2px) translateY(2px);
+  z-index: 1;
+  &::before {
+    background-image: linear-gradient(-45deg, transparent 0%, transparent 30%, rgba(256,256,256,0.3) 50%, transparent 70%, transparent 100%);
+    border-radius: $bradius;
+    bottom: 0;
+    content: '';
+    height: 100%;
+    left: 100%;
+    position: absolute;
+    transition: transform .7s;
+    width: 100%;
+    z-index: -1;
   }
-  &--accept {
+  &:hover::before {
+    transform: translateX(-200%);
+  }
+  &--accent {
+    background-color: $accent-color;
+  }
+  &:disabled {
     background-color: $primary-color;
   }
-  &--warning {}
 }
 

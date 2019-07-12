@@ -1,8 +1,11 @@
 import React from 'react';
 import classes from './IntroPage.module.scss';
-import {NavLink} from "react-router-dom";
+import { useEffect } from 'react';
 
 const IntroPage = () => {
+    useEffect(() => {
+        // zmien tryb gry
+    });
     return (
         <header className={classes.introWrapper}>
             <div className={[classes.batPixel,classes.batPixel__1].join(' ')}> </div>
@@ -16,7 +19,6 @@ const IntroPage = () => {
                 <span className={classes.comment}> almost </span>
                 Perfect
             </h1>
-            {/*<button className={classes.ctaButton}><NavLink to="/gra">START</NavLink></button>*/}
         </header>
     );
 };

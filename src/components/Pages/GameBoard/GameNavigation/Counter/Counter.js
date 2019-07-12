@@ -19,7 +19,7 @@ const Counter = (props) => {
             });
             if(time === 0){
                 clearInterval(interval);
-                props.endGame();
+                props.switchGameMode();
             }
         },1000);
     }
@@ -30,7 +30,7 @@ const Counter = (props) => {
                         :
                             <span>{timer.seconds < 10 ? 0 : null}</span><span>{timer.seconds}</span>
                         </span>
-    )
+    );
 };
 
 export default Counter;

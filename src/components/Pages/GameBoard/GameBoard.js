@@ -15,9 +15,6 @@ class GameBoard extends React.Component {
         this.state = {
             gameIsOn: false,
             gameIsFinished: false,
-            openModal: false,
-            timer: 180000,
-            scores: 0,
             allImagesData: [],
             currentImageDescription: null,
             currentImagePath: ''
@@ -284,7 +281,7 @@ class GameBoard extends React.Component {
                 {(context) => {
                     return (
                         <>
-                            <Backdrop visible={this.state.gameIsFinished}>
+                            <Backdrop visible={context.openModal}>
                                 <Communication gameIsFinished={this.state.gameIsFinished}
                                                scores={context.score}
                                 />
@@ -292,8 +289,7 @@ class GameBoard extends React.Component {
                             <GameNavigation scores={context.score}
                                             next={this.showNextImage}
                                             showHint={this.showHint}
-                                            time={context.time}
-                                            changeModalState={this.openModal} />
+                                            time={context.time} />
                             <div className={classes.boardContainer}>
                                 {this.state.currentImagePath ? gameBoardContent : <Spinner />}
                             </div>

@@ -19,6 +19,9 @@ class App extends Component{
             triggerHint: this.triggerHint,
             switchGameMode: this.switchGameMode,
             changeScore: this.changeScore,
+            openModal: '',
+            openModalFunc: this.openModal,
+            closeModalFunc: this.closeModal
             // canvasRef: '',
             // setCanvasRef: this.setCanvasRef,
         };
@@ -65,6 +68,19 @@ class App extends Component{
             default:
                 break;
         }
+    };
+
+    closeModal = () => {
+        this.setState({
+            openModal: ''
+        });
+    };
+
+    openModal = (type) => {
+        console.log(type);
+        this.setState({
+            openModal: type
+        });
     };
 
     render(){

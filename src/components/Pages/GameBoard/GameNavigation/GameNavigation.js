@@ -14,7 +14,7 @@ const GameNavigation = (props) => {
                             <ul>
                                 <li className={[classes.gameNavigation__item,classes.timer].join(' ')}>
                                     <span>TIME:</span>
-                                    <Counter time={context.time} gameIsOn={context.gameMode} endGame={context.switchGameMode}/>
+                                    <Counter time={context.time} gameIsOn={context.gameMode} switchGameMode={context.switchGameMode}/>
                                 </li>
                                 <li className={classes.gameNavigation__item}>
                                     SCORE: <span className={classes.score}>{context.score}</span>
@@ -26,7 +26,7 @@ const GameNavigation = (props) => {
                                     <Button text='hint' accent click={props.showHint} />
                                 </li>
                                 <li className={classes.gameNavigation__item}>
-                                    <Button text='close' accent click={context.switchGameMode} />
+                                    <Button text='close' accent click={()=>{context.openModalFunc('closeConfirmation')}} />
                                 </li>
                             </ul>
                         </nav>

@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Counter.module.scss';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { pure } from 'recompose';
 
 const Counter = ({time,gameIsOn,openModalFunc,switchGameMode}) => {
@@ -21,7 +21,6 @@ const Counter = ({time,gameIsOn,openModalFunc,switchGameMode}) => {
             if(time === 0){
                 clearInterval(interval);
                 openModalFunc();
-                // switchGameMode(false);
             }
         },1000);
     }

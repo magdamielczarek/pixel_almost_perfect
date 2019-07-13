@@ -20,7 +20,7 @@ const Communication = (props) => {
                                     </div>
                                 </div>
                             );
-                            break;
+
                         case 'timeEnd' :
                             if(context.score > 0){
                                 return (
@@ -53,7 +53,9 @@ const Communication = (props) => {
                                     </div>
                                 );
                             }
-                            break;
+
+                        default :
+                            return null;
                 }}
             }
         </Consumer>

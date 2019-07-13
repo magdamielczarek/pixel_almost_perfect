@@ -15,7 +15,7 @@ class App extends Component{
         this.state = {
             gameMode: false,
             score: 0,
-            time: 10000,
+            time: 180000,
             switchGameMode: this.switchGameMode,
             changeScore: this.changeScore,
             openModal: '',

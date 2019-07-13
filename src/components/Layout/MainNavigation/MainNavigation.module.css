@@ -41,7 +41,7 @@
   z-index: 0;
 }
 .mainNavigation__link:hover::before {
-  transform: translateY(-100%);
+  transform: translateY(-15%);
 }
 .mainNavigation__link a, .mainNavigation__link a:visited {
   color: #F5F5F5;
@@ -53,6 +53,9 @@
   text-decoration: none;
   width: 100%;
   z-index: 1;
+}
+.mainNavigation__link a.active {
+  color: orange;
 }
 
 /*# sourceMappingURL=MainNavigation.module.css.map */

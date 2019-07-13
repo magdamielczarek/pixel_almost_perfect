@@ -44,7 +44,7 @@
     z-index: 0;
   }
   &:hover::before {
-    transform: translateY(-100%);
+    transform: translateY(-15%);
   }
   a, a:visited {
     color: $primary-color-light;
@@ -56,5 +56,9 @@
     text-decoration: none;
     width: 100%;
     z-index: 1;
+  }
+  a.active {
+    color: orange;
+    //transform: translateY(-100%);
   }
 }

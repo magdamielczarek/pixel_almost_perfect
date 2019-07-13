@@ -15,24 +15,17 @@ class App extends Component{
         this.state = {
             gameMode: false,
             score: 0,
-            time: 5000,
+            time: 10000,
             switchGameMode: this.switchGameMode,
             changeScore: this.changeScore,
             openModal: '',
             openModalFunc: this.openModal,
             closeModalFunc: this.closeModal,
             resetGameFunc: this.resetGame,
-            restartGame: this.restartGame
-            // canvasRef: '',
-            // setCanvasRef: this.setCanvasRef,
+            tryAgain: false,
+            switchTryAgain: this.switchTryAgain
         };
     }
-
-    // setCanvasRef = (ref) => {
-    //     this.setState({
-    //         canvasRef: ref
-    //     });
-    // };
 
     switchGameMode = (state) => {
         this.setState(()=> {
@@ -87,7 +80,8 @@ class App extends Component{
         this.setState(()=>{
             return {
                 score: 0,
-                openModal: ''
+                openModal: '',
+                gameMode: false
             }
         });
     };

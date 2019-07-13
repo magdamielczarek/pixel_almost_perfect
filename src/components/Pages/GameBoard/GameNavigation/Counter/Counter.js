@@ -1,16 +1,17 @@
 import React from 'react';
 import classes from './Counter.module.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { pure } from 'recompose';
 
-const Counter = (props) => {
-    let time = props.time;
+const Counter = ({time,gameIsOn,openModalFunc,switchGameMode}) => {
 
     const [timer, setTime] = useState({
         minutes: Math.floor(time / 60000),
-        seconds: ((time % 60000) / 1000).toFixed(0)
+        seconds: ((time % 60000) / 1000).toFixed(0),
+        restarted: false
     });
 
-    if(!props.gameIsOn){
+    if(!gameIsOn){
         let interval = setInterval(()=>{
             time -= 1000;
             setTime({
@@ -19,7 +20,8 @@ const Counter = (props) => {
             });
             if(time === 0){
                 clearInterval(interval);
-                props.openModalFunc();
+                openModalFunc();
+                // switchGameMode(false);
             }
         },1000);
     }
@@ -33,4 +35,4 @@ const Counter = (props) => {
     );
 };
 
-export default Counter;
+export default pure(Counter);

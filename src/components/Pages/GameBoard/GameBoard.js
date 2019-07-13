@@ -13,8 +13,6 @@ class GameBoard extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            gameIsOn: false,
-            gameIsFinished: false,
             allImagesData: [],
             currentImageDescription: null,
             currentImagePath: ''
@@ -140,7 +138,10 @@ class GameBoard extends React.Component {
                     currentImagePath: randomImage,
                     currentImageDescription: imageDescription[0]
                 }
-            }, () => this.createNewImage(this.state.currentImagePath));
+            }, () => {
+                this.createNewImage(this.state.currentImagePath);
+                this.context.switchGameMode(true);
+            });
         }
     };
 
@@ -253,16 +254,10 @@ class GameBoard extends React.Component {
         // ctx.clearRect(pixel.positionLeft,pixel.positionTop,pixel.width,pixel.height);
     };
 
-    // endGame = () => {
-    //     this.setState({gameIsFinished: true});
-    // };
-    //
-    // restartGame = () => {
-    //     this.setState({
-    //         gameIsOn: true
-    //     });
-    // };
-
+    restartGame = () => {
+        this.gameConfig.imagesPassed = [];
+        this.showNextImage();
+    };
 
     render(){
         const gameBoardContent = (
@@ -282,7 +277,7 @@ class GameBoard extends React.Component {
                     return (
                         <>
                             <Backdrop visible={context.openModal}>
-                                <Communication gameIsFinished={this.state.gameIsFinished}/>
+                                <Communication resetGameFunc={context.resetGameFunc} restartGame={this.restartGame}/>
                             </Backdrop>
                             <GameNavigation scores={context.score}
                                             next={this.showNextImage}

@@ -39,10 +39,15 @@ const Communication = (props) => {
                             } else {
                                 return (
                                     <div className={classes.modal}>
-                                        <p>Unfortunately, our score is:</p>
+                                        <p>Unfortunately, your score is:</p>
                                         <div className={classes.scores}>{context.score}</div>
                                         <div style={{padding: '1rem'}}>
-                                            <Button text='try again' accent click={props.restartGame}/>
+                                            <Button text='try again' accent click={
+                                                ()=>{
+                                                    context.resetGameFunc();
+                                                    props.restartGame();
+                                                }
+                                            }/>
                                             <Button text='close' redirection='/' />
                                         </div>
                                     </div>

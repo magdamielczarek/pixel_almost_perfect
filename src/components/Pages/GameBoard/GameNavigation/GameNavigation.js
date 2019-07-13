@@ -17,6 +17,7 @@ const GameNavigation = (props) => {
                                     <Counter time={context.time}
                                              gameIsOn={context.gameMode}
                                              switchGameMode={context.switchGameMode}
+                                             tryAgain={context.tryAgain}
                                              openModalFunc={()=>context.openModalFunc('timeEnd')}/>
                                 </li>
                                 <li className={classes.gameNavigation__item}>

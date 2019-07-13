@@ -16,7 +16,7 @@ const Communication = (props) => {
                                     <p>Are you sure you want to end this game?</p>
                                     <div style={{padding: '1rem'}}>
                                         <Button text='yes' accent redirection='/'/>
-                                        <Button text='no' click={context.closeModal} />
+                                        <Button text='no' click={context.closeModalFunc} />
                                     </div>
                                 </div>
                             );

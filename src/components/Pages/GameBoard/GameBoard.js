@@ -42,7 +42,7 @@ class GameBoard extends React.Component {
     };
 
     componentDidMount = () => {
-        this.context.switchGameMode();
+        this.context.switchGameMode(true);
 
         axios.get('/images.json')
             .then(data => this.setState({
@@ -253,15 +253,15 @@ class GameBoard extends React.Component {
         // ctx.clearRect(pixel.positionLeft,pixel.positionTop,pixel.width,pixel.height);
     };
 
-    endGame = () => {
-        this.setState({gameIsFinished: true});
-    };
-
-    restartGame = () => {
-        this.setState({
-            gameIsOn: true
-        });
-    };
+    // endGame = () => {
+    //     this.setState({gameIsFinished: true});
+    // };
+    //
+    // restartGame = () => {
+    //     this.setState({
+    //         gameIsOn: true
+    //     });
+    // };
 
 
     render(){
@@ -282,9 +282,7 @@ class GameBoard extends React.Component {
                     return (
                         <>
                             <Backdrop visible={context.openModal}>
-                                <Communication gameIsFinished={this.state.gameIsFinished}
-                                               scores={context.score}
-                                />
+                                <Communication gameIsFinished={this.state.gameIsFinished}/>
                             </Backdrop>
                             <GameNavigation scores={context.score}
                                             next={this.showNextImage}

@@ -15,13 +15,14 @@ class App extends Component{
         this.state = {
             gameMode: false,
             score: 0,
-            time: 180000,
-            triggerHint: this.triggerHint,
+            time: 5000,
             switchGameMode: this.switchGameMode,
             changeScore: this.changeScore,
             openModal: '',
             openModalFunc: this.openModal,
-            closeModalFunc: this.closeModal
+            closeModalFunc: this.closeModal,
+            resetGameFunc: this.resetGame,
+            restartGame: this.restartGame
             // canvasRef: '',
             // setCanvasRef: this.setCanvasRef,
         };
@@ -33,10 +34,10 @@ class App extends Component{
     //     });
     // };
 
-    switchGameMode = () => {
-        this.setState((prevState)=> {
+    switchGameMode = (state) => {
+        this.setState(()=> {
             return {
-                gameMode: !prevState.gameMode
+                gameMode: state
             }
         });
     };
@@ -77,9 +78,17 @@ class App extends Component{
     };
 
     openModal = (type) => {
-        console.log(type);
         this.setState({
             openModal: type
+        });
+    };
+
+    resetGame = () => {
+        this.setState(()=>{
+            return {
+                score: 0,
+                openModal: ''
+            }
         });
     };
 

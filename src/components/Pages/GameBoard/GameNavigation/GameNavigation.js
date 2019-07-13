@@ -14,7 +14,10 @@ const GameNavigation = (props) => {
                             <ul>
                                 <li className={[classes.gameNavigation__item,classes.timer].join(' ')}>
                                     <span>TIME:</span>
-                                    <Counter time={context.time} gameIsOn={context.gameMode} switchGameMode={context.switchGameMode}/>
+                                    <Counter time={context.time}
+                                             gameIsOn={context.gameMode}
+                                             switchGameMode={context.switchGameMode}
+                                             openModalFunc={()=>context.openModalFunc('timeEnd')}/>
                                 </li>
                                 <li className={classes.gameNavigation__item}>
                                     SCORE: <span className={classes.score}>{context.score}</span>

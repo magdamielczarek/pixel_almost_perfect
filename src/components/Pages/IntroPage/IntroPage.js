@@ -1,11 +1,17 @@
 import React from 'react';
 import classes from './IntroPage.module.scss';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import GameContext from '../../Context/index';
 
 const IntroPage = () => {
+
+    const context = useContext(GameContext);
+
     useEffect(() => {
-        // zmien tryb gry
+        context.switchGameMode(false);
+        context.resetGameFunc();
     });
+
     return (
         <header className={classes.introWrapper}>
             <div className={[classes.batPixel,classes.batPixel__1].join(' ')}> </div>

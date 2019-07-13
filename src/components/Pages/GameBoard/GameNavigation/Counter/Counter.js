@@ -19,17 +19,17 @@ const Counter = (props) => {
             });
             if(time === 0){
                 clearInterval(interval);
-                props.switchGameMode();
+                props.openModalFunc();
             }
         },1000);
     }
 
     return (
         <span className={classes.counter}>
-                            <span><span>{timer.minutes < 10 ? 0 : null}</span>{timer.minutes}</span>
+            <span><span>{timer.minutes < 10 ? 0 : null}</span>{timer.minutes}</span>
                         :
-                            <span>{timer.seconds < 10 ? 0 : null}</span><span>{timer.seconds}</span>
-                        </span>
+            <span>{timer.seconds < 10 ? 0 : null}</span><span>{timer.seconds}</span>
+        </span>
     );
 };
 

@@ -25,6 +25,7 @@
 }
 
 .header {
+  backface-visibility: hidden;
   background-color: #DBC249;
   color: $primary-color-light;
   font-family: $secondary-font;

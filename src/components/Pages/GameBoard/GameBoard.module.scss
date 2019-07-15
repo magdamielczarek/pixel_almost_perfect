@@ -3,11 +3,10 @@
 .boardContainer {
   align-items: center;
   display: flex;
-  flex-flow: column nowrap;
-  height: 90%;
+  flex-flow: column;
   justify-content: center;
-  padding: 2rem 4rem .5rem;
-  postition: relative;
+  padding: 2rem;
+  position: relative;
   text-align: center;
 }
 

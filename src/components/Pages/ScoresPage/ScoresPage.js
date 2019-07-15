@@ -1,10 +1,12 @@
-// tabelka html z rankingiem wyników - w jaki sposób uwzględniać różny poziom trudnosci ?
-
 import React from 'react';
+import SummaryInfo from "./SummaryInfo/SummaryInfo";
+import classes from './ScoresPage.module.scss';
 
 const ScoresPage = () => {
     return (
-        <p>scores page</p>
+        <div className={classes.pageContainer}>
+            <SummaryInfo/>
+        </div>
     );
 };
 

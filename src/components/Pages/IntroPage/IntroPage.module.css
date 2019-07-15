@@ -22,6 +22,7 @@
 }
 
 .header {
+  backface-visibility: hidden;
   background-color: #DBC249;
   color: #F5F5F5;
   font-family: "Oswald", sans-serif;

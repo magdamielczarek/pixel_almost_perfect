@@ -7,13 +7,14 @@
   display: flex;
   flex-flow: column nowrap;
   font-family: $primary-font;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   max-height: 50%;
   min-height: 30%;
   justify-content: center;
   margin: auto;
   max-width: 600px;
   padding: 1rem;
+  text-align: center;
   width: 40%;
 }
 

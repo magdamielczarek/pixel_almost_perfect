@@ -7,4 +7,9 @@
   overflow: hidden;
 }
 
+.mainContent {
+  grid-area: mainContent;
+  overflow: hidden;
+}
+
 /*# sourceMappingURL=Layout.module.css.map */

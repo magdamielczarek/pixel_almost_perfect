@@ -8,7 +8,7 @@ const Layout = (props) => {
         <div className={classes.pageContainer}>
             {/*{this.state.gameMode ? <MainNavigation gameMode={this.state.gameMode}/> : <GameNavigation gameMode={this.state.gameMode}/>}*/}
             <MainNavigation gameMode={props.gameMode}/>
-            <main>{props.children}</main>
+            <main className={classes.mainContent}>{props.children}</main>
             <Footer/>
         </div>
     );

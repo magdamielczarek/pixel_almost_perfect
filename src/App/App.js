@@ -95,7 +95,7 @@ class App extends Component{
                             <Route path="/ustawienia" component={SettingsPage}/>
                             <Route path="/zasady" component={RulesPage}/>
                             <Route path="/gra" component={GameBoard} />
-                            <Route path="/rangking" component={ScoresPage}/>
+                            <Route path="/ranking" component={ScoresPage}/>
                             <Route path="/" exact component={IntroPage}/>
                         </Switch>
                     </Layout>

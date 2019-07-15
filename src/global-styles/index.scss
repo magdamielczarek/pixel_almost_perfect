@@ -1,11 +1,19 @@
 @import '_variables';
 
-html, body {
+* {
   box-sizing: border-box;
-  height: 100%;
-  font-size: 100%;
   margin: 0;
   padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: $primary-color-text;
+  font-family: $primary-font;
+  font-size: 100%;
 }
 
 #root {

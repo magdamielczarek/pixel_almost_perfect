@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState,useContext } from 'react';
+import axios from '../../../../axiosPreset';
 import classes from './Communication.module.scss';
 import Button from "../../../Layout/Button/Button";
 import StandardInput from "../../../Layout/FormComponents/StandardInput/StandardInput";
-import {Consumer} from "../../../Context";
+import GameContext, { Consumer } from "../../../Context";
 
 const Communication = (props) => {
+    const context = useContext(GameContext);
+
+    const [user,setUser] = useState({
+        userName: '',score: context.score
+    });
+
+    const submitScore = () => {
+        axios.post();
+    };
+
     return (
         <Consumer>
             {
@@ -13,7 +24,7 @@ const Communication = (props) => {
                         case 'closeConfirmation' :
                             return (
                                 <div className={classes.modal}>
-                                    <p>Are you sure you want to end this game?</p>
+                                    <p className={classes.text}>Are you sure you want to end this game?</p>
                                     <div style={{padding: '1rem'}}>
                                         <Button text='yes' accent redirection='/'/>
                                         <Button text='no' click={context.closeModalFunc} />
@@ -25,21 +36,21 @@ const Communication = (props) => {
                             if(context.score > 0){
                                 return (
                                     <div className={classes.modal}>
-                                        <p>Congratulations, your result:</p>
+                                        <p className={classes.text}>Congratulations, your result:</p>
                                         <div className={classes.scores}>{context.score}</div>
-                                        <form className={classes.registerResultForm}>
+                                        <form onSubmit={submitScore} className={classes.registerResultForm}>
                                             <StandardInput placeholder='Type your name or nickname here' />
+                                            <div style={{padding: '1rem'}}>
+                                                <Button text='register' accent />
+                                                <Button text='exit' redirection='/'/>
+                                            </div>
                                         </form>
-                                        <div style={{padding: '1rem'}}>
-                                            <Button text='register' accent click={props.endGame}/>
-                                            <Button text='exit' redirection='/'/>
-                                        </div>
                                     </div>
                                 )
                             } else {
                                 return (
                                     <div className={classes.modal}>
-                                        <p>Unfortunately, your score is:</p>
+                                        <p className={classes.text}>Unfortunately, your score is:</p>
                                         <div className={classes.scores}>{context.score}</div>
                                         <div style={{padding: '1rem'}}>
                                             <Button text='try again' accent click={

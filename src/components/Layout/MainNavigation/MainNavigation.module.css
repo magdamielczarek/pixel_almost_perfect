@@ -7,6 +7,7 @@
   padding: 0 2rem;
 }
 .mainNavigation ul {
+  align-items: center;
   display: inline-flex;
   height: 100%;
   list-style-type: none;
@@ -14,7 +15,7 @@
   padding: 0;
 }
 
-.logo > a, .logo a:active, .logo a:visited {
+.logo a, .logo a:active, .logo a:visited {
   color: #F5F5F5;
   font-family: "Oswald", sans-serif;
   font-size: 1.8rem;
@@ -23,6 +24,8 @@
 }
 
 .mainNavigation__link {
+  align-items: center;
+  display: flex;
   font-family: "Oswald", sans-serif;
   font-size: 1.5rem;
   font-weight: bold;
@@ -46,7 +49,6 @@
 .mainNavigation__link a, .mainNavigation__link a:visited {
   color: #F5F5F5;
   display: block;
-  height: 100%;
   left: 0;
   padding: 0 1.5rem;
   position: relative;

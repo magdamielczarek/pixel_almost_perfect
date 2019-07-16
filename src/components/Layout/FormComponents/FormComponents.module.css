@@ -10,10 +10,14 @@
   width: 30%;
 }
 .fieldContainer .input, .fieldContainer .select, .fieldContainer .textarea {
+  color: #212121;
   border-radius: 4px;
-  border: 1px solid #878787;
+  border: 1px solid #212121;
   padding: 0.3rem;
   width: 60%;
+}
+.fieldContainer .inputNumber {
+  width: 90%;
 }
 
 /*# sourceMappingURL=FormComponents.module.css.map */

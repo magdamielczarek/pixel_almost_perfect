@@ -10,7 +10,9 @@ const StandardInput = (props) => {
                    name={name}
                    value={value}
                    onChange={change}
-                   placeholder={placeholder} className={label ? classes['input'] : classes['input--fullWidth']}/>
+                   style={{ width: label ? '60%' : '100%'}}
+                   placeholder={placeholder}
+                   className={classes.input}/>
         </div>
     );
 };

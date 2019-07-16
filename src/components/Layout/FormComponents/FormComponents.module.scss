@@ -11,9 +11,13 @@
     width: 30%;
   }
   .input, .select, .textarea {
+    color: $primary-color-text;
     border-radius: $bradius;
-    border: 1px solid lighten($primary-color-text,40%);
+    border: 1px solid $primary-color-text;
     padding: .3rem;
     width: 60%;
+  }
+  .inputNumber {
+    width: 90%;
   }
 }

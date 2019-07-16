@@ -1,5 +1,12 @@
 @import '../../../global-styles/_variables';
 
+.wrapper {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
 .ldsFacebook {
   display: inline-block;
   position: relative;

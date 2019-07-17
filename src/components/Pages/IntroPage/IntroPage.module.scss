@@ -34,7 +34,7 @@
   padding: .5rem 1rem;
   text-align: center;
   width: 30%;
-  animation: pixelAppear .75s 4s;
+  animation: pixelAppear .75s 1s;
   animation-fill-mode: forwards;
 }
 
@@ -51,7 +51,7 @@
     background-color: lighten(#305F99,10%);
     left: 5%;
     top: 12%;
-    animation: pixelAppear 1s;
+    animation: pixelAppear .5s;
     animation-fill-mode: forwards;
   }
   &.batPixel__2 {
@@ -59,7 +59,7 @@
     left: 40%;
     opacity: 0;
     top: 20%;
-    animation: pixelAppear 1s 1s;
+    animation: pixelAppear .5s .5s;
     animation-fill-mode: forwards;
   }
   &.batPixel__3 {
@@ -67,7 +67,7 @@
     left: 3%;
     bottom: 15%;
     opacity: 0;
-    animation: pixelAppear 1s 2s;
+    animation: pixelAppear .5s .6s;
     animation-fill-mode: forwards;
   }
   &.batPixel__4 {
@@ -75,7 +75,7 @@
     left: 25%;
     bottom: 20%;
     opacity: 0;
-    animation: pixelAppear 1s 3s;
+    animation: pixelAppear .5s .8s;
     animation-fill-mode: forwards;
   }
   &.batPixel__5 {
@@ -83,7 +83,7 @@
     opacity: 0;
     right: 30%;
     top: 14%;
-    animation: pixelAppear 1s 4s;
+    animation: pixelAppear .5s 1s;
     animation-fill-mode: forwards;
   }
 }

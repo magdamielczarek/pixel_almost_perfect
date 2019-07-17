@@ -256,13 +256,12 @@ class GameBoard extends React.Component {
         this.setState((prevState) => {
             return {
                 hintStyles: {
-                    display: 'block',
                     opacity: 1,
-                    width: pixel.width + 20,
-                    height: pixel.height + 20,
-                    top: pixel.positionTop - 10 + this.refs.canvas.offsetTop,
-                    left: pixel.positionLeft - 10 + this.refs.canvas.offsetLeft,
-                    transform: 'scale(1.5)'
+                    width: pixel.width,
+                    height: pixel.height,
+                    top: pixel.positionTop + this.refs.canvas.offsetTop,
+                    left: pixel.positionLeft + this.refs.canvas.offsetLeft,
+                    transform: 'scale(3)'
                 }
             }
         });
@@ -270,10 +269,9 @@ class GameBoard extends React.Component {
             this.setState((prevState) => {
                 return {
                     hintStyles: {
-                        display: 'none',
                         opacity: 0,
-                        width: pixel.width + 20,
-                        height: pixel.height + 20,
+                        width: pixel.width,
+                        height: pixel.height,
                         top: 0,
                         left: 0,
                         transform: 'scale(1)'

@@ -18,7 +18,7 @@
 }
 
 .logo {
-  a, a:active, a:visited {
+  a {
     color: $primary-color-light;
     font-family: $secondary-font;
     font-size: 1.8rem;
@@ -60,7 +60,7 @@
     z-index: 1;
   }
   a.active {
-    color: orange;
-    //transform: translateY(-100%);
+    background-color: $accent-color;
   }
 }
+

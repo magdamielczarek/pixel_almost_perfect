@@ -21,7 +21,7 @@ const IntroPage = () => {
             <div className={[classes.batPixel,classes.batPixel__5].join(' ')}> </div>
             <h1 className={classes.header}>
                 <span className={classes.comment}>find </span>
-                Pixels
+                Pixel
                 <span className={classes.comment}> almost </span>
                 Perfect
             </h1>

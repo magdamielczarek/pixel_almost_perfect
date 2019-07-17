@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useState,useEffect } from 'react';
 import { Transition } from 'react-transition-group';
 import classes from './Settings.module.scss';
@@ -71,7 +71,7 @@ const SettingsPage = () => {
                 <Transition in={showElements.elementsAreVisible}
                             timeout={100}>
                     {(state) => (
-                        <>
+                        <Fragment>
                             <div className={classes.sections}>
                                 <section className={classes.settingsSection}
                                          style={{
@@ -129,7 +129,7 @@ const SettingsPage = () => {
                                 <Button text='save' accent />
                                 <Button text='cancel' />
                             </div>
-                        </>
+                        </Fragment>
                     )}
                 </Transition>
             </form>

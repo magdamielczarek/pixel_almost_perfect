@@ -15,7 +15,7 @@
   padding: 0;
 }
 
-.logo a, .logo a:active, .logo a:visited {
+.logo a {
   color: #F5F5F5;
   font-family: "Oswald", sans-serif;
   font-size: 1.8rem;
@@ -57,7 +57,7 @@
   z-index: 1;
 }
 .mainNavigation__link a.active {
-  color: orange;
+  background-color: #FF5252;
 }
 
 /*# sourceMappingURL=MainNavigation.module.css.map */

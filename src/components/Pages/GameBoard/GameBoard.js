@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import classes from './GameBoard.module.scss';
 import GameNavigation from './GameNavigation/GameNavigation';
 import ImageDescription from './ImageDescription/ImageDescription';
@@ -22,7 +22,7 @@ class GameBoard extends React.Component {
     };
 
     gameConfig = {
-        punctationUnit: 1,
+        punctUnit: 1,
         xNumber: 20,
         yNumber: 20,
         rectWidth: 0,
@@ -175,7 +175,7 @@ class GameBoard extends React.Component {
                 ctx.fillStyle = '#FF5252';
                 ctx.fill();
                 this.gameConfig.activeCords.splice(index,1);
-                this.context.changeScore('addition',this.gameConfig.punctationUnit);
+                this.context.changeScore('addition',this.gameConfig.punctUnit);
             }
         });
         if(!this.gameConfig.activeCords.length){
@@ -313,7 +313,7 @@ class GameBoard extends React.Component {
             <Consumer>
                 {(context) => {
                     return (
-                        <>
+                        <Fragment>
                             <Backdrop visible={context.openModal}>
                                 <Communication gameConfig={this.gameConfig}
                                                resetGameFunc={context.resetGameFunc}
@@ -328,7 +328,7 @@ class GameBoard extends React.Component {
                             <div className={classes.boardContainer}>
                                 {this.state.currentImagePath ? gameBoardContent : <Spinner />}
                             </div>
-                        </>);
+                        </Fragment>);
                     }
                 }
             </Consumer>

@@ -12,7 +12,7 @@
 
 .introWrapper {
   align-items: center;
-  background-image: url('../../../assets/images/id2_Vincent_van_Gogh_-_Wheatfield_with_crows.jpg');
+  background-image: url('../../../assets/bg_image.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -26,8 +26,8 @@
 
 .header {
   backface-visibility: hidden;
-  background-color: #DBC249;
-  color: $primary-color-light;
+  background-color: $primary-color-light;
+  color: $accent-color;
   font-family: $secondary-font;
   font-size: 2rem;
   opacity: 0;
@@ -39,7 +39,7 @@
 }
 
 .comment {
-  color: #212121;
+  color: $primary-text-color;
 }
 
 .batPixel {
@@ -48,14 +48,14 @@
   position: absolute;
   width: 3rem;
   &.batPixel__1 {
-    background-color: lighten(#305F99,10%);
+    background-color: $primary-color-dark;
     left: 5%;
     top: 12%;
     animation: pixelAppear .5s;
     animation-fill-mode: forwards;
   }
   &.batPixel__2 {
-    background-color: lighten(#336097,10%);
+    background-color: lighten($primary-color-dark,40%);
     left: 40%;
     opacity: 0;
     top: 20%;
@@ -63,7 +63,7 @@
     animation-fill-mode: forwards;
   }
   &.batPixel__3 {
-    background-color: #9F8559;
+    background-color: $primary-color-light;
     left: 3%;
     bottom: 15%;
     opacity: 0;
@@ -71,7 +71,7 @@
     animation-fill-mode: forwards;
   }
   &.batPixel__4 {
-    background-color: #A28113;
+    background-color: $primary-color-dark;
     left: 25%;
     bottom: 20%;
     opacity: 0;
@@ -79,7 +79,7 @@
     animation-fill-mode: forwards;
   }
   &.batPixel__5 {
-    background-color: #305F99;
+    background-color: $primary-color;
     opacity: 0;
     right: 30%;
     top: 14%;

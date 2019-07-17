@@ -7,6 +7,7 @@ import Spinner from "../../Layout/Spinner/Spinner";
 import Backdrop from "../../Layout/Backdrop/Backdrop";
 import Communication from "./Communication/Communication";
 import GameContext, { Consumer } from '../../Context/index';
+import HintArea from "./HintArea/HintArea";
 
 class GameBoard extends React.Component {
 
@@ -15,7 +16,8 @@ class GameBoard extends React.Component {
         this.state = {
             allImagesData: [],
             currentImageDescription: null,
-            currentImagePath: ''
+            currentImagePath: '',
+            hintStyles: {}
         };
     };
 
@@ -41,6 +43,7 @@ class GameBoard extends React.Component {
 
     componentDidMount = () => {
         this.context.switchGameMode(true);
+        this.context.closeModalFunc();
 
         axios.get('/images.json')
             .then(data => this.setState({
@@ -83,6 +86,10 @@ class GameBoard extends React.Component {
 
         this.gameConfig.rectHeight = image.height / this.gameConfig.yNumber;
         this.gameConfig.rectWidth = image.width / this.gameConfig.xNumber;
+
+        this.setState({
+            hintStyles: { width: this.gameConfig.rectWidth, height: this.gameConfig.rectHeight }
+        });
     };
 
     drawGrid = (imageObj,ctx) => {
@@ -119,7 +126,6 @@ class GameBoard extends React.Component {
                 this.gameConfig.yNumber);
         // },500);
         this.drawGrid(image,ctx);
-        // this.context.setCanvasRef(this.refs.canvas);
     };
 
     setRandomImage = () => {
@@ -246,10 +252,35 @@ class GameBoard extends React.Component {
     };
 
     showHint = () => {
-        const ctx = this.refs.canvas.getContext('2d');
         const pixel = this.gameConfig.activeCords[0];
-        ctx.rect(pixel.positionLeft,pixel.positionTop,pixel.width,pixel.height);
-        ctx.fill();
+        this.setState((prevState) => {
+            return {
+                hintStyles: {
+                    display: 'block',
+                    opacity: 1,
+                    width: pixel.width + 20,
+                    height: pixel.height + 20,
+                    top: pixel.positionTop - 10 + this.refs.canvas.offsetTop,
+                    left: pixel.positionLeft - 10 + this.refs.canvas.offsetLeft,
+                    transform: 'scale(1.5)'
+                }
+            }
+        });
+        setTimeout(() => {
+            this.setState((prevState) => {
+                return {
+                    hintStyles: {
+                        display: 'none',
+                        opacity: 0,
+                        width: pixel.width + 20,
+                        height: pixel.height + 20,
+                        top: 0,
+                        left: 0,
+                        transform: 'scale(1)'
+                    }
+                }
+            });
+        },1500);
         this.context.changeScore('subtraction',5);
         // ctx.clearRect(pixel.positionLeft,pixel.positionTop,pixel.width,pixel.height);
     };
@@ -263,9 +294,10 @@ class GameBoard extends React.Component {
         const gameBoardContent = (
             <>
                 <div ref="canvasWrapper" className={classes.canvasWrapper}>
-                <canvas ref="canvas"
-                        className={classes.img}
-                        onClick={this.markPixel}> </canvas>
+                    <HintArea style={this.state.hintStyles} />
+                    <canvas ref="canvas"
+                            className={classes.img}
+                            onClick={this.markPixel}> </canvas>
                 </div>
                 {this.state.currentImageDescription ? <ImageDescription description={this.state.currentImageDescription}/> : null}
             </>

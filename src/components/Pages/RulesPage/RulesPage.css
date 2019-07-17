@@ -1,5 +1,13 @@
 .rulesContainer {
+  align-items: center;
+  background-color: #F5F5F5;
+  display: flex;
+  justify-content: center;
+  height: 100%;
   padding: 2rem;
+}
+.rulesContainer h2 {
+  margin-bottom: 2rem;
 }
 
 /*# sourceMappingURL=RulesPage.css.map */

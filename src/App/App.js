@@ -43,7 +43,7 @@ class App extends Component{
                 });
                 break;
 
-            case 'deletion' :
+            case 'subtraction' :
                 this.setState((prevState)=>{
                     if(prevState.score > number){
                         return {score: prevState.score - number}

@@ -24,6 +24,10 @@
     padding: .8rem;
   }
   tbody {
+    tr:first-of-type {
+      background-color: lighten($primary-color-dark,20%);
+      color: $primary-color-light;
+    }
     tr:nth-of-type(2n) {
       background-color: lighten($primary-color,20%);
     }

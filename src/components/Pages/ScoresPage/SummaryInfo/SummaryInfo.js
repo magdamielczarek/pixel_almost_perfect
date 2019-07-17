@@ -11,7 +11,11 @@ const SummaryInfo = () => {
 
     useEffect(()=> {
         axios.get('/scores.json')
-            // .then(data => setScores({scores: data.data.scores}))
+            .then(data => setScores({
+                scores: data.data.scores.sort((a,b) => {
+                    return a.score < b.score ? 1 : -1;
+                })
+            }))
             .catch((err)=>console.log(err));
     },[]);
 

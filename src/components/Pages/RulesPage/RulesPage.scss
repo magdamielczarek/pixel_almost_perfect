@@ -1,5 +1,13 @@
 @import '../../../global-styles/_variables';
 
 .rulesContainer {
+  align-items: center;
+  background-color: $primary-color-light;
+  display: flex;
+  justify-content: center;
+  height: 100%;
   padding: 2rem;
+  h2 {
+    margin-bottom: 2rem;
+  }
 }

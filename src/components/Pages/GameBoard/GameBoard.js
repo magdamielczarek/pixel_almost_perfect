@@ -167,7 +167,7 @@ class GameBoard extends React.Component {
             }
         });
         if(!this.gameConfig.activeCords.length){
-            this.context.changeScore('addition',this.gameConfig.pixelsToCheckNumber * 2);
+            this.context.changeScore('addition',this.gameConfig.pixelsToCheckNumber);
             this.resetCanvas();
             this.setRandomImage();
         }
@@ -250,7 +250,7 @@ class GameBoard extends React.Component {
         const pixel = this.gameConfig.activeCords[0];
         ctx.rect(pixel.positionLeft,pixel.positionTop,pixel.width,pixel.height);
         ctx.fill();
-        this.context.changeScore('deletion',5);
+        this.context.changeScore('subtraction',5);
         // ctx.clearRect(pixel.positionLeft,pixel.positionTop,pixel.width,pixel.height);
     };
 

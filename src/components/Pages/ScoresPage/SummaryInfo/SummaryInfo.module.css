@@ -22,6 +22,10 @@
 .scoresTable th {
   padding: 0.8rem;
 }
+.scoresTable tbody tr:first-of-type {
+  background-color: #949494;
+  color: #F5F5F5;
+}
 .scoresTable tbody tr:nth-of-type(2n) {
   background-color: #d1d1d1;
 }

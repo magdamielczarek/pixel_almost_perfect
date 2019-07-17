@@ -322,7 +322,9 @@ class GameBoard extends React.Component {
                             <GameNavigation scores={context.score}
                                             next={this.showNextImage}
                                             showHint={this.showHint}
-                                            time={context.time} />
+                                            time={context.time}
+                                            paintingsLeft={this.gameConfig.imagesPassed.length}
+                                            allPaintings={this.state.allImagesData.data ? this.state.allImagesData.data.length : 0} />
                             <div className={classes.boardContainer}>
                                 {this.state.currentImagePath ? gameBoardContent : <Spinner />}
                             </div>

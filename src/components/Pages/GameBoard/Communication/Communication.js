@@ -4,6 +4,7 @@ import classes from './Communication.module.scss';
 import Button from "../../../Layout/Button/Button";
 import StandardInput from "../../../Layout/FormComponents/StandardInput/StandardInput";
 import GameContext, { Consumer } from "../../../Context";
+import {withRouter} from "react-router";
 
 const Communication = (props) => {
     const context = useContext(GameContext);
@@ -26,7 +27,9 @@ const Communication = (props) => {
             }
         };
         axios.post('/scores/scores.json', data)
-            .then(response => console.log(response))
+            .then(() => context.closeModalFunc())
+            .then(() => context.resetGameFunc())
+            .then(() => props.history.push('/ranking'))
             .catch(err => console.log(err));
     };
 
@@ -96,4 +99,4 @@ const Communication = (props) => {
     );
 };
 
-export default Communication;
+export default withRouter(Communication);

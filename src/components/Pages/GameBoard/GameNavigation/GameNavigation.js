@@ -24,6 +24,9 @@ const GameNavigation = (props) => {
                                     SCORE: <span className={classes.score}>{context.score}</span>
                                 </li>
                                 <li className={classes.gameNavigation__item}>
+                                    PAINTINGS: <span className={classes.score}>{props.paintingsLeft}/{props.allPaintings}</span>
+                                </li>
+                                <li className={classes.gameNavigation__item}>
                                     <Button text='next img' accent click={props.next} />
                                 </li>
                                 <li className={classes.gameNavigation__item}>

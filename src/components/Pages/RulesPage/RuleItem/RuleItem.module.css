@@ -8,9 +8,10 @@
   display: flex;
   flex-flow: column;
   flex: 1;
-  justify-content: flex-end;
-  min-height: 60vh;
+  justify-content: center;
+  min-height: 50vh;
   margin: 0.8rem;
+  max-height: 60vh;
   max-width: 400px;
   padding: 5rem 2rem 2rem;
   position: relative;

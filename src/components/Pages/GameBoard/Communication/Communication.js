@@ -9,11 +9,33 @@ const Communication = (props) => {
     const context = useContext(GameContext);
 
     const [user,setUser] = useState({
-        userName: '',score: context.score
+        userName: ''
     });
 
-    const submitScore = () => {
-        axios.post();
+    const submitScore = (event) => {
+        event.preventDefault();
+        console.log(props);
+        const data = {
+            name: user.userName ? user.userName : savedUserName ? savedUserName : 'Incognito',
+            score: context.score,
+            difficulty: {
+                time: context.time,
+                xAxis: props.gameConfig.xNumber,
+                yAxis: props.gameConfig.yNumber,
+                contrast: props.gameConfig.difficulty
+            }
+        };
+        axios.post('/scores/scores.json', data)
+            .then(response => console.log(response))
+            .catch(err => console.log(err));
+    };
+
+    const savedUserName = localStorage.getItem('username');
+
+    const handleUserNameChange = (event) => {
+        setUser({
+            userName: event.target.value
+        });
     };
 
     return (
@@ -39,9 +61,10 @@ const Communication = (props) => {
                                         <p className={classes.text}>Congratulations, your result:</p>
                                         <div className={classes.scores}>{context.score}</div>
                                         <form onSubmit={submitScore} className={classes.registerResultForm}>
-                                            <StandardInput placeholder='Type your name or nickname here' />
+                                            <StandardInput change={handleUserNameChange}
+                                                           placeholder={savedUserName ? savedUserName : 'Type your name here'} />
                                             <div style={{padding: '1rem'}}>
-                                                <Button text='register' accent />
+                                                <Button text='register' accent click={submitScore}/>
                                                 <Button text='exit' redirection='/'/>
                                             </div>
                                         </form>

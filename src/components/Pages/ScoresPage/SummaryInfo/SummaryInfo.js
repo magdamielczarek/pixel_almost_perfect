@@ -31,7 +31,7 @@ const SummaryInfo = () => {
             <tbody>
             {scores.scores.map((player) => {
                 return (
-                    <tr key={player.id}>
+                    <tr key={player.name}>
                         <td>{player.name}</td>
                         <td>{player.score}</td>
                         <td>

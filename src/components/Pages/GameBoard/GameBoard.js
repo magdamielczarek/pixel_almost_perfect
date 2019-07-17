@@ -45,6 +45,8 @@ class GameBoard extends React.Component {
         this.context.switchGameMode(true);
         this.context.closeModalFunc();
 
+        // check local storage
+
         axios.get('/images.json')
             .then(data => this.setState({
                 allImagesData: data
@@ -152,8 +154,12 @@ class GameBoard extends React.Component {
     };
 
     showNextImage = () => {
-        this.resetCanvas();
-        this.setRandomImage();
+        if(this.gameConfig.imagesPassed.length >= this.state.allImagesData.data.length){
+            return;
+        } else {
+            this.resetCanvas();
+            this.setRandomImage();
+        }
     };
 
     markPixel = (e) => {
@@ -256,6 +262,7 @@ class GameBoard extends React.Component {
         this.setState((prevState) => {
             return {
                 hintStyles: {
+                    display: 'block',
                     opacity: 1,
                     width: pixel.width,
                     height: pixel.height,
@@ -269,6 +276,7 @@ class GameBoard extends React.Component {
             this.setState((prevState) => {
                 return {
                     hintStyles: {
+                        display: 'none',
                         opacity: 0,
                         width: pixel.width,
                         height: pixel.height,
@@ -307,7 +315,9 @@ class GameBoard extends React.Component {
                     return (
                         <>
                             <Backdrop visible={context.openModal}>
-                                <Communication resetGameFunc={context.resetGameFunc} restartGame={this.restartGame}/>
+                                <Communication gameConfig={this.gameConfig}
+                                               resetGameFunc={context.resetGameFunc}
+                                               restartGame={this.restartGame}/>
                             </Backdrop>
                             <GameNavigation scores={context.score}
                                             next={this.showNextImage}

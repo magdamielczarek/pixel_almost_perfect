@@ -11,7 +11,7 @@ const SettingsPage = () => {
 
     const [userSettings,setUserSettings] = useState({
         username: '',
-        gameTime: 180000,
+        gameTime: 3,
         xNumber: 20,
         yNumber: 20,
         contrast: 'low'
@@ -20,6 +20,8 @@ const SettingsPage = () => {
     const [showElements,setShowElements] = useState({
         elementsAreVisible: false
     });
+
+    const [validation,setValidation] = useState({});
 
     const pixelsContrast = [
         {'id': 1, 'value': ''},
@@ -39,12 +41,20 @@ const SettingsPage = () => {
 
     const handleDecrement = (event,minValue) => {
         const property = event.target.getAttribute('inputname');
-        setUserSettings(prevState => ({...prevState, [property]: Number(prevState[property]) - 1}));
+        if(Number(userSettings[property] <= minValue)){
+            return;
+        } else {
+            setUserSettings(prevState => ({...prevState, [property]: Number(prevState[property]) - 1}));
+        }
     };
 
     const handleIncrement = (event,maxValue) => {
         const property = event.target.getAttribute('inputname');
-        setUserSettings(prevState => ({...prevState, [property]: Number(prevState[property]) + 1}));
+        if(Number(userSettings[property] >= maxValue)){
+            return;
+        } else {
+            setUserSettings(prevState => ({...prevState, [property]: Number(prevState[property]) + 1}));
+        }
     };
 
     const submitSettings = (event) => {
@@ -88,22 +98,22 @@ const SettingsPage = () => {
                                                  min="1" max="10"
                                                  value={userSettings.gameTime}
                                                  change={handleFieldChange}
-                                                 increment={handleIncrement}
-                                                 decrement={handleDecrement} />
+                                                 increment={(event) => {handleIncrement(event,10)}}
+                                                 decrement={(event) => {handleDecrement(event,1)}} />
                                     <InputNumber label="X-axis size:"
                                                  name='xNumber'
                                                  min="10" max="30"
                                                  value={userSettings.xNumber}
                                                  change={handleFieldChange}
-                                                 increment={handleIncrement}
-                                                 decrement={handleDecrement} />
+                                                 increment={(event) => {handleIncrement(event,30)}}
+                                                 decrement={(event) => {handleDecrement(event,10)}} />
                                     <InputNumber label="Y-axis size:"
                                                  name='yNumber'
                                                  min="10" max="30"
                                                  value={userSettings.yNumber}
                                                  change={handleFieldChange}
-                                                 increment={handleIncrement}
-                                                 decrement={handleDecrement} />
+                                                 increment={(event) => {handleIncrement(event,30)}}
+                                                 decrement={(event) => {handleDecrement(event,10)}} />
                                     <Select label="Pixel contrast:"
                                             name='contrast'
                                             value={userSettings.contrast}

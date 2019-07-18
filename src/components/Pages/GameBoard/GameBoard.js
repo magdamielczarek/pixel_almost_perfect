@@ -6,7 +6,7 @@ import axios from '../../../axiosPreset';
 import Spinner from "../../Layout/Spinner/Spinner";
 import Backdrop from "../../Layout/Backdrop/Backdrop";
 import Communication from "./Communication/Communication";
-import GameContext, { Consumer } from '../../Context/index';
+import GameContext from '../../Context/index';
 import HintArea from "./HintArea/HintArea";
 
 class GameBoard extends React.Component {
@@ -23,12 +23,9 @@ class GameBoard extends React.Component {
 
     gameConfig = {
         punctUnit: 1,
-        xNumber: 20,
-        yNumber: 20,
         rectWidth: 0,
         rectHeight: 0,
         pixelsToCheckNumber: 5,
-        difficulty: 'medium',
         pixelsToCheckCords: [],
         activeCords: [],
         images: [],
@@ -44,8 +41,6 @@ class GameBoard extends React.Component {
     componentDidMount = () => {
         this.context.switchGameMode(true);
         this.context.closeModalFunc();
-
-        // check local storage
 
         axios.get('/images.json')
             .then(data => this.setState({
@@ -84,8 +79,8 @@ class GameBoard extends React.Component {
         canvas.setAttribute('width',`${image.width}px`);
         canvas.setAttribute('height',`${image.height}px`);
 
-        this.gameConfig.rectHeight = image.height / this.gameConfig.yNumber;
-        this.gameConfig.rectWidth = image.width / this.gameConfig.xNumber;
+        this.gameConfig.rectHeight = image.height / this.context.yNumber;
+        this.gameConfig.rectWidth = image.width / this.context.xNumber;
 
         this.setState({
             hintStyles: { width: this.gameConfig.rectWidth, height: this.gameConfig.rectHeight }
@@ -122,8 +117,8 @@ class GameBoard extends React.Component {
                 canvas,
                 ctx,
                 this.gameConfig.pixelsToCheckNumber,
-                this.gameConfig.xNumber,
-                this.gameConfig.yNumber);
+                this.context.xNumber,
+                this.context.yNumber);
         // },500);
         this.drawGrid(image,ctx);
     };
@@ -198,6 +193,19 @@ class GameBoard extends React.Component {
     };
 
     collectRandomRects = (canvas,context,pixelsToCheckNumber,xCounter,yCounter) => {
+        const contrastRatio = (function(contrast) {
+            switch(contrast) {
+                case 'low':
+                    return 4;
+                case 'medium':
+                    return 3;
+                case 'high':
+                    return 2.5;
+                default:
+                    return 4;
+            }
+        })(this.context.contrast);
+
         for(let i=0;i<pixelsToCheckNumber;i++){
             this.gameConfig.pixelsToCheckCords.push({
                 x: this.returnCustomNumber(xCounter),
@@ -236,9 +244,9 @@ class GameBoard extends React.Component {
                     sumBlue += imageData.data[i+2];
                 }
 
-                avRed = Math.round(sumRed/(length/4));
-                avGreen = Math.round(sumGreen/(length/4));
-                avBlue = Math.round(sumBlue/(length/4));
+                avRed = Math.round(sumRed/(length/contrastRatio));
+                avGreen = Math.round(sumGreen/(length/contrastRatio));
+                avBlue = Math.round(sumBlue/(length/contrastRatio));
 
                 for(let i = 0; i < length;i=i+4){
                     imageData.data[i] = avRed;
@@ -286,7 +294,6 @@ class GameBoard extends React.Component {
             });
         },1500);
         this.context.changeScore('subtraction',5);
-        // ctx.clearRect(pixel.positionLeft,pixel.positionTop,pixel.width,pixel.height);
     };
 
     restartGame = () => {
@@ -308,29 +315,23 @@ class GameBoard extends React.Component {
         );
 
         return (
-            <Consumer>
-                {(context) => {
-                    return (
-                        <Fragment>
-                            <Backdrop visible={context.openModal}>
-                                <Communication gameConfig={this.gameConfig}
-                                               resetGameFunc={context.resetGameFunc}
-                                               restartGame={this.restartGame}/>
-                            </Backdrop>
-                            <GameNavigation scores={context.score}
-                                            next={this.showNextImage}
-                                            showHint={this.showHint}
-                                            time={context.time}
-                                            paintingsLeft={this.gameConfig.imagesPassed.length}
-                                            allPaintings={this.state.allImagesData ? this.state.allImagesData.length : 0} />
-                            <div className={classes.boardContainer}>
-                                {this.state.currentImagePath ? gameBoardContent : <Spinner />}
-                            </div>
-                        </Fragment>);
-                    }
-                }
-            </Consumer>
-        );
+            <Fragment>
+                <Backdrop visible={this.context.openModal}>
+                    <Communication gameConfig={this.gameConfig}
+                                   resetGameFunc={this.context.resetGameFunc}
+                                   restartGame={this.restartGame}/>
+                </Backdrop>
+                <GameNavigation scores={this.context.score}
+                                next={this.showNextImage}
+                                showHint={this.showHint}
+                                time={this.context.gameTime}
+                                paintingsLeft={this.gameConfig.imagesPassed.length}
+                                allPaintings={this.state.allImagesData ? this.state.allImagesData.length : 0} />
+                <div className={classes.boardContainer}>
+                    {this.state.currentImagePath ? gameBoardContent : <Spinner />}
+                </div>
+            </Fragment>
+        )
     }
 }
 

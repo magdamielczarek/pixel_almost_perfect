@@ -14,7 +14,7 @@ const GameNavigation = (props) => {
                             <ul>
                                 <li className={[classes.gameNavigation__item,classes.timer].join(' ')}>
                                     <span>TIME:</span>
-                                    <Counter time={context.time}
+                                    <Counter time={context.gameTime}
                                              gameIsOn={context.gameMode}
                                              switchGameMode={context.switchGameMode}
                                              tryAgain={context.tryAgain}

@@ -15,17 +15,36 @@ class App extends Component{
         this.state = {
             gameMode: false,
             score: 0,
-            time: 180000,
+            gameTime: 3,
+            xNumber: 30,
+            yNumber: 20,
+            contrast: 'low',
+            username: '',
             switchGameMode: this.switchGameMode,
             changeScore: this.changeScore,
             openModal: '',
             openModalFunc: this.openModal,
             closeModalFunc: this.closeModal,
             resetGameFunc: this.resetGame,
-            tryAgain: false,
-            switchTryAgain: this.switchTryAgain
+            checkLocalStorage: this.checkLocalStorage
         };
     }
+
+    componentDidMount() {
+        this.checkLocalStorage();
+    }
+
+    checkLocalStorage = () => {
+        let propsToUpdate = {};
+        for (let property in localStorage) {
+            if (this.state[property] !== undefined && localStorage.getItem(property)) {
+                propsToUpdate[property] = localStorage.getItem(property);
+            }
+        }
+        this.setState(() => {
+            return {...propsToUpdate}
+        });
+    };
 
     switchGameMode = (state) => {
         this.setState(()=> {

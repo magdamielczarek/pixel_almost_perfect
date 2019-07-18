@@ -1,27 +1,28 @@
 import React, { Fragment } from 'react';
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useContext } from 'react';
 import { Transition } from 'react-transition-group';
 import classes from './Settings.module.scss';
 import InputNumber from "../../Layout/FormComponents/InputNumber/InputNumber";
 import StandardInput from "../../Layout/FormComponents/StandardInput/StandardInput";
 import Select from "../../Layout/FormComponents/Select/Select";
 import Button from "../../Layout/Button/Button";
+import GameContext from "../../Context";
 
 const SettingsPage = () => {
 
+    const context = useContext(GameContext);
+
     const [userSettings,setUserSettings] = useState({
-        username: '',
-        gameTime: 3,
-        xNumber: 20,
-        yNumber: 20,
-        contrast: 'low'
+        username: context.username,
+        gameTime: context.gameTime,
+        xNumber: context.xNumber,
+        yNumber: context.yNumber,
+        contrast: context.contrast
     });
 
     const [showElements,setShowElements] = useState({
         elementsAreVisible: false
     });
-
-    const [validation,setValidation] = useState({});
 
     const pixelsContrast = [
         {'id': 1, 'value': ''},
@@ -31,7 +32,16 @@ const SettingsPage = () => {
     ];
 
     useEffect(() => {
-        setShowElements({elementsAreVisible: true})
+        if(localStorage.length){
+            let localStorageCopy = {...setUserSettings};
+            for(let property in userSettings) {
+                if(localStorage.getItem(property) !== ''){
+                    localStorageCopy.property = localStorage.getItem(property);
+                }
+            }
+            setUserSettings({...localStorage});
+        }
+        setShowElements({elementsAreVisible: true});
     }, []);
 
     const handleFieldChange = (event) => {
@@ -39,21 +49,19 @@ const SettingsPage = () => {
         setUserSettings(prevState => ({...prevState, [event.target.name]: event.target.value}));
     };
 
-    const handleDecrement = (event,minValue) => {
-        const property = event.target.getAttribute('inputname');
-        if(Number(userSettings[property] <= minValue)){
+    const handleDecrement = (name,min) => {
+        if(Number(userSettings[name] <= min)){
             return;
         } else {
-            setUserSettings(prevState => ({...prevState, [property]: Number(prevState[property]) - 1}));
+            setUserSettings(prevState => ({...prevState, [name]: Number(prevState[name]) - 1}));
         }
     };
 
-    const handleIncrement = (event,maxValue) => {
-        const property = event.target.getAttribute('inputname');
-        if(Number(userSettings[property] >= maxValue)){
+    const handleIncrement = (name,max) => {
+        if(Number(userSettings[name] >= max)){
             return;
         } else {
-            setUserSettings(prevState => ({...prevState, [property]: Number(prevState[property]) + 1}));
+            setUserSettings(prevState => ({...prevState, [name]: Number(prevState[name]) + 1}));
         }
     };
 
@@ -62,6 +70,7 @@ const SettingsPage = () => {
         for (let property in userSettings){
             localStorage.setItem(property,userSettings[property]);
         }
+        context.checkLocalStorage();
     };
 
     return (
@@ -98,22 +107,22 @@ const SettingsPage = () => {
                                                  min="1" max="10"
                                                  value={userSettings.gameTime}
                                                  change={handleFieldChange}
-                                                 increment={(event) => {handleIncrement(event,10)}}
-                                                 decrement={(event) => {handleDecrement(event,1)}} />
+                                                 handleIncrement={handleIncrement}
+                                                 handleDecrement={handleDecrement} />
                                     <InputNumber label="X-axis size:"
                                                  name='xNumber'
                                                  min="10" max="30"
                                                  value={userSettings.xNumber}
                                                  change={handleFieldChange}
-                                                 increment={(event) => {handleIncrement(event,30)}}
-                                                 decrement={(event) => {handleDecrement(event,10)}} />
+                                                 handleIncrement={handleIncrement}
+                                                 handleDecrement={handleDecrement} />
                                     <InputNumber label="Y-axis size:"
                                                  name='yNumber'
                                                  min="10" max="30"
                                                  value={userSettings.yNumber}
                                                  change={handleFieldChange}
-                                                 increment={(event) => {handleIncrement(event,30)}}
-                                                 decrement={(event) => {handleDecrement(event,10)}} />
+                                                 handleIncrement={handleIncrement}
+                                                 handleDecrement={handleDecrement} />
                                     <Select label="Pixel contrast:"
                                             name='contrast'
                                             value={userSettings.contrast}
@@ -126,8 +135,8 @@ const SettingsPage = () => {
                                      transition: 'opacity 1s',
                                      opacity: state === 'entered' ? 1 : 0
                                  }}>
-                                <Button text='save' accent />
-                                <Button text='cancel' />
+                                <Button text='save' type='submit' accent />
+                                <Button text='cancel' type='reset'/>
                             </div>
                         </Fragment>
                     )}

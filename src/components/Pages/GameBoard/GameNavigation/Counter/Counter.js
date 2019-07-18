@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { pure } from 'recompose';
 
 const Counter = ({time,gameIsOn,openModalFunc,switchGameMode}) => {
-
+    time = Number(time) * 60000;
     const [timer, setTime] = useState({
         minutes: Math.floor(time / 60000),
         seconds: ((time % 60000) / 1000).toFixed(0),

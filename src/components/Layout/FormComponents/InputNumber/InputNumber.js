@@ -1,9 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import formClasses from "../FormComponents.module.scss";
 import classes from "./InputNumber.module.scss";
 
-const InputNumber = (props) => {
-    const { label, name, min, max, value, change, increment, decrement } = props;
+const InputNumber = ({label, name, min, max, value, change, handleIncrement, handleDecrement}) => {
+    const increment = () => {
+        handleIncrement(name,max);
+    };
+
+    const decrement = () => {
+        handleDecrement(name,min);
+    };
+
+    const incrementActive = {fill:'#FF5252',stroke:'#fff',strokeWidth:1,fillRule:'nonzero'};
+    const decrementActive = {fill:'#F5F5F5',stroke:'#fff', strokeWidth:1,fillRule:'nonzero'};
+    const btnPassive = {fill: '#616161' ,stroke:'#fff', strokeWidth:1,fillRule:'nonzero'};
+
     return (
         <div className={formClasses.fieldContainer}>
             <label>{label}</label>
@@ -20,9 +31,9 @@ const InputNumber = (props) => {
                          onClick={increment}
                          role='button'
                          aria-roledescription='button'>
-                        <polygon inputname={name} points="0 0, 100 0, 100 100, 0 0"
-                                 style={{fill:'#FF5252',stroke:'#fff',strokeWidth:1,fillRule:'nonzero'}} />
-                        <text inputname={name} x="60" y="45" style={{fill: '#212121',fontSize: '3rem',fontFamily: 'Montserrat'}}>+</text>
+                        <polygon points="0 0, 100 0, 100 100, 0 0"
+                                 style={value >= max ? btnPassive : incrementActive} />
+                        <text x="60" y="45" style={{fill: '#212121',fontSize: '3rem',fontFamily: 'Montserrat'}}>+</text>
                     </svg>
                     <svg className={[classes.btnCounter,classes.btnCounterIncrement].join(' ')}
                          viewBox="0 0 100 100"
@@ -30,7 +41,7 @@ const InputNumber = (props) => {
                          role='button'
                          aria-roledescription='button'>
                         <polygon inputname={name} points="0 0, 0 100, 100 100, 0 0"
-                                 style={{fill:'#F5F5F5',stroke:'#fff', strokeWidth:1,fillRule:'nonzero'}} />
+                                 style={value <= min ? btnPassive : decrementActive} />
                         <text inputname={name} x="20" y="80" style={{fill: '#212121',fontSize: '3rem',fontFamily: 'Montserrat'}}>-</text>
                     </svg>
                 </div>

@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { useState,useEffect,useContext } from 'react';
+import React, { Fragment,useState,useEffect,useContext } from 'react';
+import { withRouter } from 'react-router';
 import { Transition } from 'react-transition-group';
 import classes from './Settings.module.scss';
 import InputNumber from "../../Layout/FormComponents/InputNumber/InputNumber";
@@ -8,7 +8,7 @@ import Select from "../../Layout/FormComponents/Select/Select";
 import Button from "../../Layout/Button/Button";
 import GameContext from "../../Context";
 
-const SettingsPage = () => {
+const SettingsPage = (props) => {
 
     const context = useContext(GameContext);
 
@@ -71,6 +71,7 @@ const SettingsPage = () => {
             localStorage.setItem(property,userSettings[property]);
         }
         context.checkLocalStorage();
+        props.history.push('/');
     };
 
     return (
@@ -136,7 +137,7 @@ const SettingsPage = () => {
                                      opacity: state === 'entered' ? 1 : 0
                                  }}>
                                 <Button text='save' type='submit' accent />
-                                <Button text='cancel' type='reset'/>
+                                <Button text='cancel' type='reset' click={() => props.history.push('/')}/>
                             </div>
                         </Fragment>
                     )}
@@ -146,4 +147,4 @@ const SettingsPage = () => {
     );
 };
 
-export default SettingsPage;
+export default withRouter(SettingsPage);

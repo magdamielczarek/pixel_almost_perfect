@@ -193,6 +193,7 @@ class GameBoard extends React.Component {
     };
 
     collectRandomRects = (canvas,context,pixelsToCheckNumber,xCounter,yCounter) => {
+
         const contrastRatio = (function(contrast) {
             switch(contrast) {
                 case 'low':
@@ -206,6 +207,7 @@ class GameBoard extends React.Component {
             }
         })(this.context.contrast);
 
+        // sprawdzac duplikaty
         for(let i=0;i<pixelsToCheckNumber;i++){
             this.gameConfig.pixelsToCheckCords.push({
                 x: this.returnCustomNumber(xCounter),

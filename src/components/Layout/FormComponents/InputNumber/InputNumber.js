@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import formClasses from "../FormComponents.module.scss";
 import classes from "./InputNumber.module.scss";
 
@@ -32,7 +32,7 @@ const InputNumber = ({label, name, min, max, value, change, handleIncrement, han
                          role='button'
                          aria-roledescription='button'>
                         <polygon points="0 0, 100 0, 100 100, 0 0"
-                                 style={value >= max ? btnPassive : incrementActive} />
+                                 style={Number(value) >= Number(max) ? btnPassive : incrementActive} />
                         <text x="60" y="45" style={{fill: '#212121',fontSize: '3rem',fontFamily: 'Montserrat'}}>+</text>
                     </svg>
                     <svg className={[classes.btnCounter,classes.btnCounterIncrement].join(' ')}
@@ -41,7 +41,7 @@ const InputNumber = ({label, name, min, max, value, change, handleIncrement, han
                          role='button'
                          aria-roledescription='button'>
                         <polygon inputname={name} points="0 0, 0 100, 100 100, 0 0"
-                                 style={value <= min ? btnPassive : decrementActive} />
+                                 style={Number(value) <= Number(min) ? btnPassive : decrementActive} />
                         <text inputname={name} x="20" y="80" style={{fill: '#212121',fontSize: '3rem',fontFamily: 'Montserrat'}}>-</text>
                     </svg>
                 </div>

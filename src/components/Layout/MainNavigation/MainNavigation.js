@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { NavLink, Switch } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Consumer } from '../../Context';
 import classes from './MainNavigation.module.scss';
 

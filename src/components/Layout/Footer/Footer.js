@@ -3,8 +3,6 @@ import './Footer.module.scss';
 import classes from './Footer.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import githubLogo from '../../../assets/logotypes/github-sign.svg';
-import linkedinLogo from '../../../assets/logotypes/linkedin-logo.svg';
 
 const Footer = () => {
     return (

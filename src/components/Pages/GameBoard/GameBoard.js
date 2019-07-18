@@ -49,12 +49,10 @@ class GameBoard extends React.Component {
 
         axios.get('/images.json')
             .then(data => this.setState({
-                allImagesData: data
+                allImagesData: data.data.images
             }))
             .then(this.setRandomImage)
-            .then(this.setState({
-                gameIsOn: true
-            }))
+            .then(this.setState({gameIsOn: true}))
             .catch((err)=>console.log(err));
     };
 
@@ -136,7 +134,7 @@ class GameBoard extends React.Component {
             this.setRandomImage();
         } else {
             const randomImage = this.gameConfig.images[Object.keys(this.gameConfig.images)[selectedImage-1]];
-            const imageDescription = this.state.allImagesData.data.filter((image) => {
+            const imageDescription = this.state.allImagesData.filter((image) => {
                 return randomImage.includes(`id${image.id}_`);
             });
 
@@ -154,7 +152,7 @@ class GameBoard extends React.Component {
     };
 
     showNextImage = () => {
-        if(this.gameConfig.imagesPassed.length >= this.state.allImagesData.data.length){
+        if(this.gameConfig.imagesPassed.length >= this.state.allImagesData.length){
             return;
         } else {
             this.resetCanvas();
@@ -298,7 +296,7 @@ class GameBoard extends React.Component {
 
     render(){
         const gameBoardContent = (
-            <>
+            <Fragment>
                 <div ref="canvasWrapper" className={classes.canvasWrapper}>
                     <HintArea style={this.state.hintStyles} />
                     <canvas ref="canvas"
@@ -306,7 +304,7 @@ class GameBoard extends React.Component {
                             onClick={this.markPixel}> </canvas>
                 </div>
                 {this.state.currentImageDescription ? <ImageDescription description={this.state.currentImageDescription}/> : null}
-            </>
+            </Fragment>
         );
 
         return (
@@ -324,7 +322,7 @@ class GameBoard extends React.Component {
                                             showHint={this.showHint}
                                             time={context.time}
                                             paintingsLeft={this.gameConfig.imagesPassed.length}
-                                            allPaintings={this.state.allImagesData.data ? this.state.allImagesData.data.length : 0} />
+                                            allPaintings={this.state.allImagesData ? this.state.allImagesData.length : 0} />
                             <div className={classes.boardContainer}>
                                 {this.state.currentImagePath ? gameBoardContent : <Spinner />}
                             </div>

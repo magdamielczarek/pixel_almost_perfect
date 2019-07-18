@@ -288,6 +288,114 @@
       "difficulty": "hard",
       "date": "1872–78",
       "country": "Poland"
+    },{
+      "id": 33,
+      "author": "Michelangelo",
+      "title": "The Creation of Adam",
+      "titleOriginal": "Creazione di Adamo",
+      "path": "./id33_Creation_of_Adam_Articles_Michelangelo_Adam.jpg",
+      "difficulty": "hard",
+      "date": "1508–12",
+      "country": "Italy"
+    },{
+      "id": 34,
+      "author": "Leonardo da Vinci",
+      "title": "Annunciation",
+      "titleOriginal": "Annunciazzone",
+      "path": "./id34_Leonardo_Da_Vinci_-_Annunciazione.jpg",
+      "difficulty": "hard",
+      "date": "1475–80",
+      "country": "Italy"
+    },{
+      "id": 35,
+      "author": "Roy Lichtenstein",
+      "title": "Whaam!",
+      "titleOriginal": "",
+      "path": "./id35_Wham_Roy Lichtenstein.jpg",
+      "difficulty": "hard",
+      "date": "1963",
+      "country": "USA"
+    },{
+      "id": 36,
+      "author": "Keith Haring",
+      "title": "Ignorance = Fear",
+      "titleOriginal": "",
+      "path": "./id36_keith_haring_ignorance_fear_1989.jpg",
+      "difficulty": "hard",
+      "date": "1989",
+      "country": "USA"
+    },{
+      "id": 37,
+      "author": "Władysław Strzemiński",
+      "title": "Pejzaż łódzki",
+      "titleOriginal": "",
+      "path": "./id37_Strzeminski_Pejzaz lodzki.jpg",
+      "difficulty": "hard",
+      "date": "1936",
+      "country": "Poland"
+    },{
+      "id": 38,
+      "author": "Natalia Goncharova",
+      "title": "Cyclist",
+      "titleOriginal": "",
+      "path": "./id38_Cyclist_Goncharova.jpg",
+      "difficulty": "hard",
+      "date": "1913",
+      "country": "Russia"
+    },{
+      "id": 39,
+      "author": "Edward Dwurnik",
+      "title": "Krakowskie Przedmieście",
+      "titleOriginal": "",
+      "path": "./id39_Dwurnik_Krakowskie Przedmiescie.jpg",
+      "difficulty": "hard",
+      "date": "1913",
+      "country": "Poland"
+    },{
+      "id": 40,
+      "author": "Tytus Brzozowski",
+      "title": "Warszawa turystyczna",
+      "titleOriginal": "",
+      "path": "./id40_Warszawa Turystyczna Tytus Brzozowski 2018.jpg",
+      "difficulty": "hard",
+      "date": "2018",
+      "country": "Poland"
+    },{
+      "id": 41,
+      "author": "Tytus Brzozowski",
+      "title": "Łódź",
+      "titleOriginal": "",
+      "path": "./id41_Tytus Brzozowski Lodz.jpg",
+      "difficulty": "hard",
+      "date": "2019",
+      "country": "Poland"
+    },{
+      "id": 42,
+      "author": "Tytus Brzozowski",
+      "title": "Kamienice na Poniatowszczaku",
+      "titleOriginal": "",
+      "path": "./id42_Kamienice na poniatowszczaku Tytus Brzozowski.jpg",
+      "difficulty": "hard",
+      "date": "2018",
+      "country": "Poland"
+    },{
+      "id": 43,
+      "author": "Hokusai Katsushika",
+      "title": "The Great Wave off Kanagawa",
+      "titleOriginal": "",
+      "path": "./id43_Hokusai_Great_Wave_off_Kanagawa2.jpg",
+      "difficulty": "hard",
+      "date": "",
+      "country": "Japan"
+    },{
+      "id": 44,
+      "author": "Hokusai Katsushika",
+      "title": "Fine Wind, Clear Morning",
+      "titleOriginal": "Gaifū_kaisei",
+      "path": "./id44_Katsushika_Hokusai_-_Fine_Wind_Clear_Morning.jpg",
+      "difficulty": "hard",
+      "date": "",
+      "country": "Japan"
     }
   ]
 }

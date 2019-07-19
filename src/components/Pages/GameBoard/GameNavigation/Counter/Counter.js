@@ -3,7 +3,7 @@ import classes from './Counter.module.scss';
 import { useState } from 'react';
 import { pure } from 'recompose';
 
-const Counter = ({time,gameIsOn,openModalFunc,switchGameMode}) => {
+const Counter = ({time,gameIsOn,openModalFunc}) => {
     time = Number(time) * 60000;
     const [timer, setTime] = useState({
         minutes: Math.floor(time / 60000),

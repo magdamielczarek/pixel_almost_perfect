@@ -25,10 +25,9 @@ const SettingsPage = (props) => {
     });
 
     const pixelsContrast = [
-        {'id': 1, 'value': ''},
-        {'id': 2, 'value': 'low'},
-        {'id': 3, 'value': 'medium'},
-        {'id': 4, 'value': 'high'}
+        {'id': 1, 'value': 'low'},
+        {'id': 2, 'value': 'medium'},
+        {'id': 3, 'value': 'high'}
     ];
 
     useEffect(() => {
@@ -50,7 +49,7 @@ const SettingsPage = (props) => {
     };
 
     const handleDecrement = (name,min) => {
-        if(Number(userSettings[name] <= min)){
+        if(Number(userSettings[name] <= Number(min))){
             return;
         } else {
             setUserSettings(prevState => ({...prevState, [name]: Number(prevState[name]) - 1}));
@@ -58,7 +57,7 @@ const SettingsPage = (props) => {
     };
 
     const handleIncrement = (name,max) => {
-        if(Number(userSettings[name] >= max)){
+        if(Number(userSettings[name] >= Number(max))){
             return;
         } else {
             setUserSettings(prevState => ({...prevState, [name]: Number(prevState[name]) + 1}));
@@ -104,14 +103,14 @@ const SettingsPage = (props) => {
                                          }}>
                                     <h2 className={classes.settingsSection__heading}>Difficulty</h2>
                                     <InputNumber label="Time:"
-                                                 name='gameTime'
+                                                 name="gameTime"
                                                  min="1" max="10"
                                                  value={userSettings.gameTime}
                                                  change={handleFieldChange}
                                                  handleIncrement={handleIncrement}
                                                  handleDecrement={handleDecrement} />
                                     <InputNumber label="X-axis size:"
-                                                 name='xNumber'
+                                                 name="xNumber"
                                                  min="10" max="30"
                                                  value={userSettings.xNumber}
                                                  change={handleFieldChange}

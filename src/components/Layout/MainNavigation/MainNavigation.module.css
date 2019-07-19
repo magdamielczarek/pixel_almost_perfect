@@ -56,7 +56,7 @@
   width: 100%;
   z-index: 1;
 }
-.mainNavigation__link a.active {
+.mainNavigation__link a:active {
   background-color: #FF5252;
 }
 

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Consumer } from '../../Context';
 import classes from './MainNavigation.module.scss';
 
@@ -11,16 +11,16 @@ const globalNav = (
                 </span>
                 <ul>
                     <li className={classes.mainNavigation__link}>
-                        <NavLink to="/gra">New game</NavLink>
+                        <Link to="/gra">New game</Link>
                     </li>
                     <li className={classes.mainNavigation__link}>
-                        <NavLink to="/zasady">Rules</NavLink>
+                        <Link to="/zasady">Rules</Link>
                     </li>
                     <li className={classes.mainNavigation__link}>
-                        <NavLink to="/ustawienia">Settings</NavLink>
+                        <Link to="/ustawienia">Settings</Link>
                     </li>
                     <li className={classes.mainNavigation__link}>
-                        <NavLink to="/ranking">Scores</NavLink>
+                        <Link to="/ranking">Scores</Link>
                     </li>
                 </ul>
             </nav>

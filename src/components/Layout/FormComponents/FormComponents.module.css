@@ -16,6 +16,9 @@
   padding: 0.3rem;
   width: 60%;
 }
+.fieldContainer option {
+  color: #212121;
+}
 .fieldContainer .inputNumber {
   width: 90%;
 }

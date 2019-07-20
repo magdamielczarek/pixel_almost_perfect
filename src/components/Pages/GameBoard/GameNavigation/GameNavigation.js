@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from './GameNavigation.module.scss';
 import Counter from "./Counter/Counter";
 import Button from "../../../Layout/Button/Button";
 import { Consumer } from '../../../Context/index';
 
 const GameNavigation = (props) => {
+
+    // const [timerState,setTimerState] = useState({
+    //     runTimer: true
+    // });
+
+    // const handleTimerState = (state) => {
+    //     setTimerState({
+    //         runTimer: state
+    //     });
+    // };
+
     return (
         <Consumer>
             {
@@ -17,7 +28,8 @@ const GameNavigation = (props) => {
                                     <Counter time={context.gameTime}
                                              gameIsOn={context.gameMode}
                                              switchGameMode={context.switchGameMode}
-                                             tryAgain={context.tryAgain}
+                                             changeTimerState={props.changeTimerState}
+                                             runTimer={props.runTimer}
                                              openModalFunc={()=>context.openModalFunc('timeEnd')}/>
                                 </li>
                                 <li className={classes.gameNavigation__item}>

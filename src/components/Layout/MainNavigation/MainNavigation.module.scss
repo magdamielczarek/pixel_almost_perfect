@@ -49,7 +49,7 @@
   &:hover::before {
     transform: translateY(-15%);
   }
-  a, a:visited {
+  a {
     color: $primary-color-light;
     display: block;
     left: 0;

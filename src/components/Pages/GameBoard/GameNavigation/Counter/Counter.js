@@ -1,29 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './Counter.module.scss';
-import { useState } from 'react';
-import { pure } from 'recompose';
 
-const Counter = ({time,gameIsOn,openModalFunc}) => {
-    time = Number(time) * 60000;
+const Counter = (props) => {
+    const {time,openModalFunc,runTimer,changeTimerState} = props;
+    let localTime = Number(time) * 60000;
+
     const [timer, setTime] = useState({
         minutes: Math.floor(time / 60000),
-        seconds: ((time % 60000) / 1000).toFixed(0),
-        restarted: false
+        seconds: ((time % 60000) / 1000).toFixed(0)
     });
 
-    if(!gameIsOn){
-        let interval = setInterval(()=>{
-            time -= 1000;
-            setTime({
-                minutes: Math.floor(time / 60000),
-                seconds: ((time % 60000) / 1000).toFixed(0)
-            });
-            if(time === 0){
-                clearInterval(interval);
-                openModalFunc();
+    useEffect(
+        () => {
+            changeTimerState(false);
+            let timerInterval = setInterval(() => {
+                localTime -= 1000;
+                setTime({
+                    minutes: Math.floor(localTime / 60000),
+                    seconds: ((localTime % 60000) / 1000).toFixed(0)
+                });
+                if(localTime === 0){
+                    clearInterval(timerInterval);
+                    openModalFunc();
+                }
+            }, 1000);
+            return () => {
+                clearInterval(timerInterval);
             }
-        },1000);
-    }
+        },[runTimer]);
 
     return (
         <span className={classes.counter}>
@@ -34,4 +38,4 @@ const Counter = ({time,gameIsOn,openModalFunc}) => {
     );
 };
 
-export default pure(Counter);
+export default Counter;

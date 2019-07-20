@@ -17,7 +17,9 @@ class GameBoard extends React.Component {
             allImagesData: [],
             currentImageDescription: null,
             currentImagePath: '',
-            hintStyles: {}
+            hintStyles: {},
+            runTimer: true,
+            changeTimerState: this.changeTimerState
         };
     };
 
@@ -49,6 +51,12 @@ class GameBoard extends React.Component {
             .then(this.setRandomImage)
             .then(this.setState({gameIsOn: true}))
             .catch((err)=>console.log(err));
+    };
+
+    changeTimerState = (state) => {
+        this.setState({
+            runTimer: state
+        });
     };
 
     importAllImages = (r) => {
@@ -301,6 +309,7 @@ class GameBoard extends React.Component {
     restartGame = () => {
         this.gameConfig.imagesPassed = [];
         this.showNextImage();
+        this.changeTimerState(true);
     };
 
     render(){
@@ -321,13 +330,15 @@ class GameBoard extends React.Component {
                 <Backdrop visible={this.context.openModal}>
                     <Communication gameConfig={this.gameConfig}
                                    resetGameFunc={this.context.resetGameFunc}
-                                   restartGame={this.restartGame}/>
+                                   restartGame={this.restartGame} />
                 </Backdrop>
                 <GameNavigation scores={this.context.score}
                                 next={this.showNextImage}
                                 showHint={this.showHint}
                                 time={this.context.gameTime}
+                                changeTimerState={this.changeTimerState}
                                 paintingsLeft={this.gameConfig.imagesPassed.length}
+                                runTimer={this.state.runTimer}
                                 allPaintings={this.state.allImagesData ? this.state.allImagesData.length : 0} />
                 <div className={classes.boardContainer}>
                     {this.state.currentImagePath ? gameBoardContent : <Spinner />}

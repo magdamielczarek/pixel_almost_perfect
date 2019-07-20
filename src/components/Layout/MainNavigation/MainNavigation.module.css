@@ -46,7 +46,7 @@
 .mainNavigation__link:hover::before {
   transform: translateY(-15%);
 }
-.mainNavigation__link a, .mainNavigation__link a:visited {
+.mainNavigation__link a {
   color: #F5F5F5;
   display: block;
   left: 0;

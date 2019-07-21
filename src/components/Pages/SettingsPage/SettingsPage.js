@@ -71,15 +71,6 @@ const SettingsPage = (props) => {
             setValidation({...validationChanged});
         }
 
-        // if(name === 'username'){
-        //     if(field.value.length > Number(field.maxLength)){
-        //         validationChanged = {...validation,[name]: `should not be longer ${field.maxLength} characters`};
-        //     } else {
-        //         validationChanged = {...validation,[name]: ''};
-        //     }
-        //     setValidation({...validationChanged});
-        // }
-
         for(let prop in validationChanged){
             if(validationChanged[prop] !== ''){
                 setPassForm({formIsValid: false});

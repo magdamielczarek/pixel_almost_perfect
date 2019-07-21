@@ -36,5 +36,8 @@
 .scoresTable td {
   padding: 0.2rem 0.8rem;
 }
+.scoresTable td:not(:first-child) {
+  text-align: center;
+}
 
 /*# sourceMappingURL=SummaryInfo.module.css.map */

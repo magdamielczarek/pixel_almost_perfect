@@ -36,9 +36,15 @@ const SummaryInfo = () => {
                     }}>
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Score</th>
-                            <th>Difficulty</th>
+                            <th rowSpan='2'>Name</th>
+                            <th rowSpan='2'>Score</th>
+                            <th colSpan='4'>Difficulty</th>
+                        </tr>
+                        <tr>
+                            <th>Time</th>
+                            <th>Contrast</th>
+                            <th>xAxis size</th>
+                            <th>yAxis size</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,13 +53,10 @@ const SummaryInfo = () => {
                                 <tr key={player.id}>
                                     <td>{player.name}</td>
                                     <td>{player.score}</td>
-                                    <td>
-                                        <ul>{Object.keys(player.difficulty)
-                                            .map((property) => {
-                                                return <li key={property}>{property}: {player.difficulty[property]}</li>
-                                            })}
-                                        </ul>
-                                    </td>
+                                    <td>{player.difficulty.time}</td>
+                                    <td>{player.difficulty.contrast}</td>
+                                    <td>{player.difficulty.xAxis}</td>
+                                    <td>{player.difficulty.yAxis}</td>
                                 </tr>
                             )
                         })}

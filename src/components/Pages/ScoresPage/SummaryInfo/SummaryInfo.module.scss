@@ -38,5 +38,8 @@
   }
   td {
     padding: .2rem .8rem;
+    &:not(:first-child) {
+      text-align: center;
+    }
   }
 }

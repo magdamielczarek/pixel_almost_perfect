@@ -10,8 +10,19 @@
   }
 }
 
+@keyframes bgAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .introWrapper {
   align-items: center;
+  animation: bgAppear 1s;
+  animation-fill-mode: forwards;
   background-image: url('../../../assets/bg_image.jpg');
   background-position: center;
   background-size: cover;

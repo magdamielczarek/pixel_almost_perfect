@@ -121,7 +121,7 @@ class GameBoard extends React.Component {
         ctx = canvas.getContext("2d");
         ctx.drawImage(image,0,0,image.width,image.height);
         // setTimeout(()=>{
-            this.collectRandomRects(
+            this.prepareRects(
                 canvas,
                 ctx,
                 this.gameConfig.pixelsToCheckNumber,
@@ -200,7 +200,19 @@ class GameBoard extends React.Component {
         return num;
     };
 
-    collectRandomRects = (canvas,context,pixelsToCheckNumber,xCounter,yCounter) => {
+    getRandomPixels = () => {
+        const cords = {
+            x: this.returnCustomNumber(this.context.xNumber),
+            y: this.returnCustomNumber(this.context.xNumber)
+        };
+        if(this.gameConfig.pixelsToCheckCords.filter((el) => {return el.x === cords.x && el.y === cords.y}).length === 0) {
+            this.gameConfig.pixelsToCheckCords.push(cords);
+        } else {
+            this.getRandomPixels();
+        }
+    };
+
+    prepareRects = (canvas,context,pixelsToCheckNumber,xCounter,yCounter) => {
 
         const contrastRatio = (function(contrast) {
             switch(contrast) {
@@ -215,12 +227,12 @@ class GameBoard extends React.Component {
             }
         })(this.context.contrast);
 
-        // sprawdzac duplikaty
         for(let i=0;i<pixelsToCheckNumber;i++){
-            this.gameConfig.pixelsToCheckCords.push({
-                x: this.returnCustomNumber(xCounter),
-                y: this.returnCustomNumber(yCounter)
-            });
+            this.getRandomPixels();
+            // this.gameConfig.pixelsToCheckCords.push({
+            //     x: this.returnCustomNumber(xCounter),
+            //     y: this.returnCustomNumber(yCounter)
+            // });
         }
 
         this.gameConfig.pixelsToCheckCords.forEach(

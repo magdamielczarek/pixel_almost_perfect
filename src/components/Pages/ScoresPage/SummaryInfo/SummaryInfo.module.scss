@@ -1,12 +1,16 @@
 @import '../../../../global-styles/_variables';
 
 .scoresTable {
+  border: 2px solid $primary-color;
   font-size: .8rem;
   margin: 0 auto;
   max-width: 80%;
   min-width: 700px;
   max-height: 80vh;
+  opacity: 0;
   overflow-y: auto;
+  transform: translateY(-100%);
+  transition: all 3s;
   ul {
     list-style-type: none;
     margin: 0;

@@ -6,16 +6,6 @@ import { Consumer } from '../../../Context/index';
 
 const GameNavigation = (props) => {
 
-    // const [timerState,setTimerState] = useState({
-    //     runTimer: true
-    // });
-
-    // const handleTimerState = (state) => {
-    //     setTimerState({
-    //         runTimer: state
-    //     });
-    // };
-
     return (
         <Consumer>
             {

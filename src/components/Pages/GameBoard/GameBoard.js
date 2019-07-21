@@ -278,7 +278,6 @@ class GameBoard extends React.Component {
         this.setState((prevState) => {
             return {
                 hintStyles: {
-                    display: 'block',
                     opacity: 1,
                     width: pixel.width,
                     height: pixel.height,
@@ -292,7 +291,6 @@ class GameBoard extends React.Component {
             this.setState((prevState) => {
                 return {
                     hintStyles: {
-                        display: 'none',
                         opacity: 0,
                         width: pixel.width,
                         height: pixel.height,

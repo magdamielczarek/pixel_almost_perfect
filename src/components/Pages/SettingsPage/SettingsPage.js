@@ -71,6 +71,15 @@ const SettingsPage = (props) => {
             setValidation({...validationChanged});
         }
 
+        // if(name === 'username'){
+        //     if(field.value.length > Number(field.maxLength)){
+        //         validationChanged = {...validation,[name]: `should not be longer ${field.maxLength} characters`};
+        //     } else {
+        //         validationChanged = {...validation,[name]: ''};
+        //     }
+        //     setValidation({...validationChanged});
+        // }
+
         for(let prop in validationChanged){
             if(validationChanged[prop] !== ''){
                 setPassForm({formIsValid: false});
@@ -127,7 +136,9 @@ const SettingsPage = (props) => {
                                         label='User name:'
                                         name='username'
                                         value={userSettings.username}
-                                        change={handleFieldChange}/>
+                                        change={handleFieldChange}
+                                        maxLength='15'
+                                        validationText={validation.gameTime} />
                                 </section>
                                 <section className={classes.settingsSection}
                                          style={{

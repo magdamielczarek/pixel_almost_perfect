@@ -24,6 +24,17 @@ const SettingsPage = (props) => {
         elementsAreVisible: false
     });
 
+    const [validation,setValidation] = useState({
+        username: '',
+        gameTime: '',
+        xNumber: '',
+        yNumber: ''
+    });
+
+    const [passForm,setPassForm] = useState({
+        formIsValid: true
+    });
+
     const pixelsContrast = [
         {'id': 1, 'value': 'low'},
         {'id': 2, 'value': 'medium'},
@@ -45,6 +56,29 @@ const SettingsPage = (props) => {
 
     const handleFieldChange = (event) => {
         event.persist();
+        const field = event.target;
+        const name = event.target.name;
+        let validationChanged = {};
+
+        if(field.type === 'number'){
+            const max = Number(field.max);
+            const min = Number(field.min);
+            if((max && Number(field.value) > max) || (min && Number(field.value) < min)){
+                validationChanged = {...validation,[name]: `should not be less than ${min} and more than ${max}`};
+            } else {
+                validationChanged = {...validation,[name]: ''};
+            }
+            setValidation({...validationChanged});
+        }
+
+        for(let prop in validationChanged){
+            if(validationChanged[prop] !== ''){
+                setPassForm({formIsValid: false});
+               break;
+            }
+            setPassForm({formIsValid: true})
+        }
+
         setUserSettings(prevState => ({...prevState, [event.target.name]: event.target.value}));
     };
 
@@ -108,21 +142,24 @@ const SettingsPage = (props) => {
                                                  value={userSettings.gameTime}
                                                  change={handleFieldChange}
                                                  handleIncrement={handleIncrement}
-                                                 handleDecrement={handleDecrement} />
+                                                 handleDecrement={handleDecrement}
+                                                 validationText={validation.gameTime} />
                                     <InputNumber label="X-axis size:"
                                                  name="xNumber"
                                                  min="10" max="30"
                                                  value={userSettings.xNumber}
                                                  change={handleFieldChange}
                                                  handleIncrement={handleIncrement}
-                                                 handleDecrement={handleDecrement} />
+                                                 handleDecrement={handleDecrement}
+                                                 validationText={validation.xNumber} />
                                     <InputNumber label="Y-axis size:"
                                                  name='yNumber'
                                                  min="10" max="30"
                                                  value={userSettings.yNumber}
                                                  change={handleFieldChange}
                                                  handleIncrement={handleIncrement}
-                                                 handleDecrement={handleDecrement} />
+                                                 handleDecrement={handleDecrement}
+                                                 validationText={validation.yNumber} />
                                     <Select label="Pixel contrast:"
                                             name='contrast'
                                             value={userSettings.contrast}
@@ -135,7 +172,7 @@ const SettingsPage = (props) => {
                                      transition: 'opacity 1s',
                                      opacity: state === 'entered' ? 1 : 0
                                  }}>
-                                <Button text='save' type='submit' accent />
+                                <Button text='save' type='submit' accent disabled={!passForm.formIsValid}/>
                                 <Button text='cancel' type='reset' click={() => props.history.push('/')}/>
                             </div>
                         </Fragment>

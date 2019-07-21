@@ -2,7 +2,7 @@ import React from 'react';
 import formClasses from "../FormComponents.module.scss";
 import classes from "./InputNumber.module.scss";
 
-const InputNumber = ({label, name, min, max, value, change, handleIncrement, handleDecrement}) => {
+const InputNumber = ({label, name, min, max, value, change, handleIncrement, handleDecrement, validationText}) => {
     const increment = () => {
         handleIncrement(name,max);
     };
@@ -46,6 +46,7 @@ const InputNumber = ({label, name, min, max, value, change, handleIncrement, han
                     </svg>
                 </div>
             </div>
+            <p className={formClasses.validationText}>{validationText}</p>
         </div>
     );
 };

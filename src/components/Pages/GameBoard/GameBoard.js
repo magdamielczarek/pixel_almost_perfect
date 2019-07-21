@@ -203,13 +203,14 @@ class GameBoard extends React.Component {
     getRandomPixels = () => {
         const cords = {
             x: this.returnCustomNumber(this.context.xNumber),
-            y: this.returnCustomNumber(this.context.xNumber)
+            y: this.returnCustomNumber(this.context.yNumber)
         };
         if(this.gameConfig.pixelsToCheckCords.filter((el) => {return el.x === cords.x && el.y === cords.y}).length === 0) {
             this.gameConfig.pixelsToCheckCords.push(cords);
         } else {
             this.getRandomPixels();
         }
+        console.log(this.gameConfig.pixelsToCheckCords);
     };
 
     prepareRects = (canvas,context,pixelsToCheckNumber,xCounter,yCounter) => {

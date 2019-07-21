@@ -23,4 +23,11 @@
   width: 90%;
 }
 
+.validationText {
+  font-size: 0.8rem;
+  padding-right: 3rem;
+  text-align: right;
+  width: 100%;
+}
+
 /*# sourceMappingURL=FormComponents.module.css.map */

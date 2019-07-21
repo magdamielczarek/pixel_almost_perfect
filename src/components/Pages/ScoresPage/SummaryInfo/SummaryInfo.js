@@ -14,8 +14,11 @@ const SummaryInfo = () => {
             .then(response => {
                 let scores = [];
                 for(let el in response.data.scores){
-                    scores.push(new Object({...response.data.scores[el]}));
+                    scores.push({...response.data.scores[el]});
                 }
+                scores.sort((a,b) => {
+                    return a.score < b.score ? 1 : -1;
+                });
                 setScores({scores: scores})
             })
             .catch((err)=>console.log(err));

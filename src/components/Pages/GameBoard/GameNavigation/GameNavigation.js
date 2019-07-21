@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import classes from './GameNavigation.module.scss';
 import Counter from "./Counter/Counter";
 import Button from "../../../Layout/Button/Button";

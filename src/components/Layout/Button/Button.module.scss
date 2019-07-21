@@ -33,7 +33,8 @@
     background-color: $accent-color;
   }
   &:disabled {
-    background-color: $primary-color;
+    background-color: lighten($primary-color,20%) !important;
+    cursor: no-drop;
   }
 }
 

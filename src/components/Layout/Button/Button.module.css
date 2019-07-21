@@ -32,7 +32,8 @@
   background-color: #FF5252;
 }
 .button:disabled {
-  background-color: #9E9E9E;
+  background-color: #d1d1d1 !important;
+  cursor: no-drop;
 }
 
 /*# sourceMappingURL=Button.module.css.map */

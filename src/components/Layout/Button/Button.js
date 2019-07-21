@@ -3,7 +3,7 @@ import classes from './Button.module.scss';
 import { withRouter } from 'react-router';
 
 const Button = (props) => {
-    let { text, click, type, redirection,accent } = props;
+    let { text, click, type, redirection,accent,disabled } = props;
 
     if(redirection && !click){
         click = () => {
@@ -13,12 +13,22 @@ const Button = (props) => {
 
     const style = accent ? {backgroundColor: '#FF5252'} : {backgroundColor: '#9E9E9E'};
 
-    return (
+    const button = disabled ? (
         <button onClick={click}
                 type={type} style={style}
-                className={classes.button}>
+                className={classes.button}
+                disabled={disabled}>
+                {text}
+        </button>)
+        :
+        ( <button onClick={click}
+                  type={type} style={style}
+                  className={classes.button}>
             {text}
-        </button>
+        </button>);
+
+    return (
+        button
     );
 };
 

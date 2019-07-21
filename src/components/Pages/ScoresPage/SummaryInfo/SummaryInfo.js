@@ -11,11 +11,13 @@ const SummaryInfo = () => {
 
     useEffect(()=> {
         axios.get('/scores.json')
-            .then(data => setScores({
-                scores: data.data.scores.sort((a,b) => {
-                    return a.score < b.score ? 1 : -1;
-                })
-            }))
+            .then(response => {
+                let scores = [];
+                for(let el in response.data.scores){
+                    scores.push(new Object({...response.data.scores[el]}));
+                }
+                setScores({scores: scores})
+            })
             .catch((err)=>console.log(err));
     },[]);
 
@@ -31,7 +33,7 @@ const SummaryInfo = () => {
             <tbody>
             {scores.scores.map((player) => {
                 return (
-                    <tr key={player.name}>
+                    <tr key={player.id}>
                         <td>{player.name}</td>
                         <td>{player.score}</td>
                         <td>

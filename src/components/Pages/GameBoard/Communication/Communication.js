@@ -15,22 +15,23 @@ const Communication = (props) => {
 
     const submitScore = (event) => {
         event.preventDefault();
-        console.log(props);
         const data = {
             name: user.userName ? user.userName : savedUserName ? savedUserName : 'Incognito',
             score: context.score,
             difficulty: {
-                time: context.time,
-                xAxis: props.gameConfig.xNumber,
-                yAxis: props.gameConfig.yNumber,
-                contrast: props.gameConfig.difficulty
+                time: context.gameTime,
+                xAxis: context.xNumber,
+                yAxis: context.yNumber,
+                contrast: context.contrast
             }
         };
-        axios.post('/scores/scores.json', data)
+        axios.get('/scores.json')
+            .then(response => data.id = Object.keys(response.data.scores).length)
+            .then(() => { axios.post('/scores/scores.json', JSON.stringify(data)) })
             .then(() => context.closeModalFunc())
             .then(() => context.resetGameFunc())
             .then(() => props.history.push('/ranking'))
-            .catch(err => console.log(err));
+            .catch((err)=>console.log(err));
     };
 
     const savedUserName = localStorage.getItem('username');

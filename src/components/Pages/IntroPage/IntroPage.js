@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import classes from './IntroPage.module.scss';
-import { useContext, useEffect } from 'react';
 import GameContext from '../../Context/index';
 
 const IntroPage = () => {

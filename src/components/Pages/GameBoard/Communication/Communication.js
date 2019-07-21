@@ -27,7 +27,7 @@ const Communication = (props) => {
         };
         axios.get('/scores.json')
             .then(response => data.id = Object.keys(response.data.scores).length+1)
-            .then(() => { axios.post('/scores/scores.json', data) })
+            .then(() => { return axios.post('/scores/scores.json', data) })
             .then(() => context.closeModalFunc())
             .then(() => context.resetGameFunc())
             .then(() => props.history.push('/ranking'))

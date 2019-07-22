@@ -1,0 +1,33 @@
+.notFoundPage {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.notFoundPage__background {
+  background-image: url("../../../assets/404page.jpg");
+  height: 100%;
+  opacity: 0.5;
+  z-index: -1;
+}
+.notFoundPage h1, .notFoundPage h2 {
+  color: #848688;
+  opacity: 0.6;
+  transform: translate(-50%, -50%);
+}
+.notFoundPage h1 {
+  font-family: "Oswald", "Arial", sans-serif;
+  font-size: 7rem;
+  left: 50%;
+  position: absolute;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  top: 20%;
+}
+.notFoundPage h2 {
+  font-size: 2rem;
+  left: 50%;
+  position: absolute;
+  top: 60%;
+  text-transform: uppercase;
+}
+
+/*# sourceMappingURL=NotFoundPage.module.css.map */

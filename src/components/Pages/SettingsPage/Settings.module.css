@@ -11,8 +11,10 @@
 }
 
 .sections {
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 1000px;
 }
 
 .btnsRow {
@@ -27,8 +29,8 @@
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-flow: column nowrap;
-  margin-bottom: 2rem;
-  min-width: 30%;
+  margin: 0 2rem 2rem;
+  min-width: 45%;
   padding: 6rem 2rem 1rem;
 }
 .settingsSection * {
@@ -52,7 +54,7 @@
   min-width: 35%;
   padding: 0.4rem 0.8rem;
   position: absolute;
-  top: 10%;
+  top: 5%;
 }
 
 /*# sourceMappingURL=Settings.module.css.map */

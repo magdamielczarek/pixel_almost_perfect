@@ -1,4 +1,5 @@
-@import '../../../global-styles/_variables';
+@import '../../../global-styles/variables';
+@import '../../../global-styles/mixins';
 
 @keyframes pixelAppear {
   from {
@@ -20,23 +21,21 @@
 }
 
 .introWrapper {
-  align-items: center;
+  @include centered;
   animation: bgAppear 1s;
   animation-fill-mode: forwards;
+  background-color: $primary-color-dark;
   background-image: url('../../../assets/bg_image.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  display: flex;
   flex-flow: column nowrap;
   height: 100%;
-  justify-content: center;
   transition: all 1s;
   width: 100%;
 }
 
 .header {
-  backface-visibility: hidden;
   background-color: $primary-color-light;
   color: $accent-color;
   font-family: $secondary-font;
@@ -56,45 +55,37 @@
 .batPixel {
   border: 1px solid $primary-color-light;
   height: 4rem;
+  opacity: 0;
   position: absolute;
   width: 3rem;
   &.batPixel__1 {
     background-color: $primary-color-dark;
     left: 5%;
     top: 12%;
-    animation: pixelAppear .5s;
-    animation-fill-mode: forwards;
+    animation: pixelAppear .5s forwards;
   }
   &.batPixel__2 {
     background-color: lighten($primary-color-dark,40%);
     left: 40%;
-    opacity: 0;
     top: 20%;
-    animation: pixelAppear .5s .5s;
-    animation-fill-mode: forwards;
+    animation: pixelAppear .5s .5s forwards;
   }
   &.batPixel__3 {
     background-color: $primary-color-light;
     left: 3%;
     bottom: 15%;
-    opacity: 0;
-    animation: pixelAppear .5s .6s;
-    animation-fill-mode: forwards;
+    animation: pixelAppear .5s .6s forwards;
   }
   &.batPixel__4 {
     background-color: $primary-color-dark;
     left: 25%;
     bottom: 20%;
-    opacity: 0;
-    animation: pixelAppear .5s .8s;
-    animation-fill-mode: forwards;
+    animation: pixelAppear .5s .8s forwards;
   }
   &.batPixel__5 {
     background-color: $primary-color;
-    opacity: 0;
     right: 30%;
     top: 14%;
-    animation: pixelAppear .5s 1s;
-    animation-fill-mode: forwards;
+    animation: pixelAppear .5s 1s forwards;
   }
 }

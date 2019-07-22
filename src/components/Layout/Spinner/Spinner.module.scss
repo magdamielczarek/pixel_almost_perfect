@@ -1,10 +1,9 @@
-@import '../../../global-styles/_variables';
+@import '../../../global-styles/variables';
+@import '../../../global-styles/mixins';
 
 .wrapper {
-  align-items: center;
-  display: flex;
+  @include centered;
   flex-flow: row nowrap;
-  justify-content: center;
 }
 
 .ldsFacebook {

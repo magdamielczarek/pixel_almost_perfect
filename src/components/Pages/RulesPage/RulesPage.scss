@@ -1,10 +1,9 @@
-@import '../../../global-styles/_variables';
+@import '../../../global-styles/variables';
+@import '../../../global-styles/mixins';
 
 .rulesContainer {
-  align-items: center;
+  @include centered;
   background-color: $primary-color-light;
-  display: flex;
-  justify-content: center;
   height: 100%;
   padding: 2rem;
 }

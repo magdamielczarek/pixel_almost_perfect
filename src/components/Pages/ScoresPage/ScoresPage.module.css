@@ -1,8 +1,9 @@
 .scoresContainer {
-  background-color: #F5F5F5;
+  align-items: center;
   display: flex;
-  height: 100%;
   justify-content: center;
+  background-color: #F5F5F5;
+  height: 100%;
   padding: 2rem;
 }
 

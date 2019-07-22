@@ -26,6 +26,7 @@
 .mainNavigation__link {
   align-items: center;
   display: flex;
+  justify-content: center;
   font-family: "Oswald", sans-serif;
   font-size: 1.5rem;
   font-weight: bold;

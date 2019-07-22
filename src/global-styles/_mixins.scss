@@ -1,0 +1,24 @@
+@import 'variables';
+
+@mixin centered() {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+@mixin border() {
+  border: 2px solid #fff;
+  border-radius: $bradius;
+}
+
+@mixin headingOverlap() {
+  background-color: $accent-color;
+  box-shadow: $box-shadow;
+  font-size: 1.5rem;
+  left: 0;
+  line-height: 1.5rem;
+  min-width: 35%;
+  padding: .4rem .8rem;
+  position: absolute;
+  top: 5%;
+}

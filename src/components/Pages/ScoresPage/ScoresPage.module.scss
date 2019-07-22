@@ -1,9 +1,9 @@
-@import '../../../global-styles/_variables';
+@import '../../../global-styles/variables';
+@import '../../../global-styles/mixins';
 
 .scoresContainer {
+  @include centered;
   background-color: $primary-color-light;
-  display: flex;
   height: 100%;
-  justify-content: center;
   padding: 2rem;
 }

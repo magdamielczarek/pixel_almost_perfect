@@ -3,11 +3,11 @@ import classes from './GameBoard.module.scss';
 import GameNavigation from './GameNavigation/GameNavigation';
 import ImageDescription from './ImageDescription/ImageDescription';
 import axios from '../../../axiosPreset';
-import Spinner from "../../Layout/Spinner/Spinner";
-import Backdrop from "../../Layout/Backdrop/Backdrop";
-import Communication from "./Communication/Communication";
+import Spinner from '../../Layout/Spinner/Spinner';
+import Backdrop from '../../Layout/Backdrop/Backdrop';
+import Communication from './Communication/Communication';
 import GameContext from '../../Context/index';
-import HintArea from "./HintArea/HintArea";
+import HintArea from './HintArea/HintArea';
 
 class GameBoard extends React.Component {
 
@@ -210,11 +210,9 @@ class GameBoard extends React.Component {
         } else {
             this.getRandomPixels();
         }
-        console.log(this.gameConfig.pixelsToCheckCords);
     };
 
-    prepareRects = (canvas,context,pixelsToCheckNumber,xCounter,yCounter) => {
-
+    prepareRects = (canvas,context,pixelsToCheckNumber) => {
         const contrastRatio = (function(contrast) {
             switch(contrast) {
                 case 'low':
@@ -230,10 +228,6 @@ class GameBoard extends React.Component {
 
         for(let i=0;i<pixelsToCheckNumber;i++){
             this.getRandomPixels();
-            // this.gameConfig.pixelsToCheckCords.push({
-            //     x: this.returnCustomNumber(xCounter),
-            //     y: this.returnCustomNumber(yCounter)
-            // });
         }
 
         this.gameConfig.pixelsToCheckCords.forEach(
@@ -288,7 +282,7 @@ class GameBoard extends React.Component {
 
     showHint = () => {
         const pixel = this.gameConfig.activeCords[0];
-        this.setState((prevState) => {
+        this.setState(() => {
             return {
                 hintStyles: {
                     display: 'block',
@@ -302,7 +296,7 @@ class GameBoard extends React.Component {
             }
         });
         setTimeout(() => {
-            this.setState((prevState) => {
+            this.setState(() => {
                 return {
                     hintStyles: {
                         display: 'none',

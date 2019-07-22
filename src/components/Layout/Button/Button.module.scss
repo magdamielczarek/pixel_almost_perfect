@@ -1,8 +1,8 @@
-@import '../../../global-styles/_variables';
+@import '../../../global-styles/variables';
+@import '../../../global-styles/mixins';
 
 .button {
-  border: 2px solid $primary-color-light;
-  border-radius: $bradius;
+  @include border;
   box-shadow: $box-shadow;
   color: $primary-color-light;
   cursor: pointer;

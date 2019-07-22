@@ -1,32 +1,22 @@
-@import '../../../../global-styles/_variables';
+@import '../../../../global-styles/variables';
+@import '../../../../global-styles/mixins';
 
 .rule {
-  align-items: center;
+  @include centered;
+  @include border;
   background-color: $primary-color-dark;
-  border: 2px solid #fff;
-  border-radius: $bradius;
   box-shadow: $box-shadow;
   color: $primary-color-light;
-  display: flex;
   flex-flow: column;
   flex: 1;
   height: 60vh;
-  justify-content: center;
   margin: .8rem;
   max-height: 700px;
   max-width: 400px;
   padding: 5rem 2rem 2rem;
   position: relative;
   h2 {
-    background-color: $accent-color;
-    box-shadow: $box-shadow;
-    font-size: 1.5rem;
-    left: 0;
-    line-height: 1.5rem;
-    min-width: 35%;
-    padding: .4rem .8rem;
-    position: absolute;
-    top: 10%;
+    @include headingOverlap;
   }
   p {
     text-align: center;

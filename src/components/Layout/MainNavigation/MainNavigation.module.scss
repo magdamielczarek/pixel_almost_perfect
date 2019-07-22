@@ -1,4 +1,5 @@
-@import '../../../global-styles/_variables';
+@import '../../../global-styles/variables';
+@import '../../../global-styles/mixins';
 
 .mainNavigation {
   align-items: center;
@@ -28,8 +29,7 @@
 }
 
 .mainNavigation__link {
-  align-items: center;
-  display: flex;
+  @include centered;
   font-family: $secondary-font;
   font-size: 1.5rem;
   font-weight: bold;

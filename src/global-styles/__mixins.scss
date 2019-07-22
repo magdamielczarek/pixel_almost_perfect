@@ -1,9 +1,0 @@
-@import './_variables';
-
-@mixin button($height,$width,$color,$textColor) {
-  background-color: $color;
-  border-radius: 5%;
-  color: $textColor;
-  height: $height;
-  width: $width;
-}

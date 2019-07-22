@@ -21,11 +21,8 @@
   justify-content: center;
   animation: bgAppear 1s;
   animation-fill-mode: forwards;
-  background-color: #616161;
-  background-image: url("../../../assets/bg_image.jpg");
-  background-position: center;
+  background: #29282D url("../../../assets/bgCompressed.jpg") no-repeat center;
   background-size: cover;
-  background-repeat: no-repeat;
   flex-flow: column nowrap;
   height: 100%;
   transition: all 1s;
@@ -35,7 +32,7 @@
 .header {
   background-color: #F5F5F5;
   color: #FF5252;
-  font-family: "Oswald", sans-serif;
+  font-family: "Oswald", "Arial", sans-serif;
   font-size: 2rem;
   opacity: 0;
   padding: 0.5rem 1rem;

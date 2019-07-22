@@ -1,8 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import './RulesPage.scss';
-import Rule from "./RuleItem/RuleItem";
+import Rule from './RuleItem/RuleItem';
 import { faImages, faLifeRing, faAward } from '@fortawesome/free-solid-svg-icons';
-import {Transition} from "react-transition-group";
+import {Transition} from 'react-transition-group';
 
 const rules = [
     {'title': 'Goal', 'img':{faImages},'description': 'You have 3 minutes to mark as many slightly different "pixels" as you can spot. There are exactly 5 transformed pixels at each painting.'},

@@ -24,7 +24,7 @@
   align-items: center;
   color: #F5F5F5;
   display: flex;
-  font-family: "Oswald", sans-serif;
+  font-family: "Oswald", "Arial", sans-serif;
   margin-right: 3.5rem;
   text-transform: uppercase;
 }

@@ -24,11 +24,8 @@
   @include centered;
   animation: bgAppear 1s;
   animation-fill-mode: forwards;
-  background-color: $primary-color-dark;
-  background-image: url('../../../assets/bg_image.jpg');
-  background-position: center;
+  background: #29282D url("../../../assets/bgCompressed.jpg") no-repeat center;
   background-size: cover;
-  background-repeat: no-repeat;
   flex-flow: column nowrap;
   height: 100%;
   transition: all 1s;

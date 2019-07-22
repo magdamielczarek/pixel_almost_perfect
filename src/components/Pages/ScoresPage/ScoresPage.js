@@ -1,5 +1,5 @@
 import React from 'react';
-import SummaryInfo from "./SummaryInfo/SummaryInfo";
+import SummaryInfo from './SummaryInfo/SummaryInfo';
 import classes from './ScoresPage.module.scss';
 
 const ScoresPage = () => {

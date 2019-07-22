@@ -245,13 +245,13 @@
       "country": "Norway"
     },{
       "id": 28,
-      "author": "Pablo Picasso",
-      "title": "Femme au béret et à la robe quadrillée",
+      "author": "Peter Paul Rubens",
+      "title": "Reprodukcja The Judgement of Paris",
       "titleOriginal": "",
-      "path": "./id28_Pablo Picaso_Femme au béret et à la robe quadrillée.jpg",
+      "path": "./id28_Peter_Paul_Rubens_Sad Parysa.jpg",
       "difficulty": "hard",
-      "date": "1937",
-      "country": "France"
+      "date": "1638-39",
+      "country": "Denmark"
     },{
       "id": 29,
       "author": "Pablo Picasso",
@@ -273,8 +273,8 @@
     },{
       "id": 31,
       "author": "Jacek Malczewski",
-      "title": "Hamlet Polski",
-      "titleOriginal": "",
+      "title": "Poland's Hamlet",
+      "titleOriginal": "Hamlet Polski",
       "path": "./id31_malczewski-hamlet-polski.jpg",
       "difficulty": "hard",
       "date": "1903",
@@ -396,6 +396,70 @@
       "difficulty": "hard",
       "date": "",
       "country": "Japan"
+    },{
+      "id": 45,
+      "author": "Peter Paul Rubens",
+      "title": "The Château Het Steen with Hunter",
+      "titleOriginal": "",
+      "path": "./id45_Peter_Paul_Rubens_-_A_View_of_Het_Steen_in_the_Early_Morning.jpg",
+      "difficulty": "hard",
+      "date": "1635-38",
+      "country": "Denmark"
+    },{
+      "id": 46,
+      "author": "John Constable",
+      "title": "Wivenhoe Park",
+      "titleOriginal": "",
+      "path": "./id46_John_Constable_-_Wivenhoe_Park.jpg",
+      "difficulty": "hard",
+      "date": "1816",
+      "country": "England"
+    },{
+      "id": 47,
+      "author": "Jackson Pollock",
+      "title": "Blue poles (Number 11)",
+      "titleOriginal": "",
+      "path": "./id47_Jackson Pollock_Blue Poles.png",
+      "difficulty": "hard",
+      "date": "1952",
+      "country": "USA"
+    },{
+      "id": 48,
+      "author": "Jacek Malczewski",
+      "title": "Melancholy",
+      "titleOriginal": "Melancholia",
+      "path": "./id48_Malczewski_melancholia.jpg",
+      "difficulty": "hard",
+      "date": "1890-94",
+      "country": "Poland"
+    },{
+      "id": 49,
+      "author": "Tamara Łempicka",
+      "title": "Summer",
+      "titleOriginal": "Lato",
+      "path": "./id49_Tamara Lempicka Lato 1928.jpg",
+      "difficulty": "hard",
+      "date": "1928",
+      "country": "Poland"
+    },{
+      "id": 50,
+      "author": "Stanisław Ignacy Witkiewicz",
+      "title": "Temptation of St. Anthony II",
+      "titleOriginal": "Kuszenie św. Antoniego II",
+      "path": "./id50_Witkacy_Kuszenie_sw_A_2.jpg",
+      "difficulty": "hard",
+      "date": "1921-22",
+      "country": "Poland"
+    },{
+      "id": 51,
+      "author": "Frida Kahlo",
+      "title": "The two Fridas",
+      "titleOriginal": "",
+      "path": "./id51_The two Fridas frida_kahlo.jpg",
+      "difficulty": "hard",
+      "date": "1933",
+      "country": "Mexico"
     }
   ]
 }
+

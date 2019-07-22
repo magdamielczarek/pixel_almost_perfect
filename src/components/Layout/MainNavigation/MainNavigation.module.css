@@ -17,7 +17,7 @@
 
 .logo a {
   color: #F5F5F5;
-  font-family: "Oswald", sans-serif;
+  font-family: "Oswald", "Arial", sans-serif;
   font-size: 1.8rem;
   font-weight: bold;
   text-decoration: none;
@@ -27,7 +27,7 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  font-family: "Oswald", sans-serif;
+  font-family: "Oswald", "Arial", sans-serif;
   font-size: 1.5rem;
   font-weight: bold;
   height: 100%;
@@ -57,8 +57,17 @@
   width: 100%;
   z-index: 1;
 }
-.mainNavigation__link a:active {
+.mainNavigation__link a.mainNavigation__link--active::before {
   background-color: #FF5252;
+  top: -100%;
+  left: 0;
+  content: "";
+  height: 120%;
+  position: absolute;
+  transition: transform 0.7s;
+  width: 100%;
+  z-index: -1;
+  transform: translateY(75%);
 }
 
 /*# sourceMappingURL=MainNavigation.module.css.map */

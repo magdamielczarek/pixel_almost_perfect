@@ -58,9 +58,22 @@
     text-decoration: none;
     width: 100%;
     z-index: 1;
-  }
-  a:active {
-    background-color: $accent-color;
+    &.mainNavigation__link--active {
+      & {
+        &::before {
+          background-color: $accent-color;
+          top: -100%;
+          left: 0;
+          content: '';
+          height: 120%;
+          position: absolute;
+          transition: transform .7s;
+          width: 100%;
+          z-index: -1;
+          transform: translateY(75%);
+        }
+      }
+    }
   }
 }
 

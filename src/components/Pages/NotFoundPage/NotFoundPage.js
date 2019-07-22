@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "../NotFoundPage/NotFoundPage.module.scss";
+import classes from '../NotFoundPage/NotFoundPage.module.scss';
 
 const NotFoundPage = () => {
     return (

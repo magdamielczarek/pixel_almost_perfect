@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect,useState } from 'react';
 import axios from '../../../../axiosPreset';
 import classes from './SummaryInfo.module.scss';
-import Spinner from "../../../Layout/Spinner/Spinner";
-import {Transition} from "react-transition-group";
+import Spinner from '../../../Layout/Spinner/Spinner';
+import {Transition} from 'react-transition-group';
 
 const SummaryInfo = () => {
 
@@ -58,12 +58,12 @@ const SummaryInfo = () => {
                                     <td>{player.difficulty.xAxis}</td>
                                     <td>{player.difficulty.yAxis}</td>
                                 </tr>
-                            )
-                        })}
+                            )})
+                        }
                         </tbody>
                     </table>
                 </Fragment>
-                )}
+            )}
         </Transition>
     );
 

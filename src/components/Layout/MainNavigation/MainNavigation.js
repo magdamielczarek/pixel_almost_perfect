@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import { Consumer } from '../../Context';
 import classes from './MainNavigation.module.scss';
 
@@ -11,16 +11,16 @@ const globalNav = (
                 </span>
                 <ul>
                     <li className={classes.mainNavigation__link}>
-                        <Link to="/gra">New game</Link>
+                        <NavLink to="/gra" activeClassName={classes['mainNavigation__link--active']}>New game</NavLink>
                     </li>
                     <li className={classes.mainNavigation__link}>
-                        <Link to="/zasady">Rules</Link>
+                        <NavLink to="/zasady" activeClassName={classes['mainNavigation__link--active']}>Rules</NavLink>
                     </li>
                     <li className={classes.mainNavigation__link}>
-                        <Link to="/ustawienia">Settings</Link>
+                        <NavLink to="/ustawienia" activeClassName={classes['mainNavigation__link--active']}>Settings</NavLink>
                     </li>
                     <li className={classes.mainNavigation__link}>
-                        <Link to="/ranking">Scores</Link>
+                        <NavLink to="/ranking" activeClassName={classes['mainNavigation__link--active']}>Scores</NavLink>
                     </li>
                 </ul>
             </nav>
@@ -30,11 +30,7 @@ const globalNav = (
 const MainNavigation = () => {
     return (
         <Consumer>
-            {
-                (context) => {
-                    return (context.gameMode ? <div style={{ gridArea: 'header'}}> </div> : globalNav);
-                }
-            }
+            {(context) => {return (context.gameMode ? <div style={{ gridArea: 'header'}}> </div> : globalNav)}}
         </Consumer>
     );
 };

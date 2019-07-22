@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import { Route, Switch } from 'react-router-dom';
 import classes from './App.module.scss';
-import GameBoard from '../components/Pages/GameBoard/GameBoard';
-import Layout from '../components/Layout/Layout';
-import ScoresPage from '../components/Pages/ScoresPage/ScoresPage';
-import IntroPage from '../components/Pages/IntroPage/IntroPage';
-import RulesPage from '../components/Pages/RulesPage/RulesPage';
-import SettingsPage from '../components/Pages/SettingsPage/SettingsPage';
-import NotFoundPage from '../components/Pages/NotFoundPage/NotFoundPage';
-import { Provider } from '../components/Context/index';
+import GameBoard from '../../Pages/GameBoard/GameBoard';
+import Layout from '../../Layout/Layout';
+import ScoresPage from '../../Pages/ScoresPage/ScoresPage';
+import IntroPage from '../../Pages/IntroPage/IntroPage';
+import RulesPage from '../../Pages/RulesPage/RulesPage';
+import SettingsPage from '../../Pages/SettingsPage/SettingsPage';
+import NotFoundPage from '../../Pages/NotFoundPage/NotFoundPage';
+import { Provider } from '../../Context';
 
 class App extends Component{
     constructor(props){
@@ -17,7 +17,7 @@ class App extends Component{
             gameMode: false,
             score: 0,
             gameTime: 3,
-            xNumber: 30,
+            xNumber: 20,
             yNumber: 20,
             contrast: 'low',
             username: '',
@@ -112,12 +112,12 @@ class App extends Component{
                 <div className={classes.app}>
                     <Layout gameMode={this.state.gameMode}>
                         <Switch>
-                            <Route path="/ustawienia" component={SettingsPage}/>
-                            <Route path="/zasady" component={RulesPage}/>
+                            <Route path="/ustawienia" component={SettingsPage} />
+                            <Route path="/zasady" component={RulesPage} />
                             <Route path="/gra" component={GameBoard} />
                             <Route path="/ranking" component={ScoresPage}/>
-                            <Route path="/" exact component={IntroPage}/>
-                            <Route component={NotFoundPage}/>
+                            <Route path="/" exact component={IntroPage} />
+                            <Route component={NotFoundPage} />
                         </Switch>
                     </Layout>
                 </div>

@@ -1,0 +1,33 @@
+@import '../../../global-styles/variables';
+
+.notFoundPage {
+  height: 100%;
+  position: relative;
+  width: 100%;
+  &__background {
+    background-image: url("../../../assets/404page.jpg");
+    height: 100%;
+    opacity: .5;
+    z-index: -1;
+  }
+  h1, h2 {
+    color: darken(#B8B9BA,20%);
+    opacity: .6;
+    transform: translate(-50%,-50%);
+  }
+  h1 {
+    font-family: $secondary-font;
+    font-size: 7rem;
+    left: 50%;
+    position: absolute;
+    text-shadow: $box-shadow;
+    top: 20%;
+  }
+  h2 {
+    font-size: 2rem;
+    left: 50%;
+    position: absolute;
+    top: 60%;
+    text-transform: uppercase;
+  }
+}

@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch } from 'react-router-dom';
 import classes from './App.module.scss';
-import GameBoard from "../components/Pages/GameBoard/GameBoard";
-import Layout from "../components/Layout/Layout";
-import ScoresPage from "../components/Pages/ScoresPage/ScoresPage";
+import GameBoard from '../components/Pages/GameBoard/GameBoard';
+import Layout from '../components/Layout/Layout';
+import ScoresPage from '../components/Pages/ScoresPage/ScoresPage';
 import IntroPage from '../components/Pages/IntroPage/IntroPage';
-import RulesPage from "../components/Pages/RulesPage/RulesPage";
-import SettingsPage from "../components/Pages/SettingsPage/SettingsPage";
+import RulesPage from '../components/Pages/RulesPage/RulesPage';
+import SettingsPage from '../components/Pages/SettingsPage/SettingsPage';
+import NotFoundPage from '../components/Pages/NotFoundPage/NotFoundPage';
 import { Provider } from '../components/Context/index';
 
 class App extends Component{
@@ -116,6 +117,7 @@ class App extends Component{
                             <Route path="/gra" component={GameBoard} />
                             <Route path="/ranking" component={ScoresPage}/>
                             <Route path="/" exact component={IntroPage}/>
+                            <Route component={NotFoundPage}/>
                         </Switch>
                     </Layout>
                 </div>

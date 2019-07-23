@@ -48,8 +48,10 @@
   transform: translateY(-15%);
 }
 .mainNavigation__link a {
+  align-items: center;
   color: #F5F5F5;
-  display: block;
+  display: flex;
+  height: 100%;
   left: 0;
   padding: 0 1.5rem;
   position: relative;

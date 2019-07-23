@@ -50,8 +50,10 @@
     transform: translateY(-15%);
   }
   a {
+    align-items: center;
     color: $primary-color-light;
-    display: block;
+    display: flex;
+    height: 100%;
     left: 0;
     padding: 0 1.5rem;
     position: relative;
@@ -59,19 +61,17 @@
     width: 100%;
     z-index: 1;
     &.mainNavigation__link--active {
-      & {
-        &::before {
-          background-color: $accent-color;
-          top: -100%;
-          left: 0;
-          content: '';
-          height: 120%;
-          position: absolute;
-          transition: transform .7s;
-          width: 100%;
-          z-index: -1;
-          transform: translateY(75%);
-        }
+      &::before {
+        background-color: $accent-color;
+        top: -100%;
+        left: 0;
+        content: '';
+        height: 120%;
+        position: absolute;
+        transition: transform .7s;
+        width: 100%;
+        z-index: -1;
+        transform: translateY(75%);
       }
     }
   }

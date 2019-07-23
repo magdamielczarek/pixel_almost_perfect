@@ -7,7 +7,7 @@ import {Transition} from 'react-transition-group';
 const rules = [
     {'title': 'Goal', 'img':{faImages},'description': 'You have 3 minutes to mark as many slightly different "pixels" as you can spot. There are exactly 5 transformed pixels at each painting.'},
     {'title': 'Difficulty', 'img':{faLifeRing}, 'description': 'Feel free to use hint if you need, but notice that each used hint will subtract 5 from your total score. You always can go to the next image.'},
-    {'title': 'Score', 'img':{faAward}, 'description': 'You will get 1 point for each spotted pixel. Find all "pixels" at current image and your points will be doubled.'}
+    {'title': 'Score', 'img':{faAward}, 'description': 'You will get 1 point for each spotted pixel. Find all "pixels" at current image and your score will be doubled.'}
 ];
 
 const RulesPage = () => {

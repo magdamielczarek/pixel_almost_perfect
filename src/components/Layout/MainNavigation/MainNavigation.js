@@ -14,7 +14,7 @@ const globalNav = (
                         <NavLink to="/gra" activeClassName={classes['mainNavigation__link--active']}>New game</NavLink>
                     </li>
                     <li className={classes.mainNavigation__link}>
-                        <NavLink to="/zasady" activeClassName={classes['mainNavigation__link--active']}>Rules</NavLink>
+                        <NavLink to="/zasady" activeClassName={classes['mainNavigation__link--active']}><span>Rules</span></NavLink>
                     </li>
                     <li className={classes.mainNavigation__link}>
                         <NavLink to="/ustawienia" activeClassName={classes['mainNavigation__link--active']}>Settings</NavLink>

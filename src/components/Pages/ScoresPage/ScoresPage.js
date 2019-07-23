@@ -5,7 +5,9 @@ import classes from './ScoresPage.module.scss';
 const ScoresPage = () => {
     return (
         <div className={classes.scoresContainer}>
-            <SummaryInfo/>
+            <div className={classes.tableWrapper}>
+                <SummaryInfo/>
+            </div>
         </div>
     );
 };

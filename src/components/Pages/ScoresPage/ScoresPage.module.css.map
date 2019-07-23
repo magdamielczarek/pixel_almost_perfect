@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["scorespage.module.scss","../../../global-styles/_mixins.scss","../../../global-styles/_variables.scss"],"names":[],"mappings":"AAGA;ECAE;EACA;EACA;EDAA,kBEHqB;EFIrB;EACA","file":"ScoresPage.module.css"}
+{"version":3,"sourceRoot":"","sources":["scorespage.module.scss","../../../global-styles/_mixins.scss","../../../global-styles/_variables.scss"],"names":[],"mappings":"AAGA;ECAE;EACA;EACA;EDAA,kBEHqB;EFIrB;EACA;;;AAGF;EACE;EACA;EACA","file":"ScoresPage.module.css"}

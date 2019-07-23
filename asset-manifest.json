@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/pixel_almost_perfect/static/css/main.10d0a490.chunk.css",
+    "main.css": "/pixel_almost_perfect/static/css/main.dc34a97f.chunk.css",
     "main.js": "/pixel_almost_perfect/static/js/main.e7268e04.chunk.js",
     "main.js.map": "/pixel_almost_perfect/static/js/main.e7268e04.chunk.js.map",
     "runtime~main.js": "/pixel_almost_perfect/static/js/runtime~main.be929a0d.js",
@@ -8,9 +8,9 @@
     "static/js/2.49fda68f.chunk.js": "/pixel_almost_perfect/static/js/2.49fda68f.chunk.js",
     "static/js/2.49fda68f.chunk.js.map": "/pixel_almost_perfect/static/js/2.49fda68f.chunk.js.map",
     "index.html": "/pixel_almost_perfect/index.html",
-    "precache-manifest.36f368090ee9d9869f426ed0d7671516.js": "/pixel_almost_perfect/precache-manifest.36f368090ee9d9869f426ed0d7671516.js",
+    "precache-manifest.98200999797cd5129e57f6ebdd64dcab.js": "/pixel_almost_perfect/precache-manifest.98200999797cd5129e57f6ebdd64dcab.js",
     "service-worker.js": "/pixel_almost_perfect/service-worker.js",
-    "static/css/main.10d0a490.chunk.css.map": "/pixel_almost_perfect/static/css/main.10d0a490.chunk.css.map",
+    "static/css/main.dc34a97f.chunk.css.map": "/pixel_almost_perfect/static/css/main.dc34a97f.chunk.css.map",
     "static/media/NotFoundPage.module.scss": "/pixel_almost_perfect/static/media/404page.384c94f3.jpg",
     "static/media/bgCompressed.jpg": "/pixel_almost_perfect/static/media/bgCompressed.035eaf07.jpg",
     "static/media/bg_image.jpg": "/pixel_almost_perfect/static/media/bg_image.8e1ae208.jpg",

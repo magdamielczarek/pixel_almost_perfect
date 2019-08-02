@@ -4,6 +4,10 @@ Obraz zmieni się, jeśli zgadniesz wszystkie 5 zmienionych fragmentów lub, je�
 Każdy odgadnięty fragment to jeden zdobyty punkt. Za zgadnięcie wszystkich 5 fragmentów gracz otrzymuje drugie tyle punktów.
 W każdej chwili można skorzystać z podpowiedzi (na obrazie pojawi sie czerwone zaznaczenie szukanego fragmentu), co spowoduje jednak odjęcie 5 punktów. W ustawieniach można zmieniać trudność gry - sterować układem planszy, czasem gry, oraz stopniem wtopienia fragmentów w tło.
 
+![alt text](./src/markdownimg/main.png)
+![alt text](./src/markdownimg/game.png)
+![alt text](./src/markdownimg/settings.png)
+
 ### Repozytorium
 Pobierz repozytorium i uruchom w trybie deweloperskim za pomocą `npm start`.
 

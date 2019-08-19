@@ -11,3 +11,9 @@ W każdej chwili można skorzystać z podpowiedzi (na obrazie pojawi sie czerwon
 ### Repozytorium
 Pobierz repozytorium i uruchom w trybie deweloperskim za pomocą `npm start`.
 
+### Dalsze prace
+* loader przed ładowaniem obrazu - poprawienie funkcjonalności
+* dodanie możliwości ładowania własnych kolekcji zdjęć
+* dodanie responsywności
+* poprawa wydajności - lepsza optymalizacja obrazów
+* poprawa obsługi błędów
